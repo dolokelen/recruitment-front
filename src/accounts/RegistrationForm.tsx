@@ -1,37 +1,34 @@
-import { Box, Text, Button, FormLabel, Input, Heading, Link } from "@chakra-ui/react";
+import { Text, Link, Box } from "@chakra-ui/react";
 import { blue } from "./../colors";
 import "./registration.css";
+import { MyButton, MyHeading, MyInput } from "../MyFormComponents";
 
 const RegistrationForm = () => {
   return (
-    <form>
-      <Heading className="heading" id="heading">
-        Registration Form
-      </Heading>
-      <Box id="input-box" className="input-box">
-        <FormLabel>Email</FormLabel>
-        <Input name="" type="" id="inpu" className="responsive" />
-        {/* <Text>Dynamic error message</Text> */}
-      </Box>
-      <Box id="input-box" className="input-box">
-        <FormLabel>Password</FormLabel>
-        <Input name="" type="" id="inpu" className="responsive" />
-        {/* <Text>Dynamic error message</Text> */}
-      </Box>
-      <Box id="input-box" className="input-box">
-        <FormLabel>Confirm Password</FormLabel>
-        <Input name="" type="" id="inpu" className="responsive" />
-        {/* <Text>Dynamic error message</Text> */}
-      </Box>
-      <Button
-        colorScheme={blue}
-        type="button"
-        id="inpu"
-        className="responsive submit-btn"
-      >
+    <form onSubmit={(e) => e.preventDefault()}>
+        <Box className="div" id="div">
+      <MyHeading>Registration Form</MyHeading>
+
+      <MyInput label="Email" name="" type="text">
+        {false && <Text>Dynamic error message</Text>}
+      </MyInput>
+
+      <MyInput label="Password" name="password" type="password">
+        {false && <Text>Dynamic error message</Text>}
+      </MyInput>
+
+      <MyInput label="Confirm Password" name="confirm_password" type="password">
+        {false && <Text>Dynamic error message</Text>}
+      </MyInput>
+
+      <MyButton type="submit" color={blue}>
         Register Now
-      </Button>
-      <Text color={blue}>Already Have An Account? <Link>Login</Link></Text>
+      </MyButton>
+
+      <Text color={blue}>
+        Already Have An Account? <Link>Login</Link>
+      </Text>
+      </Box>
     </form>
   );
 };

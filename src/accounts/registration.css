@@ -1,20 +1,36 @@
-/* form {
+form {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
   width: 100vw;
-  padding: 10px;
-} */
+  padding-top: 20px;
+}
+
+#input-box-id.input-box-class,
+#btn-id.btn-class {
+  margin-bottom: 26px;
+}
+
+#heading.heading {
+  font-size: 200%;
+  margin-bottom: 38px;
+}
+
+#input-id.input-class,
+#btn-id.btn-class {
+  height: 55px;
+}
 
 @media screen and (min-width: 320px) and (max-width: 452px) {
-  form {
-    display: flex;
-    flex-direction: column;
-    width: 100vw;
-    padding: 15px;
+  #btn-id.btn-class {
+    width: 90vw;
   }
 
-  #inpu.responsive {
+  #btn-id.btn-class {
+    width: 90vw;
+  }
+  #input-id.input-class,
+  #btn-id.btn-class {
     height: 45px;
   }
 
@@ -23,11 +39,50 @@
     margin-bottom: 30px;
   }
 
-  #input-box.input-box {
+  #input-box-id.input-box-class,
+  #btn-id.btn-class {
     margin-bottom: 18px;
   }
+}
 
-  #inpu.submit-btn {
-    margin-bottom: 10px;
+@media screen and (min-width: 453px) and (max-width: 768px) {
+  #div.div {
+    width: 70vw;
+  }
+
+  #btn-id.btn-class {
+    width: 40vw;
+  }
+
+  #heading.heading {
+    font-size: 150%;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  form {
+    padding-top: 18px;
+  }
+
+  #div.div {
+    width: 60vw;
+  }
+
+  #heading.heading {
+    font-size: 160%;
+  }
+
+  #btn-id.btn-class {
+    width: 35vw;
+  }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 3000px) {
+  #div.div {
+    width: 40vw;
+  }
+
+  #btn-id.btn-class {
+    width: 25vw;
   }
 }
