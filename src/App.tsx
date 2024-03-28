@@ -1,9 +1,14 @@
-import './App.css'
-import RegistrationForm from './accounts/RegistrationForm';
+import { Box } from "@chakra-ui/react";
+import "./App.css";
+import RegistrationForm from "./accounts/RegistrationForm";
 
 function App() {
-
-  return <RegistrationForm />
+  // return (
+  //   <Box p='5%'>
+  //     <RegistrationForm />
+  //   </Box>
+  // );
+  return <RegistrationForm />;
 }
 
-export default App
+export default App;

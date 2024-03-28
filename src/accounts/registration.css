@@ -1,0 +1,33 @@
+/* form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100vw;
+  padding: 10px;
+} */
+
+@media screen and (min-width: 320px) and (max-width: 452px) {
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    padding: 15px;
+  }
+
+  #inpu.responsive {
+    height: 45px;
+  }
+
+  #heading.heading {
+    font-size: 140%;
+    margin-bottom: 30px;
+  }
+
+  #input-box.input-box {
+    margin-bottom: 18px;
+  }
+
+  #inpu.submit-btn {
+    margin-bottom: 10px;
+  }
+}
