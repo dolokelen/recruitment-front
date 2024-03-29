@@ -1,13 +1,17 @@
 import { createBrowserRouter } from "react-router-dom";
-import LoginForm from "../accounts/LoginForm";
 import HomePage from "../components/HomePage";
-import { HOME_ROUTE, LOGIN_ROUTE, REGISTER_ROUTE } from "../cacheKeysAndRoutes";
-import RegistrationForm from "../accounts/RegistrationForm";
+import { HOME_ROUTE } from "../cacheKeysAndRoutes";
+import UnAuthLayout from "../components/UnAuthLayout";
+import ErrorPage from "../pages/ErrorPage";
 
 const router = createBrowserRouter([
-  { path: HOME_ROUTE, element: <HomePage /> },
-  { path: `${LOGIN_ROUTE}/`, element: <LoginForm /> },
-  { path: `${REGISTER_ROUTE}/`, element: <RegistrationForm /> },
+  // The auth routers here
+  {
+    path: HOME_ROUTE,
+    errorElement: <UnAuthLayout children={<ErrorPage />} />,
+    element: <UnAuthLayout />,
+    children: [{ path: HOME_ROUTE, element: <HomePage /> }],
+  },
 ]);
 
 export default router;
