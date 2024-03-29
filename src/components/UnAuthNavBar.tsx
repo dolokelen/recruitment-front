@@ -11,9 +11,16 @@ const UnAuthNavBar = () => {
 //   }, [authUserId]);
 
   return (
-    <Flex justifyContent="space-evenly">
+    <Flex justifyContent="space-evenly" backgroundColor='gray'>
       <Link>Home</Link>
-      <Link>Dashboard</Link>
+      {/* <Link>Dashboard</Link> */}
+      <Link>Login</Link>
+      <Link>About Us</Link>
+      <Link>Programs</Link>
+      <Link>Apply</Link>
+      <Link>Connect</Link>
+      <Link>Resources</Link>
+
       {/* The last "Login" route is used for the Dashboard "Logout" route.
       This dynamic btn label is for users who might use the "Website" logout btn.*/}
       {/* {authUserId ? (

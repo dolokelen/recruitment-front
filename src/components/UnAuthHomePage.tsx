@@ -1,7 +1,7 @@
 import { Box } from "@chakra-ui/react";
 
 const UnAuthHomePage = () => {
-  return <Box>Thi is anonymous users home page.</Box>
+  return <Box backgroundColor="green">Thi is anonymous users home page.</Box>;
 };
 
 export default UnAuthHomePage;
