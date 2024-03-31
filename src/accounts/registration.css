@@ -13,7 +13,7 @@ form {
 
 #heading.heading {
   font-size: 200%;
-  margin-bottom: 38px;
+  margin-bottom: 2vh;
 }
 
 #input-id.input-class,
@@ -22,15 +22,9 @@ form {
 }
 
 @media screen and (min-width: 320px) and (max-width: 452px) {
-  #btn-id.btn-class {
-    width: 90vw;
-  }
-
-  #btn-id.btn-class {
-    width: 90vw;
-  }
-  #input-id.input-class,
-  #btn-id.btn-class {
+  #input1.input-class,
+  #input2.input-class,
+  #input3.input-class #btn-id.btn-class {
     height: 45px;
   }
 
@@ -39,9 +33,14 @@ form {
     margin-bottom: 30px;
   }
 
-  #input-box-id.input-box-class,
-  #btn-id.btn-class {
+  #input1.input-class,
+  #input2.input-class,
+  #input3.input-class {
     margin-bottom: 18px;
+  }
+
+  #btn-id.btn-class {
+    width: 77vw;
   }
 }
 
