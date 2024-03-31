@@ -1,6 +1,7 @@
-import { Box, Button, FormLabel, Input, Heading } from "@chakra-ui/react";
+import { Box, Button, FormLabel, Input, Heading, Text } from "@chakra-ui/react";
 import { ReactNode } from "react";
 import { UseFormRegisterReturn } from "react-hook-form";
+import { red } from "./colors";
 
 interface HProps {
   children: ReactNode;
@@ -18,22 +19,23 @@ interface IProps {
   label: string;
   type?: string;
   id: string;
-  children: ReactNode;
+  errorMessage: string | undefined;
   register: UseFormRegisterReturn;
 }
 
 export const MyInput = ({
   label,
-  children,
+  
   id,
   type = "text",
+  errorMessage,
   register,
 }: IProps) => {
   return (
     <Box id="input-box-id" className="input-box-class">
       <FormLabel>{label}</FormLabel>
       <Input type={type} id={id} className="input-class" {...register} />
-      {children}
+      {errorMessage && <Text color={red}>{errorMessage}</Text>}
     </Box>
   );
 };

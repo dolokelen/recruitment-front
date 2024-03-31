@@ -15,7 +15,6 @@ const UnAuthLayout = ({ children }: Props) => {
       h="100vh"
       w="100vw"
       gap={0}
-      backgroundColor="green.500"
     >
       <GridItem>
         <MobileNav />

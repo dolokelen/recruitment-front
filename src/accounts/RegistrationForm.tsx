@@ -55,35 +55,31 @@ const RegistrationForm = () => {
       <Box className="div" id="div">
         <MyHeading>Registration Form</MyHeading>
 
-       
-          <MyInput label="Email" type="text" id="input1" register={register("email")}>
-            {errors.email && <Text>{errors.email.message}</Text>}
-          </MyInput>
-       
+        <MyInput
+          label="Email"
+          type="text"
+          id="input1"
+          register={register("email")}
+          errorMessage={errors.email && errors.email.message}
+        />
 
-       
-          <MyInput
-            label="Password"
-            type="password"
-            id="input2"
-            register={register("password")}
-          >
-            {errors.password && <Text>{errors.password.message}</Text>}
-          </MyInput>
-       
+        <MyInput
+          label="Password"
+          type="password"
+          id="input2"
+          register={register("password")}
+          errorMessage={errors.password && errors.password.message}
+        />
 
-       
-          <MyInput
-            label="Confirm Password"
-            type="password"
-            id="input3"
-            register={register("confirm_password")}
-          >
-            {errors.confirm_password && (
-              <Text>{errors.confirm_password.message}</Text>
-            )}
-          </MyInput>
-       
+        <MyInput
+          label="Confirm Password"
+          type="password"
+          id="input3"
+          register={register("confirm_password")}
+          errorMessage={
+            errors.confirm_password && errors.confirm_password.message
+          }
+        />
 
         <MyButton type="submit" color={blue}>
           Register Now
