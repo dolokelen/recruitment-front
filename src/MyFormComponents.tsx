@@ -31,14 +31,13 @@ export const MyInput = ({
   register,
 }: IProps) => {
   return (
-    <Box id="input-box-id" className="input-box-class">
+    <Box mb={4}>
       <FormLabel>{label}</FormLabel>
       <Input
         type={type}
         size={{ base: "sm", sm: "md" }}
         borderRadius={{ base: 8 }}
         border="1px solid skyblue"
-        mb={4}
         {...register}
       />
       {errorMessage && <Text color={red500}>{errorMessage}</Text>}

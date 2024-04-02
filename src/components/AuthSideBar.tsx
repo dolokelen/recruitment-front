@@ -1,4 +1,5 @@
 import { Flex } from "@chakra-ui/react";
+import SideBarItems from "./SideBarItems";
 
 const AuthSideBar = () => {
   return (
@@ -11,8 +12,7 @@ const AuthSideBar = () => {
       justifyContent="space-between"
     >
       <Flex>
-        Auth Side Bar
-        {/* <DashBoard /> */}
+        <SideBarItems />
       </Flex>
     </Flex>
   );
