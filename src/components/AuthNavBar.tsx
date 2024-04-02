@@ -1,7 +1,11 @@
-import { Box } from "@chakra-ui/react";
+import { Flex, Link} from "@chakra-ui/react";
 
 const AuthNavBar = () => {
-  return <Box>Auth Nav Bar</Box>;
+  return <Flex justifyContent="space-evenly">
+    <Link>Website</Link>
+    <Link>Logout</Link>
+    <Link>Welcome Dolokelen</Link>
+  </Flex>;
   //   const { data: userProfile } = useUserProfile();
 
   //   return (

@@ -15,9 +15,12 @@ import AuthLayout from "../components/AuthLayout";
 const router = createBrowserRouter([
   {
     path: AUTH_LAYOUT_ROUTE,
-    errorElement: <AuthLayout children={<ErrorPage />} />,
+    errorElement: <ErrorPage />,
     element: <AuthLayout />,
-    children: [{ path: AUTH_LAYOUT_ROUTE, element: <AuthLayout /> }],
+    children: [  {
+      path: LOGIN_ROUTE,
+      element: <LoginForm />,
+    },],
   },
 
   {
