@@ -1,49 +1,57 @@
-import { Flex, Link } from "@chakra-ui/react";
-import { Link as RLink } from "react-router-dom";
+import { Flex } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import { HOME_ROUTE, LOGIN_ROUTE, REGISTER_ROUTE } from "../cacheKeysAndRoutes";
+import {
+  AUTH_LAYOUT_ROUTE,
+  HOME_ROUTE,
+  LOGIN_ROUTE,
+  REGISTER_ROUTE,
+} from "../cacheKeysAndRoutes";
 import { white } from "../colors";
+import { useEffect, useState } from "react";
+import getUserId from "../utilities/getUserId";
+import logoutUser from "../utilities/logoutUser";
 
 const UnAuthNavBar = () => {
-//   const [userId, setUserId] = useState<number | undefined>();
-//   const authUserId = getUserId();
+  const [userId, setUserId] = useState<number | undefined>();
+  const authUserId = getUserId();
 
-//   useEffect(() => {
-//     if (authUserId) {
-//       setUserId(authUserId);
-//     }
-//   }, [authUserId]);
+  useEffect(() => {
+    if (authUserId) {
+      setUserId(authUserId);
+    }
+  }, [authUserId]);
 
   return (
     <>
-    <Flex justifyContent="space-evenly" color={white}>
-      <RLink to={HOME_ROUTE}>Home</RLink>
-      {/* <Link>Dashboard</Link> */}
-      <RLink to={LOGIN_ROUTE}>Login</RLink>
-      <Link>About Us</Link>
-      <Link>Programs</Link>
-      <RLink to={REGISTER_ROUTE}>Apply</RLink>
-      <Link>Connect</Link>
-      <Link>Resources</Link>
+      <Flex justifyContent="space-evenly" color={white}>
+        <Link to={HOME_ROUTE}>Home</Link>
+        {/* <Link>Dashboard</Link> */}
+        <Link to="#">About Us</Link>
+        <Link to="#">Programs</Link>
+        <Link to={REGISTER_ROUTE}>Apply</Link>
+        <Link to="#">Connect</Link>
+        <Link to="#">Resources</Link>
 
-      {/* The last "Login" route is used for the Dashboard "Logout" route.
+        {/* The last "Login" route is used for the Dashboard "Logout" route.
       This dynamic btn label is for users who might use the "Website" logout btn.*/}
-      {/* {authUserId ? (
-        <Link
-          to={LOGIN_ROUTE}
-          onClick={() => {
-            logoutUser();
-            setUserId(undefined);
-          }}
-        >
-          {userId ? "Logout" : "Login"}
-        </Link> */}
-      {/* ) : (
-        <Link to={LOGIN_ROUTE}>Login</Link>
-      )}
-      <ColorModeSwitch /> */}
-    </Flex>
-    <ToastContainer />
+        {authUserId ? (
+          <Link
+            to={LOGIN_ROUTE}
+            onClick={() => {
+              logoutUser();
+              setUserId(undefined);
+            }}
+          >
+            {userId ? "Logout" : "Login"}
+          </Link>
+        ) : (
+          <Link to={LOGIN_ROUTE}>Login</Link>
+        )}
+        {authUserId && <Link to={AUTH_LAYOUT_ROUTE}>Dashboard</Link>}
+        {/* <ColorModeSwitch />  */}
+      </Flex>
+      <ToastContainer />
     </>
   );
 };
