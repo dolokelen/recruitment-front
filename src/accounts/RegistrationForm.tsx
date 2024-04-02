@@ -1,12 +1,17 @@
-import { Text, Link, Box } from "@chakra-ui/react";
-import { blue } from "./../colors";
-import "./registration.css";
+import { Text, Box } from "@chakra-ui/react";
+import { blue, blue500, red } from "./../colors";
+// import "./registration.css";
 import { MyButton, MyHeading, MyInput } from "../MyFormComponents";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRegistration } from "../hooks/useRegistration";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
+import { LOGIN_ROUTE } from "../cacheKeysAndRoutes";
+import autoRouteToHome from "../utilities/getHomeRoute";
+import { http_400_BAD_REQUEST_CUSTOM_MESSAGE } from "../utilities/httpErrorMessages";
+import { styles } from "./styles";
 
 const schema = z
   .object({
@@ -47,26 +52,25 @@ const RegistrationForm = () => {
   const registration = useRegistration(onCreate, () => reset());
   const onSubmit = (data: RegistrationFormData) => registration.mutate(data);
 
-  if (registration.isError)
-    return <Text colorScheme="red">{registration.error.message}</Text>;
+  const errMessage = http_400_BAD_REQUEST_CUSTOM_MESSAGE(registration);
 
   return (
-    <form onSubmit={handleSubmit((data) => console.log(data))}>
-      <Box className="div" id="div">
+    <Box mx={styles.formWrapperMX} my={styles.formWrapperMY}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <MyHeading>Registration Form</MyHeading>
 
         <MyInput
           label="Email"
           type="text"
-          id="input1"
           register={register("email")}
           errorMessage={errors.email && errors.email.message}
-        />
+        >
+          {registration.isError && <Text color={red}>{errMessage}</Text>}
+        </MyInput>
 
         <MyInput
           label="Password"
           type="password"
-          id="input2"
           register={register("password")}
           errorMessage={errors.password && errors.password.message}
         />
@@ -74,22 +78,22 @@ const RegistrationForm = () => {
         <MyInput
           label="Confirm Password"
           type="password"
-          id="input3"
           register={register("confirm_password")}
           errorMessage={
             errors.confirm_password && errors.confirm_password.message
           }
         />
 
-        <MyButton type="submit" color={blue}>
+        <MyButton type="submit" colorScheme={blue}>
           Register Now
         </MyButton>
 
-        <Text color={blue}>
-          Already Have An Account? <Link>Login</Link>
+        <Text color={blue500} fontSize={styles.resetPwdLinkFontSize}>
+          Already Have An Account?{" "}
+          <Link to={autoRouteToHome() + LOGIN_ROUTE}>Login</Link>
         </Text>
-      </Box>
-    </form>
+      </form>
+    </Box>
   );
 };
 

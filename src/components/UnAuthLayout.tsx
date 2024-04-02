@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 import UnAuthFooter from "./UnAuthFooter";
 import { ReactNode } from "react";
 import MobileNav from "./MobileNav";
+import { footerColor, mainAreaColor, navbarColor } from "../colors";
 
 interface Props {
   children?: ReactNode;
@@ -15,14 +16,17 @@ const UnAuthLayout = ({ children }: Props) => {
       h="100vh"
       w="100vw"
       gap={0}
+      overflowX="hidden"
     >
-      <GridItem>
+      <GridItem p={{ base: 1, sm: 2, md: 4 }} bg={navbarColor}>
         <MobileNav />
       </GridItem>
 
-      <GridItem>{children ? children : <Outlet />}</GridItem>
+      <GridItem bg={mainAreaColor}>
+        {children ? children : <Outlet />}
+      </GridItem>
 
-      <GridItem>
+      <GridItem bg={footerColor}>
         <UnAuthFooter />
       </GridItem>
     </Grid>

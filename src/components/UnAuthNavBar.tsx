@@ -1,7 +1,8 @@
 import { Flex, Link } from "@chakra-ui/react";
 import { Link as RLink } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import { HOME_ROUTE, REGISTER_ROUTE } from "../cacheKeysAndRoutes";
+import { HOME_ROUTE, LOGIN_ROUTE, REGISTER_ROUTE } from "../cacheKeysAndRoutes";
+import { white } from "../colors";
 
 const UnAuthNavBar = () => {
 //   const [userId, setUserId] = useState<number | undefined>();
@@ -15,10 +16,10 @@ const UnAuthNavBar = () => {
 
   return (
     <>
-    <Flex justifyContent="space-evenly">
+    <Flex justifyContent="space-evenly" color={white}>
       <RLink to={HOME_ROUTE}>Home</RLink>
       {/* <Link>Dashboard</Link> */}
-      <Link>Login</Link>
+      <RLink to={LOGIN_ROUTE}>Login</RLink>
       <Link>About Us</Link>
       <Link>Programs</Link>
       <RLink to={REGISTER_ROUTE}>Apply</RLink>

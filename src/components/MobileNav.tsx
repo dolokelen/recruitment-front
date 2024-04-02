@@ -19,7 +19,7 @@ const MobileNav = () => {
 
   return (
     <>
-      <Avatar onClick={onOpen} m={2} />
+      <Avatar onClick={onOpen} />
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
@@ -55,9 +55,7 @@ const Navbar = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  return (
-    <Box bg="whiteAlpha">{isMobile ? <MobileNav /> : <UnAuthNavBar />}</Box>
-  );
+  return <Box>{isMobile ? <MobileNav /> : <UnAuthNavBar />}</Box>;
 };
 
 export default Navbar;
