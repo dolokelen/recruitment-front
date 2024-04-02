@@ -43,7 +43,7 @@ const UnAuthNavBar = () => {
               setUserId(undefined);
             }}
           >
-            {userId ? "Logout" : "Login"}
+            {userId && "Logout"}
           </Link>
         ) : (
           <Link to={LOGIN_ROUTE}>Login</Link>

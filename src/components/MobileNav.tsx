@@ -9,17 +9,17 @@ import {
   ModalCloseButton,
   useDisclosure,
   Link,
-  Avatar,
 } from "@chakra-ui/react";
 import { HOME_ROUTE, REGISTER_ROUTE } from "../cacheKeysAndRoutes";
 import UnAuthNavBar from "./UnAuthNavBar";
+import { CgMenuGridR } from "react-icons/cg";
 
 const MobileNav = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <>
-      <Avatar onClick={onOpen} />
+      <CgMenuGridR size='2rem' color='white' onClick={onOpen}/>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
