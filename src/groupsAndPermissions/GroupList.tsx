@@ -7,6 +7,8 @@ import MySpinner from "../components/MySpinner";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import BulkDeleteButton from "../utilities/BulkDeleteButton";
+import { Link } from "react-router-dom";
+import { AUTH_LAYOUT_ROUTE, GROUP_ROUTE } from "../cacheKeysAndRoutes";
 
 const GroupList = () => {
   const { data: groups, error, isLoading } = useGroups();
@@ -49,7 +51,9 @@ const GroupList = () => {
                 isChecked={selectedGroups.includes(group.id)}
                 onChange={() => handleCheckboxChange(group.id)}
               >
-                {group.name}
+                <Link to={`${AUTH_LAYOUT_ROUTE}/${GROUP_ROUTE}/${group.id}`}>
+                  {group.name}
+                </Link>
               </Checkbox>
             </ListItem>
           ))}

@@ -3,7 +3,7 @@ import HomePage from "../components/HomePage";
 import {
   AUTH_LAYOUT_ROUTE,
   CREATE_GROUP_ROUTE,
-  GROUP_LIST_ROUTE,
+  GROUP_ROUTE,
   HOME_ROUTE,
   LOGIN_ROUTE,
   REGISTER_ROUTE,
@@ -15,6 +15,7 @@ import LoginForm from "../accounts/LoginPage";
 import AuthLayout from "../components/AuthLayout";
 import GroupCreateForm from "../groupsAndPermissions/GroupCreateForm";
 import GroupList from "../groupsAndPermissions/GroupList";
+import GroupDetailPage from "../groupsAndPermissions/GroupDetail";
 
 const router = createBrowserRouter([
   {
@@ -23,7 +24,8 @@ const router = createBrowserRouter([
     element: <AuthLayout />,
     children: [
       { path: CREATE_GROUP_ROUTE, element: <GroupCreateForm /> },
-      { path: GROUP_LIST_ROUTE, element: <GroupList /> },
+      { path: GROUP_ROUTE, element: <GroupList /> },
+      { path: `${GROUP_ROUTE}/:id`, element: <GroupDetailPage /> },
     ],
   },
 

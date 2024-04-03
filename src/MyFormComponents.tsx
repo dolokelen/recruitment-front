@@ -22,6 +22,7 @@ export const MyHeading = ({ children }: HProps) => {
 interface IProps {
   label: string;
   type?: string;
+  w?: string;
   children?: ReactNode;
   errorMessage: string | undefined;
   register: UseFormRegisterReturn;
@@ -33,9 +34,10 @@ export const MyInput = ({
   children,
   errorMessage,
   register,
+  w,
 }: IProps) => {
   return (
-    <Box mb={4}>
+    <Box mb={4} w={w}>
       <FormLabel>{label}</FormLabel>
       <Input
         type={type}
@@ -54,16 +56,22 @@ interface BProps {
   children: ReactNode;
   type: "submit" | "button";
   colorScheme: string;
+  w?: string;
 }
 
-export const MyButton = ({ children, type, colorScheme }: BProps) => {
+export const MyButton = ({
+  children,
+  type,
+  colorScheme,
+  w = "100%",
+}: BProps) => {
   return (
     <Button
       colorScheme={colorScheme}
       type={type}
       size={{ base: "sm", sm: "md" }}
       fontWeight="bold"
-      w="100%"
+      w={w}
       mb={4}
     >
       {children}
