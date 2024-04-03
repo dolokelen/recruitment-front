@@ -4,7 +4,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ChakraProvider } from "@chakra-ui/react";
 import { RouterProvider } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
-import router from "./services/Router.tsx";
+import router from "./Router.tsx";
 
 const client = new QueryClient();
 

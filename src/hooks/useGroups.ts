@@ -9,18 +9,18 @@ import ms from "ms";
 import { useNavigate } from "react-router-dom";
 
 const GROUP_ENDPOINT = "/core/groups/";
-interface GetGroup {
+interface Group {
   id: number;
   name: string;
   permissions: { id: number; name: string }[];
 }
 
-const apiClientGet = apiClient<GetGroup>(GROUP_ENDPOINT);
+const apiClients = apiClient<Group>(GROUP_ENDPOINT);
 
 export const useGroups = () => {
-  return useQuery<GetGroup[], Error>({
+  return useQuery<Group[], Error>({
     queryKey: [CACHE_KEY_GROUP],
-    queryFn: apiClientGet.getAll,
+    queryFn: apiClients.getAll,
     staleTime: ms("24h"),
   });
 };
@@ -30,9 +30,9 @@ interface PostGroup {
 }
 
 export const useGroup = (groupId: number) => {
-  return useQuery<GetGroup, Error>({
+  return useQuery<Group, Error>({
     queryKey: [CACHE_KEY_GROUP, groupId],
-    queryFn: () => apiClientGet.get(groupId),
+    queryFn: () => apiClients.get(groupId),
     staleTime: ms("24h"),
   });
 };
@@ -84,7 +84,7 @@ export const useDeleteGroup = (onDelete: () => void) => {
 
   const queryClient = useQueryClient();
   return useMutation<number, Error, number>({
-    mutationFn: (id: number) => apiClientGet.delete(id),
+    mutationFn: (id: number) => apiClients.delete(id),
 
     onSuccess: () => {
       navigate(`${AUTH_LAYOUT_ROUTE}/${GROUP_CREATE_ROUTE}`);
@@ -106,7 +106,7 @@ export const useDeleteAllGroup = (
   const handleDeleteAll = async () => {
     try {
       for (const id of ids) {
-        await apiClientGet.delete(id);
+        await apiClients.delete(id);
       }
       onDeleteAll();
       queryClient.invalidateQueries({ queryKey: [CACHE_KEY_GROUP] });
@@ -126,7 +126,7 @@ export const useUpdateGroupPermissions = (
   const queryClient = useQueryClient();
   const handlePermissionsRemoval = async () => {
     try {
-      await apiClientGet.patchJsonData(JSON.stringify(data), data.id);
+      await apiClients.patchJsonData(JSON.stringify(data), data.id);
       onDeleteSelectedItems();
       queryClient.invalidateQueries({ queryKey: [CACHE_KEY_GROUP] });
     } catch (error) {
@@ -144,7 +144,7 @@ export const useAddGroupPermissions = (
   const queryClient = useQueryClient();
   const handlePermissionsRemoval = async () => {
     try {
-      await apiClientGet.patchJsonData(JSON.stringify(data), data.id);
+      await apiClients.patchJsonData(JSON.stringify(data), data.id);
       onDeleteSelectedItems();
       queryClient.invalidateQueries({ queryKey: [CACHE_KEY_GROUP] });
     } catch (error) {

@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import HomePage from "../components/HomePage";
+import HomePage from "./components/HomePage";
 import {
   AUTH_LAYOUT_ROUTE,
   GROUP_CREATE_ROUTE,
@@ -7,14 +7,14 @@ import {
   HOME_ROUTE,
   LOGIN_ROUTE,
   REGISTER_ROUTE,
-} from "../cacheKeysAndRoutes";
-import UnAuthLayout from "../components/UnAuthLayout";
-import ErrorPage from "../pages/ErrorPage";
-import RegistrationForm from "../accounts/RegistrationForm";
-import LoginForm from "../accounts/LoginPage";
-import AuthLayout from "../components/AuthLayout";
-import GroupCreateForm from "../groupsAndPermissions/GroupCreateForm";
-import GroupDetailPage from "../groupsAndPermissions/GroupDetail";
+} from "./cacheKeysAndRoutes";
+import UnAuthLayout from "./components/UnAuthLayout";
+import ErrorPage from "./pages/ErrorPage";
+import RegistrationForm from "./accounts/RegistrationForm";
+import LoginForm from "./accounts/LoginPage";
+import AuthLayout from "./components/AuthLayout";
+import GroupCreateForm from "./groupsAndPermissions/GroupCreateForm";
+import GroupDetailPage from "./groupsAndPermissions/GroupDetail";
 
 const router = createBrowserRouter([
   {
