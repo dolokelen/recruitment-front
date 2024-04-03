@@ -11,7 +11,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useFieldArray, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { z } from "zod";
-import { useCreateGroup } from "../hooks/useGroup";
+import { useCreateGroup } from "../hooks/useGroups";
 import { http_400_BAD_REQUEST_CUSTOM_MESSAGE } from "../utilities/httpErrorMessages";
 import { blue, plusIcon, red } from "../colors";
 import { MdOutlineRemoveCircleOutline } from "react-icons/md";

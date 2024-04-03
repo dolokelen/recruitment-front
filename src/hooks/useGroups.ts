@@ -31,7 +31,9 @@ export const useCreateGroup = (onCreate: () => void, reset: () => void) => {
   return useMutation<void, Error, PostGroup[]>({
     mutationFn: (data: PostGroup[]) => apiClientB.postAll(data),
 
-    onSuccess: (existingData, newData) => {
+    // existingData, and newData can be MdRemoveDone.
+    // onSuccess: (existingData, newData) => {}
+    onSuccess: () => {
       onCreate();
       reset();
       return queryClient.invalidateQueries({

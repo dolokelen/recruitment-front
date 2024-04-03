@@ -1,7 +1,7 @@
 import { Box, Button, Checkbox, List, ListItem, Text } from "@chakra-ui/react";
 import OverflowYContainer from "./OverflowYContainer";
 import { MyHeading } from "../MyFormComponents";
-import { useDeleteAllGroup, useGroups } from "../hooks/useGroup";
+import { useDeleteAllGroup, useGroups } from "../hooks/useGroups";
 import { red } from "../colors";
 import MySpinner from "../components/MySpinner";
 import { useEffect, useState } from "react";
@@ -19,9 +19,9 @@ const GroupList = () => {
     }
   );
 
-  useEffect(()=>{
-    console.log(selectedGroups)
-  }, [selectedGroups])
+  useEffect(() => {
+    console.log(selectedGroups);
+  }, [selectedGroups]);
   // const canAddGroup = hasPermission("Can add group");
   // const canDeleteGroup = hasPermission("Can delete group");
 
@@ -46,29 +46,31 @@ const GroupList = () => {
           {groups?.map((group) => (
             <ListItem key={group.id}>
               <Checkbox
-              isChecked={selectedGroups.includes(group.id)}
-              onChange={() => handleCheckboxChange(group.id)}
-              >{group.name}</Checkbox>
+                isChecked={selectedGroups.includes(group.id)}
+                onChange={() => handleCheckboxChange(group.id)}
+              >
+                {group.name}
+              </Checkbox>
             </ListItem>
           ))}
         </List>
       </OverflowYContainer>
-      
-            {/* The delete all button */}
-            <Box mt={4}>
-              {selectedGroups.length === 0 ? (
-                <Button isActive isDisabled colorScheme={red}>
-                  Delete All
-                </Button>
-              ) : (
-                <BulkDeleteButton
-                  label={selectedGroups.length > 1 ? "Delete All" : "Delete"}
-                  onDelete={handleDeleteAll}
-                  selectedItem={selectedGroups.length}
-                  entityName="Group"
-                />
-              )}
-            </Box>          
+
+      {/* The delete all button */}
+      <Box mt={4}>
+        {selectedGroups.length === 0 ? (
+          <Button isActive isDisabled colorScheme={red}>
+            Delete All
+          </Button>
+        ) : (
+          <BulkDeleteButton
+            label={selectedGroups.length > 1 ? "Delete All" : "Delete"}
+            onDelete={handleDeleteAll}
+            selectedItem={selectedGroups.length}
+            entityName="Group"
+          />
+        )}
+      </Box>
     </>
   );
 };
