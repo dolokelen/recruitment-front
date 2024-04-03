@@ -11,7 +11,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { useRef } from "react";
-import { red } from "../colors";
+import { red, teal } from "../colors";
 
 interface Props {
   onDelete: () => void;
@@ -62,7 +62,7 @@ const BulkDeleteButton = ({
                 isActive
                 ref={cancelRef}
                 onClick={onClose}
-                colorScheme="teal"
+                colorScheme={teal}
               >
                 No
               </Button>

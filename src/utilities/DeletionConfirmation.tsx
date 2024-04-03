@@ -6,11 +6,12 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogOverlay,
+  Box,
   Button,
   Heading,
   useDisclosure,
 } from "@chakra-ui/react";
-import { red } from "../colors";
+import { alertDialogBody, alertDialogContentBG, alertDialogHeading, red, teal } from "../colors";
 
 interface Props {
   entityId: number;
@@ -40,17 +41,19 @@ const DeletionConfirmation = ({
         onClose={onClose}
       >
         <AlertDialogOverlay>
-          <AlertDialogContent>
-            <AlertDialogHeader fontSize="lg" fontWeight="bold">
+          <AlertDialogContent bg={alertDialogContentBG}>
+            <AlertDialogHeader color={alertDialogHeading} fontSize="lg" fontWeight="bold">
               <Heading as="h4">{entityName}</Heading>
             </AlertDialogHeader>
 
-            <AlertDialogBody>
+            <AlertDialogBody >
+            <Box color={alertDialogBody} as="span" fontWeight="bold">
               Are you sure you want to permanently delete {entityName}?
+            </Box>
             </AlertDialogBody>
 
             <AlertDialogFooter>
-              <Button ref={cancelRef} onClick={onClose}>
+              <Button isActive colorScheme={teal} ref={cancelRef} onClick={onClose}>
                 No
               </Button>
               <Button

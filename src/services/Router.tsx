@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import HomePage from "../components/HomePage";
 import {
   AUTH_LAYOUT_ROUTE,
-  CREATE_GROUP_ROUTE,
+  GROUP_CREATE_ROUTE,
   GROUP_ROUTE,
   HOME_ROUTE,
   LOGIN_ROUTE,
@@ -14,7 +14,6 @@ import RegistrationForm from "../accounts/RegistrationForm";
 import LoginForm from "../accounts/LoginPage";
 import AuthLayout from "../components/AuthLayout";
 import GroupCreateForm from "../groupsAndPermissions/GroupCreateForm";
-import GroupList from "../groupsAndPermissions/GroupList";
 import GroupDetailPage from "../groupsAndPermissions/GroupDetail";
 
 const router = createBrowserRouter([
@@ -23,8 +22,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     element: <AuthLayout />,
     children: [
-      { path: CREATE_GROUP_ROUTE, element: <GroupCreateForm /> },
-      { path: GROUP_ROUTE, element: <GroupList /> },
+      { path: GROUP_CREATE_ROUTE, element: <GroupCreateForm /> },
       { path: `${GROUP_ROUTE}/:id`, element: <GroupDetailPage /> },
     ],
   },

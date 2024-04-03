@@ -2,7 +2,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   AUTH_LAYOUT_ROUTE,
   CACHE_KEY_GROUP,
-  GROUP_ROUTE,
+  GROUP_CREATE_ROUTE,
 } from "../cacheKeysAndRoutes";
 import apiClient from "../services/httpService";
 import ms from "ms";
@@ -87,7 +87,7 @@ export const useDeleteGroup = (onDelete: () => void) => {
     mutationFn: (id: number) => apiClientGet.delete(id),
 
     onSuccess: () => {
-      navigate(`${AUTH_LAYOUT_ROUTE}/${GROUP_ROUTE}`);
+      navigate(`${AUTH_LAYOUT_ROUTE}/${GROUP_CREATE_ROUTE}`);
       onDelete();
 
       return queryClient.invalidateQueries({
