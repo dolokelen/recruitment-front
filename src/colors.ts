@@ -6,3 +6,4 @@ export const white = "#FFFFFF";
 export const navbarColor = "blue.500";
 export const footerColor = "#1A365D";
 export const mainAreaColor = "#EBF8FF";
+export const plusIcon = "#2B6CB0";

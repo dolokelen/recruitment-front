@@ -1,7 +1,7 @@
 import { AxiosError } from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { axiosInstance } from "../services/hpptService";
+import { axiosInstance } from "../services/httpService";
 import getUserId from "../utilities/getUserId";
 import { LoginFormData } from "../accounts/LoginPage";
 import { AUTH_LAYOUT_ROUTE } from "../cacheKeysAndRoutes";

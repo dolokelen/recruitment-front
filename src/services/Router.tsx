@@ -19,7 +19,7 @@ const router = createBrowserRouter([
     path: AUTH_LAYOUT_ROUTE,
     errorElement: <ErrorPage />,
     element: <AuthLayout />,
-    children: [{path: CREATE_GROUP_ROUTE, element: <GroupCreateForm />}],
+    children: [{ path: CREATE_GROUP_ROUTE, element: <GroupCreateForm /> }],
   },
 
   {

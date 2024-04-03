@@ -213,6 +213,19 @@ class APIClient<T> {
       throw error;
     }
   };
+
+  postAll = async (obj: T[]) => {
+    try {
+      const postPromises = obj.map((ob) => {
+        return this.post(ob);
+      });
+
+      await Promise.all(postPromises);
+
+    } catch (error) {
+      throw error;
+    }
+  };
 }
 
 const apiClient = <T>(endpoint: string) => new APIClient<T>(endpoint);
