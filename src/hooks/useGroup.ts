@@ -40,3 +40,26 @@ export const useCreateGroup = (onCreate: () => void, reset: () => void) => {
     },
   });
 };
+
+export const useDeleteAllGroup = (
+  ids: number[],
+  onDeleteAll: () => void,
+  onDeleSelectedItemsArray: () => void
+) => {
+  const queryClient = useQueryClient();
+  const handleDeleteAll = async () => {
+    try {
+      for (const id of ids) {
+        await apiClients.delete(id);
+      }
+      onDeleteAll();
+      queryClient.invalidateQueries({queryKey: [CACHE_KEY_GROUP]});
+      onDeleSelectedItemsArray();
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  return handleDeleteAll;
+};
+

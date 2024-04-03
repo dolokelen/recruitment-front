@@ -9,7 +9,11 @@ interface HProps {
 
 export const MyHeading = ({ children }: HProps) => {
   return (
-    <Heading fontSize={{ base: "1.2rem", sm: "1.5rem", md: "2rem" }} my={4}>
+    <Heading
+      fontSize={{ base: "1.2rem", sm: "1.5rem", md: "2rem" }}
+      my={4}
+      color="blue.700"
+    >
       {children}
     </Heading>
   );

@@ -4,8 +4,8 @@ import { CREATE_GROUP_ROUTE } from "../cacheKeysAndRoutes";
 
 const SideBarItems = () => {
   return (
-    <Stack>
-      <Link to={CREATE_GROUP_ROUTE}>Create Group</Link>
+    <Stack color="blue.900" fontWeight="bold">
+      <Link to={CREATE_GROUP_ROUTE}>Groups</Link>
     </Stack>
   );
 };
