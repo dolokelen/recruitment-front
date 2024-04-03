@@ -1,21 +1,30 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { CACHE_KEY_GROUP } from "../cacheKeysAndRoutes";
 import apiClient from "../services/httpService";
+import ms from "ms";
 
-// interface GetGroup {
-//   id: number;
-//   name: string;
-//   permissions: { id: number; name: string }[];
-// }
+const GROUP_ENDPOINT = "/core/groups/";
+interface GetGroup {
+  id: number;
+  name: string;
+  permissions: { id: number; name: string }[];
+}
 
-// const apiClients = apiClient<GetGroup>("/core/groups/");
+const apiClients = apiClient<GetGroup>(GROUP_ENDPOINT);
 
+export const useGroups = () => {
+  return useQuery<GetGroup[], Error>({
+    queryKey: [CACHE_KEY_GROUP],
+    queryFn: apiClients.getAll,
+    staleTime: ms("24h"),
+  });
+};
 
 interface PostGroup {
   name: string;
 }
 
-const apiClientB = apiClient<PostGroup>("/core/groups/");
+const apiClientB = apiClient<PostGroup>(GROUP_ENDPOINT);
 
 export const useCreateGroup = (onCreate: () => void, reset: () => void) => {
   const queryClient = useQueryClient();

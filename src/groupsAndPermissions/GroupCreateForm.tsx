@@ -19,6 +19,7 @@ import { FiPlusCircle } from "react-icons/fi";
 import { useEffect } from "react";
 import { styles } from "../accounts/styles";
 import { MyHeading } from "../MyFormComponents";
+import GroupList from "./GroupList";
 
 const groupSchema = z.object({
   name: z.string().min(1, {
@@ -66,64 +67,71 @@ const GroupCreateForm = () => {
   //   if (!hasPermission("Can add group")) return <AccessDenyPage />;
 
   return (
-    <Box mx={styles.formWrapperMX} my={styles.formWrapperMY}>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <MyHeading>Group Creation Form</MyHeading>
+    <Box display={{ md: "flex" }} justifyContent="space-evenly">
+      <Box mx={4} my={styles.formWrapperMY}>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <MyHeading>Group Creation Form</MyHeading>
 
-        {/* Tradeoff: scapegoat enables bulk create!*/}
-        <Box display="none">
-          <Checkbox {...register("scapegoat")}>display is none?</Checkbox>
-          {errors.scapegoat && (
-            <Text color={red}>{errors.scapegoat.message}</Text>
-          )}
-        </Box>
+          {/* Tradeoff: scapegoat enables bulk create!*/}
+          <Box display="none">
+            <Checkbox {...register("scapegoat")}>display is none?</Checkbox>
+            {errors.scapegoat && (
+              <Text color={red}>{errors.scapegoat.message}</Text>
+            )}
+          </Box>
 
-        {fields.map((group, index) => (
-          <HStack key={group.id}>
-            <Box my={4} w="100%">
-              <FormLabel fontSize={20}>Name</FormLabel>
-              <Input
-                {...register(`groups.${index}.name`)}
-                size={{ base: "sm", sm: "md" }}
-                borderRadius={{ base: 8 }}
-                border="1px solid skyblue"
-              />
-              {errors?.groups?.[index]?.name && (
-                <Text color={red}>{errors.groups[index]?.name?.message}</Text>
-              )}
-              {customErrorMessage && (
-                <Text color={red}>{customErrorMessage}</Text>
-              )}
-            </Box>
+          {fields.map((group, index) => (
+            <HStack key={group.id}>
+              <Box my={4} w="100%">
+                <FormLabel fontSize={20}>Name</FormLabel>
+                <Input
+                  {...register(`groups.${index}.name`)}
+                  size={{ base: "sm", sm: "md" }}
+                  borderRadius={{ base: 8 }}
+                  border="1px solid skyblue"
+                />
+                {errors?.groups?.[index]?.name && (
+                  <Text color={red}>{errors.groups[index]?.name?.message}</Text>
+                )}
+                {customErrorMessage && (
+                  <Text color={red}>{customErrorMessage}</Text>
+                )}
+              </Box>
 
-            <Box mt={5} style={styles._hover}>
-              <FiPlusCircle
-                onClick={() => append({ name: "" })}
-                size={iconSize}
-                color={plusIcon}
-              />
-            </Box>
-            {fields.length > 1 && (
               <Box mt={5} style={styles._hover}>
-                <MdOutlineRemoveCircleOutline
-                  onClick={() => remove(index)}
+                <FiPlusCircle
+                  onClick={() => append({ name: "" })}
                   size={iconSize}
-                  color={red}
+                  color={plusIcon}
                 />
               </Box>
-            )}
-          </HStack>
-        ))}
+              {fields.length > 1 && (
+                <Box mt={5} style={styles._hover}>
+                  <MdOutlineRemoveCircleOutline
+                    onClick={() => remove(index)}
+                    size={iconSize}
+                    color={red}
+                  />
+                </Box>
+              )}
+            </HStack>
+          ))}
 
-        <Button
-          type="submit"
-          w={{ base: "38vw", sm: "50%" }}
-          size={{ base: "sm", sm: "md" }}
-          colorScheme={blue}
-        >
-          Create
-        </Button>
-      </form>
+          <Button
+            type="submit"
+            w={{ base: "38vw", sm: "50%" }}
+            size={{ base: "sm", sm: "md" }}
+            colorScheme={blue}
+          >
+            Create
+          </Button>
+        </form>
+      </Box>
+
+      {/* Group list section */}
+      <Box ml={30} mt={4} textAlign="left">
+        <GroupList />
+      </Box>
     </Box>
   );
 };
