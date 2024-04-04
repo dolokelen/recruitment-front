@@ -7,8 +7,9 @@ export const navbarColor = "blue.500";
 
 export const white = "#FFFFFF";
 export const plusIcon = "#2B6CB0";
-export const footerColor = "#1A365D";
-export const mainAreaColor = "#EBF8FF";
+export const unAuthFooterBgColor = "#1A365D";
+export const authmainAreaBgColor = "#EBF8FF";
+export const authSideBarBgColor = "#BEE3F8";
 
 export const alertDialogHeading = "#1A365D";
 export const alertDialogContentBG = "yellow.300";

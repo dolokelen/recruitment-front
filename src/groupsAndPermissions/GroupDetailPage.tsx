@@ -19,7 +19,7 @@ import {
   useGroup,
   useUpdateGroupPermissions,
 } from "../hooks/useGroups";
-import { blue, red } from "../colors";
+import { blue, red, white } from "../colors";
 import MySpinner from "../components/MySpinner";
 import DeletionConfirmation from "../utilities/DeletionConfirmation";
 
@@ -67,8 +67,10 @@ const GroupDetailPage = () => {
         display={{ md: "flex" }}
         justifyContent="space-between"
       >
-        <Box>
+        <Box bg="orange.500" color="white">
           <Heading
+            bg="orange.800"
+            p="1rem"
             textAlign={{ base: "center" }}
             fontSize={{ base: "1rem", md: "1.5rem" }}
           >
@@ -88,7 +90,7 @@ const GroupDetailPage = () => {
                   </ListItem>
                 ))
               ) : (
-                <ListItem color={red}>No assigned permissions</ListItem>
+                <ListItem color={white} fontWeight='bold' fontSize='1.2rem'>No assigned permissions</ListItem>
               )}
             </List>
           </OverflowYContainer>
@@ -126,11 +128,13 @@ const GroupDetailPage = () => {
           />
         </Box>
 
-        <Box>
+        <Box bg="teal" color="white">
           <Heading
+            bg="cyan.900"
+            p="1rem"
             textAlign={{ base: "center" }}
             fontSize={{ base: "1rem", md: "1.5rem" }}
-            marginTop={{ base: "2rem", sm: "2rem", md: 'auto' }}
+            marginTop={{ base: "2rem", sm: "2rem", md: "auto" }}
           >
             Available Permissions
           </Heading>

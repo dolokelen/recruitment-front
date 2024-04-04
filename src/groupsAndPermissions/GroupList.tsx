@@ -42,9 +42,11 @@ const GroupList = () => {
 
   return (
     <>
-      <MyHeading>Group List</MyHeading>
+      <MyHeading bg="blue.900" p="1rem" my={0} color="white">
+        Group List
+      </MyHeading>
       <OverflowYContainer>
-        <List>
+        <List p={4}>
           {groups?.map((group) => (
             <ListItem key={group.id}>
               <Checkbox
@@ -61,13 +63,19 @@ const GroupList = () => {
       </OverflowYContainer>
 
       {/* The delete all button */}
-      <Box mt={4}>
+      <Box mt={4} p={4} w={{base: '100%', sm: 'auto', md: "100%" }}>
         {selectedGroups.length === 0 ? (
-          <Button isActive isDisabled colorScheme={red}>
+          <Button isActive isDisabled colorScheme={red} 
+           w={{base: 'inherit', sm: 'auto', md: "inherit" }}>
             Delete All
           </Button>
         ) : (
           <BulkDeleteButton
+          mt={4}
+          p={4}
+          mdWidth='100%'
+          baseWidth='100%'
+          smWidth="auto"
             label={selectedGroups.length > 1 ? "Delete All" : "Delete"}
             onDelete={handleDeleteAll}
             selectedItem={selectedGroups.length}

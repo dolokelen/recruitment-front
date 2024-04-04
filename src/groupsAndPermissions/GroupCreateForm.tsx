@@ -129,7 +129,8 @@ const GroupCreateForm = () => {
       </Box>
 
       {/* Group list section */}
-      <Box ml={30} mt={4} textAlign="left">
+      {/* <Box bg="blue.700" ml={30} textAlign="left"> */}
+      <Box color="white" bg="blue.700" ml={30} mt={10} textAlign="left">
         <GroupList />
       </Box>
     </Box>

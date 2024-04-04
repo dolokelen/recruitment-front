@@ -3,7 +3,11 @@ import { Outlet } from "react-router-dom";
 import UnAuthFooter from "./UnAuthFooter";
 import { ReactNode } from "react";
 import MobileNav from "./MobileNav";
-import { footerColor, mainAreaColor, navbarColor } from "../colors";
+import {
+  unAuthFooterBgColor,
+  authmainAreaBgColor,
+  navbarColor,
+} from "../colors";
 
 interface Props {
   children?: ReactNode;
@@ -22,11 +26,11 @@ const UnAuthLayout = ({ children }: Props) => {
         <MobileNav />
       </GridItem>
 
-      <GridItem bg={mainAreaColor}>
+      <GridItem bg={authmainAreaBgColor}>
         {children ? children : <Outlet />}
       </GridItem>
 
-      <GridItem bg={footerColor}>
+      <GridItem bg={unAuthFooterBgColor}>
         <UnAuthFooter />
       </GridItem>
     </Grid>

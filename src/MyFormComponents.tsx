@@ -5,14 +5,20 @@ import { red500 } from "./colors";
 
 interface HProps {
   children: ReactNode;
+  bg?: string;
+  p?: string;
+  color?: string;
+  my?: number;
 }
 
-export const MyHeading = ({ children }: HProps) => {
+export const MyHeading = ({ bg, p, children, my=4, color="blue.700" }: HProps) => {
   return (
     <Heading
       fontSize={{ base: "1.2rem", sm: "1.5rem", md: "2rem" }}
-      my={4}
-      color="blue.700"
+      my={my}
+      bg={bg}
+      p={p}
+      color={color}
     >
       {children}
     </Heading>

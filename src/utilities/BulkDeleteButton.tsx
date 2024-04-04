@@ -19,6 +19,11 @@ interface Props {
   label: string;
   color?: string;
   selectedItem: number;
+  mt?: number;
+  p?: number;
+  mdWidth?: string;
+  baseWidth?: string;
+  smWidth?: string;
 }
 
 const BulkDeleteButton = ({
@@ -26,6 +31,11 @@ const BulkDeleteButton = ({
   entityName,
   color,
   selectedItem,
+  mt,
+  p,
+  mdWidth,
+  baseWidth,
+  smWidth,
   onDelete,
 }: Props) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -33,7 +43,14 @@ const BulkDeleteButton = ({
 
   return (
     <>
-      <Button isActive colorScheme={color ? color : red} onClick={onOpen}>
+      <Button 
+      isActive 
+      mt={mt}
+      p={p}
+      width={{base: baseWidth, sm: smWidth, md: mdWidth}}
+      colorScheme={color ? color : red} 
+      onClick={onOpen}
+      >
         {label}
       </Button>
 
