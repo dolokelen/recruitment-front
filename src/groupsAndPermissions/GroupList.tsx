@@ -1,6 +1,13 @@
-import { Box, Button, Checkbox, List, ListItem, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Checkbox,
+  Heading,
+  List,
+  ListItem,
+  Text,
+} from "@chakra-ui/react";
 import OverflowYContainer from "./OverflowYContainer";
-import { MyHeading } from "../MyFormComponents";
 import { useDeleteAllGroup, useGroups } from "../hooks/useGroups";
 import { red } from "../colors";
 import MySpinner from "../components/MySpinner";
@@ -9,6 +16,7 @@ import { toast } from "react-toastify";
 import BulkDeleteButton from "../utilities/BulkDeleteButton";
 import { Link } from "react-router-dom";
 import { AUTH_LAYOUT_ROUTE, GROUP_ROUTE } from "../cacheKeysAndRoutes";
+import styles from "../styles";
 
 const GroupList = () => {
   const { data: groups, error, isLoading } = useGroups();
@@ -42,13 +50,11 @@ const GroupList = () => {
 
   return (
     <>
-      <MyHeading bg="blue.900" p="1rem" my={0} color="white">
-        Group List
-      </MyHeading>
+      <Heading sx={styles.groupListHeading}>Group List</Heading>
       <OverflowYContainer>
-        <List p={4}>
+        <List>
           {groups?.map((group) => (
-            <ListItem key={group.id}>
+            <ListItem key={group.id} sx={styles.groupListItems}>
               <Checkbox
                 isChecked={selectedGroups.includes(group.id)}
                 onChange={() => handleCheckboxChange(group.id)}
@@ -63,19 +69,23 @@ const GroupList = () => {
       </OverflowYContainer>
 
       {/* The delete all button */}
-      <Box mt={4} p={4} w={{base: '100%', sm: 'auto', md: "100%" }}>
+      <Box sx={styles.groupListButtonBox}>
         {selectedGroups.length === 0 ? (
-          <Button isActive isDisabled colorScheme={red} 
-           w={{base: 'inherit', sm: 'auto', md: "inherit" }}>
+          <Button
+            sx={styles.groupListButtonDisable}
+            colorScheme={styles.groupListButtonDisable.colorScheme}
+            isActive
+            isDisabled
+          >
             Delete All
           </Button>
         ) : (
           <BulkDeleteButton
-          mt={4}
-          p={4}
-          mdWidth='100%'
-          baseWidth='100%'
-          smWidth="auto"
+            mt={styles.groupListDeleteAllButton.mt}
+            p={styles.groupListDeleteAllButton.p}
+            mdWidth={styles.groupListDeleteAllButton.width.md}
+            baseWidth={styles.groupListDeleteAllButton.width.base}
+            smWidth={styles.groupListDeleteAllButton.width.sm}
             label={selectedGroups.length > 1 ? "Delete All" : "Delete"}
             onDelete={handleDeleteAll}
             selectedItem={selectedGroups.length}

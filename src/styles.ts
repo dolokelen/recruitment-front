@@ -1,16 +1,11 @@
 //   GroupDetailPage Common Styles //
-const commonPermissionsHeadingBox = {
-  color: "white",
-};
-
 const commonPermissionsHeadings = {
   textAlign: { base: "center" },
   p: { base: "0.5rem", sm: "0.8rem", md: "1rem" },
   marginTop: { base: "2rem", sm: "2rem", md: "auto" },
-  fontSize: { base: "1rem", sm: "1.3rem", md: "1.5rem" },
 };
 
-const commonGroupPermissionsListItems = {
+const commonPaddings = {
   pl: 2,
 };
 
@@ -20,11 +15,16 @@ const commonAddAndRemovePermissionButton = {
 
 const commonColors = {
   blue: "blue",
+  white: "white",
 };
 
 const commonMargins = {
   mt: 4,
   mx: 2,
+};
+
+const commonHeading = {
+  fontSize: { base: "1rem", sm: "1.3rem", md: "1.5rem" },
 };
 
 export default {
@@ -39,19 +39,19 @@ export default {
   //   GroupDetailPage Headings Boxes
   groupPermissionsHeadingBox: {
     bg: "orange.500",
-    color: commonPermissionsHeadingBox.color,
+    color: commonColors.white,
   },
 
   availablePermissionsHeadingBox: {
     bg: "teal",
-    color: commonPermissionsHeadingBox.color,
+    color: commonColors.white,
   },
 
   //   GroupDetailPage Headings
   availablePermissionsHeading: {
     bg: "cyan.900",
     p: commonPermissionsHeadings.p,
-    fontSize: commonPermissionsHeadings.fontSize,
+    fontSize: commonHeading.fontSize,
     marginTop: commonPermissionsHeadings.marginTop,
     textAlign: commonPermissionsHeadings.textAlign,
   },
@@ -59,18 +59,18 @@ export default {
   groupPermissionsHeading: {
     bg: "orange.800",
     p: commonPermissionsHeadings.p,
-    fontSize: commonPermissionsHeadings.fontSize,
+    fontSize: commonHeading.fontSize,
     marginTop: commonPermissionsHeadings.marginTop,
     textAlign: commonPermissionsHeadings.textAlign,
   },
 
   //   GroupDetailPage List
   groupPermissionsListItems: {
-    pl: commonGroupPermissionsListItems.pl,
+    pl: commonPaddings.pl,
   },
 
   groupAvailablePermissionsListItems: {
-    pl: commonGroupPermissionsListItems.pl,
+    pl: commonPaddings.pl,
   },
 
   noAssignPermissionsListItem: {
@@ -113,5 +113,37 @@ export default {
     mx: commonMargins.mx,
     colorScheme: commonColors.blue,
     w: commonAddAndRemovePermissionButton.width,
+  },
+
+  // *************** GroupList ***************//
+  // Heading
+  groupListHeading: {
+    bg: "blue.900",
+    p: "1rem",
+    color: commonColors.white,
+    fontSize: commonHeading.fontSize,
+  },
+
+  // List
+  groupListItems: {
+    pl: commonPaddings.pl,
+    pr: 2,
+  },
+
+  // Buttons Wrapper
+  groupListButtonBox: {
+    p: 4,
+    w: { base: "100%", sm: "auto", md: "100%" },
+  },
+
+  groupListButtonDisable: {
+    colorScheme: "red",
+    w: { base: "inherit", sm: "auto", md: "inherit" },
+  },
+
+  groupListDeleteAllButton: {
+    mt: 4,
+    p: 4,
+    width: { base: "100%", sm: "auto", md: "100%" },
   },
 };
