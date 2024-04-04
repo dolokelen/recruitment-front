@@ -63,9 +63,9 @@ const GroupDetailPage = () => {
 
   return (
     <>
-      <Box bg='green.700'>
+      <Box bg="green.700">
         <GroupEditForm />
-        </Box>
+      </Box>
 
       {/* <HStack fontSize={30} mt={8} mb={3} justifyContent="space-evenly">
         <Box ml="-10%">{group?.name} Permissions</Box>
@@ -142,7 +142,7 @@ const GroupDetailPage = () => {
       <Box
         my={8}
         px={4}
-        bg="skyblue"
+        bg="yellow.500"
         display={{ md: "flex" }}
         justifyContent="space-between"
       >
@@ -198,19 +198,27 @@ const GroupDetailPage = () => {
           )}
         </Box>
 
-        <Button
+        {/* <Button
           isActive
           colorScheme="red"
           display={{ base: "none", md: "inline-block" }}
         >
-          Delete Group1
-        </Button>
+          Delete Group1-=
+        </Button> */}
+        <Box display={{ base: "none", md: "inline-block" }}>
+          <DeletionConfirmation
+            entityId={groupId}
+            entityName={group?.name}
+            label="Delete Group"
+            onMutate={() => mutation.mutate(groupId)}
+          />
+        </Box>
 
         <Box bg="teal">
           <Heading
             textAlign={{ base: "center" }}
             fontSize={{ base: "1rem", md: "1.5rem" }}
-            marginTop={{ base: "2rem" }}
+            marginTop={{ base: "2rem", sm: "auto" }}
           >
             Available Permissions
           </Heading>
@@ -220,7 +228,7 @@ const GroupDetailPage = () => {
           </Button> */}
         </Box>
 
-        <Button 
+        {/* <Button 
         isActive 
         colorScheme="yellow" 
         mt={{base: 6}} 
@@ -228,7 +236,19 @@ const GroupDetailPage = () => {
         w={{ base: "90%", sm: "40%", md: "90%" }}
         >
           Delete Group2
-        </Button>
+        </Button> */}
+
+        <Box bg="cyan" mt={{ base: 6 }} display={{ md: "none" }}>
+          <DeletionConfirmation
+            entityId={groupId}
+            entityName={group?.name}
+            label="Delete Group"
+            onMutate={() => mutation.mutate(groupId)}
+            baseWidth="100%"
+            smWidth="40%"
+            mdWidth="90%"
+          />
+        </Box>
       </Box>
     </>
   );
