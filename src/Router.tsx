@@ -14,7 +14,7 @@ import RegistrationForm from "./accounts/RegistrationForm";
 import LoginForm from "./accounts/LoginPage";
 import AuthLayout from "./components/AuthLayout";
 import GroupCreateForm from "./groupsAndPermissions/GroupCreateForm";
-import GroupDetailPage from "./groupsAndPermissions/GroupDetail";
+import GroupDetailPage from "./groupsAndPermissions/GroupDetailPage";
 
 const router = createBrowserRouter([
   {
