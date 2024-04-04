@@ -1,17 +1,26 @@
-import { Button, Checkbox, List, ListItem, Spinner } from "@chakra-ui/react";
+import { Button, Checkbox, List, ListItem, Text } from "@chakra-ui/react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAddGroupPermissions } from "../hooks/useGroups";
 import { Permission, usePermissions } from "../hooks/usePermissions";
 import OverflowYContainer from "./OverflowYContainer";
-import { blue } from "../colors";
+import { red } from "../colors";
+import MySpinner from "../components/MySpinner";
+import styles from "../styles";
 
-interface Props {
+interface StyleSheet {
+  pl?: number;
+  pr?: number;
+  pt?: number;
+  pb?: number;
+}
+
+interface Props extends StyleSheet {
   assignPermissions?: Permission[];
 }
 
-const PermissionList = ({ assignPermissions }: Props) => {
+const PermissionList = ({ assignPermissions, pl }: Props) => {
   const { data: allPermissions, isLoading, error } = usePermissions();
   const [selectedPermissions, setSelectedPermissions] = useState<number[]>([]);
 
@@ -26,8 +35,8 @@ const PermissionList = ({ assignPermissions }: Props) => {
     }
   );
 
-  if (error) throw error;
-  if (isLoading) return <Spinner />;
+  if (error) return <Text color={red}>{error.message}</Text>;
+  if (isLoading) return <MySpinner />;
 
   const handleCheckboxChange = (permissionId: number) => {
     if (selectedPermissions.includes(permissionId)) {
@@ -45,7 +54,7 @@ const PermissionList = ({ assignPermissions }: Props) => {
         {allPermissions
           ?.filter((p) => !assignPermissions?.some((ap) => ap.id === p.id))
           .map((p) => (
-            <ListItem key={p.id}>
+            <ListItem pl={pl}>
               <Checkbox
                 isChecked={selectedPermissions.includes(p.id)}
                 onChange={() => handleCheckboxChange(p.id)}
@@ -57,11 +66,8 @@ const PermissionList = ({ assignPermissions }: Props) => {
       </List>
       {selectedPermissions.length === 0 ? (
         <Button
-          mt={4}
-          mx={2}
-          colorScheme={blue}
-          // transform="translateX(50%)"
-          w={{ base: "90%", sm: "40%", md: "90%" }}
+          sx={styles.addButtonDisable}
+          colorScheme={styles.addButtonDisable.colorScheme}
           isActive
           isDisabled
         >
@@ -69,11 +75,8 @@ const PermissionList = ({ assignPermissions }: Props) => {
         </Button>
       ) : (
         <Button
-          mt={4}
-          w={{ base: "90%", sm: "40%", md: "90%" }}
-          mx={2}
-          colorScheme={blue}
-          // transform="translateX(50%)"
+          sx={styles.addButton}
+          colorScheme={styles.addButton.colorScheme}
           isActive
           onClick={handleAddPermissions}
         >

@@ -10,8 +10,25 @@ const commonPermissionsHeadings = {
   fontSize: { base: "1rem", sm: "1.3rem", md: "1.5rem" },
 };
 
+const commonGroupPermissionsListItems = {
+  pl: 2,
+};
+
+const commonAddAndRemovePermissionButton = {
+  width: { base: "90%", sm: "40%", md: "90%" },
+};
+
+const commonColors = {
+  blue: "blue",
+};
+
+const commonMargins = {
+  mt: 4,
+  mx: 2,
+};
+
 export default {
-  //GroupDetailPage Wrapper
+  // *************** GroupDetailPage Wrapper ***************//
   groupDetailPageWrapper: {
     my: 8,
     px: 4,
@@ -49,7 +66,11 @@ export default {
 
   //   GroupDetailPage List
   groupPermissionsListItems: {
-    pl: 2,
+    pl: commonGroupPermissionsListItems.pl,
+  },
+
+  groupAvailablePermissionsListItems: {
+    pl: commonGroupPermissionsListItems.pl,
   },
 
   noAssignPermissionsListItem: {
@@ -62,8 +83,8 @@ export default {
   groupPermissionsRemoveButton: {
     mt: 4,
     mx: 2,
-    w: { base: "90%", sm: "40%", md: "90%" },
-    colorScheme: "blue",
+    w: commonAddAndRemovePermissionButton.width,
+    colorScheme: commonColors.blue,
   },
 
   deleteGroupButtonBoxForDesktop: {
@@ -77,5 +98,20 @@ export default {
 
   deleteGroupButtonForMobile: {
     display: { base: "100%", sm: "40%", md: "90%" },
+  },
+
+  // *************** PermissionsList ***************//
+  addButtonDisable: {
+    mt: commonMargins.mt,
+    mx: commonMargins.mx,
+    colorScheme: commonColors.blue,
+    w: commonAddAndRemovePermissionButton.width,
+  },
+
+  addButton: {
+    mt: commonMargins.mt,
+    mx: commonMargins.mx,
+    colorScheme: commonColors.blue,
+    w: commonAddAndRemovePermissionButton.width,
   },
 };

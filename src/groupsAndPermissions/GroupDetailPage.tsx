@@ -121,7 +121,7 @@ const GroupDetailPage = () => {
           <Heading sx={styles.availablePermissionsHeading}>
             Available Permissions
           </Heading>
-          <PermissionList assignPermissions={group?.permissions} />
+          <PermissionList assignPermissions={group?.permissions} pl={styles.groupAvailablePermissionsListItems.pl} />
         </Box>
 
         <Box sx={styles.deleteGroupButtonBoxForMobile}>
