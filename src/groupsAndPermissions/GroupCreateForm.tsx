@@ -13,11 +13,11 @@ import { toast } from "react-toastify";
 import { z } from "zod";
 import { useCreateGroup } from "../hooks/useGroups";
 import { http_400_BAD_REQUEST_CUSTOM_MESSAGE } from "../utilities/httpErrorMessages";
-import { blue, plusIcon, red } from "../colors";
+import { red } from "../colors";
 import { MdOutlineRemoveCircleOutline } from "react-icons/md";
 import { FiPlusCircle } from "react-icons/fi";
 import { useEffect } from "react";
-import { styles } from "../accounts/styles";
+import styles from "../styles";
 import { MyHeading } from "../MyFormComponents";
 import GroupList from "./GroupList";
 
@@ -63,12 +63,12 @@ const GroupCreateForm = () => {
   }, []);
 
   const customErrorMessage = http_400_BAD_REQUEST_CUSTOM_MESSAGE(mutation);
-  const iconSize = "1rem";
+
   //   if (!hasPermission("Can add group")) return <AccessDenyPage />;
 
   return (
-    <Box display={{ md: "flex" }} justifyContent="space-evenly">
-      <Box mx={4} my={styles.formWrapperMY}>
+    <Box sx={styles.grooupCreateWrapper}>
+      <Box sx={styles.groupCreateInnerWrapper}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <MyHeading>Group Creation Form</MyHeading>
 
@@ -82,13 +82,11 @@ const GroupCreateForm = () => {
 
           {fields.map((group, index) => (
             <HStack key={group.id}>
-              <Box my={4} w="100%">
-                <FormLabel fontSize={20}>Name</FormLabel>
+              <Box sx={styles.groupCreateInputWrapper}>
+                <FormLabel sx={styles.groupCreateInputLabel}>Name</FormLabel>
                 <Input
                   {...register(`groups.${index}.name`)}
-                  size={{ base: "sm", sm: "md" }}
-                  borderRadius={{ base: 8 }}
-                  border="1px solid skyblue"
+                  sx={styles.groupCreateInput}
                 />
                 {errors?.groups?.[index]?.name && (
                   <Text color={red}>{errors.groups[index]?.name?.message}</Text>
@@ -98,19 +96,19 @@ const GroupCreateForm = () => {
                 )}
               </Box>
 
-              <Box mt={5} style={styles._hover}>
+              <Box sx={styles.groupCreateIconWrapper}>
                 <FiPlusCircle
                   onClick={() => append({ name: "" })}
-                  size={iconSize}
-                  color={plusIcon}
+                  size={styles.groupCreatePlusIcon.size}
+                  color={styles.groupCreatePlusIcon.color}
                 />
               </Box>
               {fields.length > 1 && (
-                <Box mt={5} style={styles._hover}>
+                <Box sx={styles.groupCreateIconWrapper}>
                   <MdOutlineRemoveCircleOutline
                     onClick={() => remove(index)}
-                    size={iconSize}
-                    color={red}
+                    size={styles.groupCreatePlusIcon.size}
+                    color={styles.groupCreateRemoveIcon.color}
                   />
                 </Box>
               )}
@@ -118,10 +116,9 @@ const GroupCreateForm = () => {
           ))}
 
           <Button
+            sx={styles.groupCreateButton}
             type="submit"
-            w={{ base: "38vw", sm: "50%" }}
-            size={{ base: "sm", sm: "md" }}
-            colorScheme={blue}
+            colorScheme={styles.groupCreateButton.colorScheme}
           >
             Create
           </Button>
@@ -129,8 +126,7 @@ const GroupCreateForm = () => {
       </Box>
 
       {/* Group list section */}
-      {/* <Box bg="blue.700" ml={30} textAlign="left"> */}
-      <Box color="white" bg="blue.700" ml={30} mt={10} textAlign="left">
+      <Box sx={styles.createGroupListWrapper}>
         <GroupList />
       </Box>
     </Box>

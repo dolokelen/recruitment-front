@@ -14,6 +14,7 @@ const commonAddAndRemovePermissionButton = {
 };
 
 const commonColors = {
+  red: "red",
   blue: "blue",
   white: "white",
 };
@@ -25,6 +26,10 @@ const commonMargins = {
 
 const commonHeading = {
   fontSize: { base: "1rem", sm: "1.3rem", md: "1.5rem" },
+};
+
+const commonIconSize = {
+  size1rem: "1rem",
 };
 
 export default {
@@ -115,19 +120,19 @@ export default {
     w: commonAddAndRemovePermissionButton.width,
   },
 
-  // *************** GroupList ***************//
+  // *************** GroupList *************** //
   // Heading
   groupListHeading: {
-    bg: "blue.900",
     p: "1rem",
+    bg: "blue.900",
     color: commonColors.white,
     fontSize: commonHeading.fontSize,
   },
 
   // List
   groupListItems: {
-    pl: commonPaddings.pl,
     pr: 2,
+    pl: commonPaddings.pl,
   },
 
   // Buttons Wrapper
@@ -145,5 +150,64 @@ export default {
     mt: 4,
     p: 4,
     width: { base: "100%", sm: "auto", md: "100%" },
+  },
+
+  // *************** GroupCreatePage *************** //
+  // Form wrapper1
+  grooupCreateWrapper: {
+    display: { md: "flex" },
+    justifyContent: "space-around",
+  },
+
+  groupCreateInnerWrapper: {
+    mx: 4,
+    my: { base: 4, md: 4 },
+  },
+
+  //Input field wrapper
+  groupCreateInputWrapper: {
+    my: 4,
+    w: "100%",
+  },
+
+  groupCreateInputLabel: {
+    fontSize: 20,
+  },
+
+  groupCreateInput: {
+    borderRadius: { base: 8 },
+    border: "1px solid skyblue",
+    size: { base: "sm", sm: "md" },
+  },
+
+  groupCreateIconWrapper: {
+    mt: 5,
+    ":hover": { cursor: "pointer" },
+  },
+
+  groupCreatePlusIcon: {
+    color: "#2B6CB0",
+    size: commonIconSize.size1rem,
+  },
+
+  groupCreateRemoveIcon: {
+    color: commonColors.red,
+    size: commonIconSize.size1rem,
+  },
+
+  //CreateGroup Create Button
+  groupCreateButton: {
+    w: { base: "38vw", sm: "50%" },
+    size: { base: "sm", sm: "md" },
+    colorScheme: commonColors.blue,
+  },
+
+  // GroupList Wrapper
+  createGroupListWrapper: {
+    mt: 10,
+    bg: "blue.700",
+    textAlign: "left",
+    mx: { base: 4, md: 0 },
+    color: commonColors.white,
   },
 };

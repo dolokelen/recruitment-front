@@ -6,7 +6,6 @@ export const blue500 = "blue.500";
 export const navbarColor = "blue.500";
 
 export const white = "#FFFFFF";
-export const plusIcon = "#2B6CB0";
 export const unAuthFooterBgColor = "#1A365D";
 export const authmainAreaBgColor = "#EBF8FF";
 export const authSideBarBgColor = "#BEE3F8";
