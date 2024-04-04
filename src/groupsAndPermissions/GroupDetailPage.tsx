@@ -19,9 +19,10 @@ import {
   useGroup,
   useUpdateGroupPermissions,
 } from "../hooks/useGroups";
-import { blue, red, white } from "../colors";
+import { red } from "../colors";
 import MySpinner from "../components/MySpinner";
 import DeletionConfirmation from "../utilities/DeletionConfirmation";
+import styles from "../styles";
 
 const GroupDetailPage = () => {
   const { id } = useParams();
@@ -61,26 +62,16 @@ const GroupDetailPage = () => {
     <>
       <GroupEditForm />
 
-      <Box
-        my={8}
-        px={4}
-        display={{ md: "flex" }}
-        justifyContent="space-between"
-      >
-        <Box bg="orange.500" color="white">
-          <Heading
-            bg="orange.800"
-            p="1rem"
-            textAlign={{ base: "center" }}
-            fontSize={{ base: "1rem", md: "1.5rem" }}
-          >
+      <Box sx={styles.groupDetailPageWrapper}>
+        <Box sx={styles.groupPermissionsHeadingBox}>
+          <Heading sx={styles.groupPermissionsHeading}>
             Group Permissions
           </Heading>
           <OverflowYContainer>
             <List>
               {group?.permissions?.length ? (
                 group.permissions?.map((p) => (
-                  <ListItem key={p.id}>
+                  <ListItem sx={styles.groupPermissionsListItems} key={p.id}>
                     <Checkbox
                       isChecked={selectedPermissions.includes(p.id)}
                       onChange={() => handleCheckboxChange(p.id)}
@@ -90,36 +81,34 @@ const GroupDetailPage = () => {
                   </ListItem>
                 ))
               ) : (
-                <ListItem color={white} fontWeight='bold' fontSize='1.2rem'>No assigned permissions</ListItem>
+                <ListItem sx={styles.noAssignPermissionsListItem}>
+                  No assigned permission
+                </ListItem>
               )}
             </List>
           </OverflowYContainer>
           {selectedPermissions.length === 0 ? (
             <Button
-              mt={4}
-              w={{ base: "90%", sm: "40%", md: "90%" }}
-              mx={2}
+              sx={styles.groupPermissionsRemoveButton}
+              colorScheme={styles.groupPermissionsRemoveButton.colorScheme}
               isActive
               isDisabled
-              colorScheme={blue}
             >
               Remove
             </Button>
           ) : (
             <Button
-              mt={4}
-              w={{ base: "90%", sm: "40%", md: "90%" }}
-              mx={2}
-              isActive
+              sx={styles.groupPermissionsRemoveButton}
               onClick={handlePermissionsRemoval}
-              colorScheme={blue}
+              colorScheme={styles.groupPermissionsRemoveButton.colorScheme}
+              isActive
             >
               Remove
             </Button>
           )}
         </Box>
 
-        <Box display={{ base: "none", md: "inline-block" }}>
+        <Box sx={styles.deleteGroupButtonBoxForDesktop}>
           <DeletionConfirmation
             entityId={groupId}
             entityName={group?.name}
@@ -128,28 +117,22 @@ const GroupDetailPage = () => {
           />
         </Box>
 
-        <Box bg="teal" color="white">
-          <Heading
-            bg="cyan.900"
-            p="1rem"
-            textAlign={{ base: "center" }}
-            fontSize={{ base: "1rem", md: "1.5rem" }}
-            marginTop={{ base: "2rem", sm: "2rem", md: "auto" }}
-          >
+        <Box sx={styles.availablePermissionsHeadingBox}>
+          <Heading sx={styles.availablePermissionsHeading}>
             Available Permissions
           </Heading>
           <PermissionList assignPermissions={group?.permissions} />
         </Box>
 
-        <Box mt={{ base: 6 }} display={{ md: "none" }}>
+        <Box sx={styles.deleteGroupButtonBoxForMobile}>
           <DeletionConfirmation
             entityId={groupId}
             entityName={group?.name}
             label="Delete Group"
             onMutate={() => mutation.mutate(groupId)}
-            baseWidth="100%"
-            smWidth="40%"
-            mdWidth="90%"
+            baseWidth={styles.deleteGroupButtonForMobile.display.base}
+            smWidth={styles.deleteGroupButtonForMobile.display.sm}
+            mdWidth={styles.deleteGroupButtonForMobile.display.md}
           />
         </Box>
       </Box>
