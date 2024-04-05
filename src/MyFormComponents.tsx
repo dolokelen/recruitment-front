@@ -71,26 +71,6 @@ interface BProps {
   w?: string;
 }
 
-export const MyButton = ({
-  children,
-  type,
-  colorScheme,
-  w = "100%",
-}: BProps) => {
-  return (
-    <Button
-      colorScheme={colorScheme}
-      type={type}
-      size={{ base: "sm", sm: "md" }}
-      fontWeight="bold"
-      w={w}
-      mb={4}
-    >
-      {children}
-    </Button>
-  );
-};
-
 interface BasicButtonProps {
   label: string;
   type?: "submit" | "button";
