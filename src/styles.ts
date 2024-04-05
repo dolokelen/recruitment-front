@@ -34,8 +34,9 @@ const commonIconSize = {
   size1rem: "1rem",
 };
 
-const commonResponsiveMarginY = {
+const commonResponsiveMargin = {
   my: { base: 4, md: 4 },
+  mx: { base: 4, sm: 20, md: 48 },
 };
 
 export default {
@@ -167,7 +168,7 @@ export default {
 
   groupCreateInnerWrapper: {
     mx: 4,
-    my: commonResponsiveMarginY.my,
+    my: commonResponsiveMargin.my,
   },
 
   //Input field wrapper
@@ -221,7 +222,7 @@ export default {
   // Form wrapper
   groupEditWrapper: {
     mx: 4,
-    my: commonResponsiveMarginY.my,
+    my: commonResponsiveMargin.my,
   },
 
   // Heading
@@ -233,12 +234,18 @@ export default {
 
   // ****************** Login Form ******************* //
   loginWrapper: {
-    mx: { base: 4, sm: 20, md: 48 },
-    my: commonResponsiveMarginY.my,
+    mx: commonResponsiveMargin.mx,
+    my: commonResponsiveMargin.my,
   },
 
   resetPwdLinkFontSize: {
     fontSize: { base: ".7rem", md: "1rem" },
     mt: 2,
+  },
+
+  // ****************** Registration From ****************** //
+  registrationWrapper: {
+    mx: commonResponsiveMargin.mx,
+    my: commonResponsiveMargin.my,
   },
 };

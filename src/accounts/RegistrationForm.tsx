@@ -1,7 +1,6 @@
 import { Text, Box } from "@chakra-ui/react";
-import { blue, blue500, red } from "./../colors";
-// import "./registration.css";
-import { MyButton, MyHeading, MyInput } from "../MyFormComponents";
+import { blue500, red } from "./../colors";
+import { MyBasicButton, MyHeading, MyInput } from "../MyFormComponents";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -11,7 +10,7 @@ import { Link } from "react-router-dom";
 import { LOGIN_ROUTE } from "../cacheKeysAndRoutes";
 import autoRouteToHome from "../utilities/getHomeRoute";
 import { http_400_BAD_REQUEST_CUSTOM_MESSAGE } from "../utilities/httpErrorMessages";
-import { styles } from "./styles";
+import styles from "../styles";
 
 const schema = z
   .object({
@@ -55,7 +54,7 @@ const RegistrationForm = () => {
   const errMessage = http_400_BAD_REQUEST_CUSTOM_MESSAGE(registration);
 
   return (
-    <Box mx={styles.formWrapperMX} my={styles.formWrapperMY}>
+    <Box sx={styles.registrationWrapper}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <MyHeading>Registration Form</MyHeading>
 
@@ -84,11 +83,9 @@ const RegistrationForm = () => {
           }
         />
 
-        <MyButton type="submit" colorScheme={blue}>
-          Register Now
-        </MyButton>
+        <MyBasicButton label="Register Now" />
 
-        <Text color={blue500} fontSize={styles.resetPwdLinkFontSize}>
+        <Text color={blue500} sx={styles.resetPwdLinkFontSize}>
           Already Have An Account?{" "}
           <Link to={autoRouteToHome() + LOGIN_ROUTE}>Login</Link>
         </Text>
