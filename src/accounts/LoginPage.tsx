@@ -1,6 +1,6 @@
 import { Text, Link, Box } from "@chakra-ui/react";
 import { blue500, red500 } from "../colors";
-import { MyBasicButton, MyHeading, MyInput } from "../MyFormComponents";
+import { MyButton, MyHeading, MyInput } from "../MyFormComponents";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -64,7 +64,7 @@ const LoginForm = () => {
           errorMessage={errors.password && errors.password.message}
         />
 
-        <MyBasicButton label="Login" />
+        <MyButton label="Login" />
 
         <Text color={blue500} sx={styles.resetPwdLinkFontSize}>
           <Link>Forget Your Password?</Link>

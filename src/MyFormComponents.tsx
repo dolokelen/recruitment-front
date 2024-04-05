@@ -64,20 +64,13 @@ export const MyInput = ({
   );
 };
 
-interface BProps {
-  children: ReactNode;
-  type: "submit" | "button";
-  colorScheme: string;
-  w?: string;
-}
-
 interface BasicButtonProps {
   label: string;
   type?: "submit" | "button";
   colorScheme?: string;
   color?: string;
 }
-export const MyBasicButton = ({
+export const MyButton = ({
   color,
   label,
   type = "submit",

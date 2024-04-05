@@ -8,7 +8,7 @@ import { z } from "zod";
 import { http_400_BAD_REQUEST_CUSTOM_MESSAGE } from "../utilities/httpErrorMessages";
 import { useEditGroup, useGroup } from "../hooks/useGroups";
 import { red, teal } from "../colors";
-import { MyBasicButton, MyInput } from "../MyFormComponents";
+import { MyButton, MyInput } from "../MyFormComponents";
 import MySpinner from "../components/MySpinner";
 import styles from "../styles";
 
@@ -60,7 +60,7 @@ const GroupEditForm = () => {
         >
           {customerErrMessage && <Text color={red}>{customerErrMessage}</Text>}
         </MyInput>
-        <MyBasicButton colorScheme={teal} label="Update" />
+        <MyButton colorScheme={teal} label="Update" />
       </form>
     </Box>
   );

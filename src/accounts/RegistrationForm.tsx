@@ -1,6 +1,6 @@
 import { Text, Box } from "@chakra-ui/react";
 import { blue500, red } from "./../colors";
-import { MyBasicButton, MyHeading, MyInput } from "../MyFormComponents";
+import { MyButton, MyHeading, MyInput } from "../MyFormComponents";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -83,7 +83,7 @@ const RegistrationForm = () => {
           }
         />
 
-        <MyBasicButton label="Register Now" />
+        <MyButton label="Register Now" />
 
         <Text color={blue500} sx={styles.resetPwdLinkFontSize}>
           Already Have An Account?{" "}
