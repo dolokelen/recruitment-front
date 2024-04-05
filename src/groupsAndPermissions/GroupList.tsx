@@ -28,10 +28,6 @@ const GroupList = () => {
       setSelectedGroups([]);
     }
   );
-
-  useEffect(() => {
-    console.log(selectedGroups);
-  }, [selectedGroups]);
   // const canAddGroup = hasPermission("Can add group");
   // const canDeleteGroup = hasPermission("Can delete group");
 

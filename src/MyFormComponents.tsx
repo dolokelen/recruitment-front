@@ -1,35 +1,7 @@
-import { Box, Button, FormLabel, Input, Heading, Text } from "@chakra-ui/react";
+import { Box, Button, FormLabel, Input, Text } from "@chakra-ui/react";
 import { ReactNode } from "react";
 import { UseFormRegisterReturn } from "react-hook-form";
 import { red500 } from "./colors";
-
-interface HProps {
-  children: ReactNode;
-  bg?: string;
-  p?: string;
-  color?: string;
-  my?: number;
-}
-
-export const MyHeading = ({
-  bg,
-  p,
-  children,
-  my = 4,
-  color = "blue.700",
-}: HProps) => {
-  return (
-    <Heading
-      fontSize={{ base: "1.2rem", sm: "1.5rem", md: "2rem" }}
-      my={my}
-      bg={bg}
-      p={p}
-      color={color}
-    >
-      {children}
-    </Heading>
-  );
-};
 
 interface IProps {
   label: string;
@@ -53,7 +25,6 @@ export const MyInput = ({
       <FormLabel>{label}</FormLabel>
       <Input
         type={type}
-        // size={{ base: "sm", sm: "md" }}
         borderRadius={{ base: 8 }}
         border="1px solid skyblue"
         {...register}
@@ -64,7 +35,7 @@ export const MyInput = ({
   );
 };
 
-interface BasicButtonProps {
+interface MyButtonProps {
   label: string;
   type?: "submit" | "button";
   colorScheme?: string;
@@ -75,11 +46,11 @@ export const MyButton = ({
   label,
   type = "submit",
   colorScheme = "blue",
-}: BasicButtonProps) => {
+}: MyButtonProps) => {
   return (
     <Button
       type={type}
-      sx={basicButton}
+      sx={myButtonStyles}
       colorScheme={colorScheme}
       isActive
       color={color}
@@ -89,7 +60,7 @@ export const MyButton = ({
   );
 };
 
-interface ButtonWithIconProps extends BasicButtonProps {}
+interface ButtonWithIconProps extends MyButtonProps {}
 
 export const MyButtonWithIcon = ({
   color,
@@ -109,11 +80,12 @@ export const MyButtonWithIcon = ({
     </Button>
   );
 };
+
 const btnWithIconSytle = {
   w: { base: "86%", sm: "auto" },
 };
 
-const basicButton = {
+const myButtonStyles = {
   mt: 2,
   w: { base: "100%", sm: "auto" },
 };

@@ -1,6 +1,6 @@
-import { Text, Box } from "@chakra-ui/react";
+import { Text, Box, Heading } from "@chakra-ui/react";
 import { blue500, red } from "./../colors";
-import { MyButton, MyHeading, MyInput } from "../MyFormComponents";
+import { MyButton, MyInput } from "../MyFormComponents";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -56,7 +56,7 @@ const RegistrationForm = () => {
   return (
     <Box sx={styles.registrationWrapper}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <MyHeading>Registration Form</MyHeading>
+        <Heading sx={styles.registrationHeader}>Registration Form</Heading>
 
         <MyInput
           label="Email"

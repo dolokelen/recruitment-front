@@ -1,6 +1,6 @@
-import { Text, Link, Box } from "@chakra-ui/react";
+import { Text, Link, Box, Heading } from "@chakra-ui/react";
 import { blue500, red500 } from "../colors";
-import { MyButton, MyHeading, MyInput } from "../MyFormComponents";
+import { MyButton, MyInput } from "../MyFormComponents";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -39,7 +39,7 @@ const LoginForm = () => {
   return (
     <Box sx={styles.loginWrapper}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <MyHeading>Login Form</MyHeading>
+        <Heading sx={styles.loginHeader}>Login Form</Heading>
         {error === HTTP_401_UNAUTHORIZED ? (
           <Box color={red500} mb={marginButton}>
             {HTTP_401_RESPONSE}

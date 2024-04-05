@@ -26,6 +26,16 @@ const commonMargins = {
   mx: 2,
 };
 
+const borderRadius20 = "20px";
+const borderRadius48 = "48px";
+
+const borderRadius = {
+  borderTopLeftRadius: borderRadius48,
+  borderTopRightRadius: borderRadius48,
+  borderLeftRadius: borderRadius20,
+  borderRightRadius: borderRadius20,
+};
+
 const commonHeading = {
   fontSize: { base: "1rem", sm: "1.3rem", md: "1.5rem" },
 };
@@ -37,6 +47,10 @@ const commonIconSize = {
 const commonResponsiveMargin = {
   my: { base: 4, md: 4 },
   mx: { base: 4, sm: 20, md: 48 },
+};
+
+const commonMargin = {
+  my: 4,
 };
 
 export default {
@@ -52,11 +66,15 @@ export default {
   groupPermissionsHeadingBox: {
     bg: "orange.500",
     color: commonColors.white,
+    borderTopLeftRadius: borderRadius.borderTopLeftRadius,
+    borderTopRightRadius: borderRadius.borderTopRightRadius,
   },
 
   availablePermissionsHeadingBox: {
     bg: commonColors.teal,
     color: commonColors.white,
+    borderTopLeftRadius: borderRadius.borderTopLeftRadius,
+    borderTopRightRadius: borderRadius.borderTopRightRadius,
   },
 
   //   GroupDetailPage Headings
@@ -66,6 +84,8 @@ export default {
     fontSize: commonHeading.fontSize,
     marginTop: commonPermissionsHeadings.marginTop,
     textAlign: commonPermissionsHeadings.textAlign,
+    borderTopLeftRadius: borderRadius.borderTopLeftRadius,
+    borderTopRightRadius: borderRadius.borderTopRightRadius,
   },
 
   groupPermissionsHeading: {
@@ -74,6 +94,8 @@ export default {
     fontSize: commonHeading.fontSize,
     marginTop: commonPermissionsHeadings.marginTop,
     textAlign: commonPermissionsHeadings.textAlign,
+    borderTopLeftRadius: borderRadius.borderTopLeftRadius,
+    borderTopRightRadius: borderRadius.borderTopRightRadius,
   },
 
   //   GroupDetailPage List
@@ -171,9 +193,16 @@ export default {
     my: commonResponsiveMargin.my,
   },
 
+  // Heading
+  groupCreateHeading: {
+    my: commonMargin.my,
+    color: commonColors.blue700,
+    fontSize: commonHeading.fontSize,
+  },
+
   //Input field wrapper
   groupCreateInputWrapper: {
-    my: 4,
+    my: commonMargin.my,
     w: "100%",
   },
 
@@ -212,10 +241,12 @@ export default {
   // GroupList Wrapper
   createGroupListWrapper: {
     mt: 10,
-    bg: "blue.700",
+    bg: commonColors.blue700,
     textAlign: "left",
     mx: { base: 4, md: 0 },
     color: commonColors.white,
+    borderLeftRadius: borderRadius.borderLeftRadius,
+    borderRightRadius: borderRadius.borderLeftRadius,
   },
 
   // ********************* GroupEdit Form ********************* //
@@ -228,7 +259,7 @@ export default {
   // Heading
   groupEditHeading: {
     fontSize: commonHeading.fontSize,
-    my: 4,
+    my: commonMargin.my,
     color: commonColors.blue700,
   },
 
@@ -236,6 +267,13 @@ export default {
   loginWrapper: {
     mx: commonResponsiveMargin.mx,
     my: commonResponsiveMargin.my,
+  },
+
+  // Heading
+  loginHeader: {
+    my: commonMargin.my,
+    color: commonColors.blue700,
+    fontSize: commonHeading.fontSize,
   },
 
   resetPwdLinkFontSize: {
@@ -247,5 +285,12 @@ export default {
   registrationWrapper: {
     mx: commonResponsiveMargin.mx,
     my: commonResponsiveMargin.my,
+  },
+
+  // Heading
+  registrationHeader: {
+    my: commonMargin.my,
+    color: commonColors.blue700,
+    fontSize: commonHeading.fontSize,
   },
 };

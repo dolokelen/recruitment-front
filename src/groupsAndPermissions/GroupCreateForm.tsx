@@ -3,6 +3,7 @@ import {
   Checkbox,
   FormLabel,
   HStack,
+  Heading,
   Input,
   Text,
 } from "@chakra-ui/react";
@@ -17,7 +18,7 @@ import { MdOutlineRemoveCircleOutline } from "react-icons/md";
 import { FiPlusCircle } from "react-icons/fi";
 import { useEffect } from "react";
 import styles from "../styles";
-import { MyButtonWithIcon, MyHeading } from "../MyFormComponents";
+import { MyButtonWithIcon } from "../MyFormComponents";
 import GroupList from "./GroupList";
 
 const groupSchema = z.object({
@@ -69,7 +70,7 @@ const GroupCreateForm = () => {
     <Box sx={styles.grooupCreateWrapper}>
       <Box sx={styles.groupCreateInnerWrapper}>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <MyHeading>Group Creation Form</MyHeading>
+          <Heading sx={styles.groupCreateHeading}>Group Creation Form</Heading>
 
           {/* Tradeoff: scapegoat enables bulk create!*/}
           <Box display="none">
