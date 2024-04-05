@@ -11,7 +11,13 @@ interface HProps {
   my?: number;
 }
 
-export const MyHeading = ({ bg, p, children, my=4, color="blue.700" }: HProps) => {
+export const MyHeading = ({
+  bg,
+  p,
+  children,
+  my = 4,
+  color = "blue.700",
+}: HProps) => {
   return (
     <Heading
       fontSize={{ base: "1.2rem", sm: "1.5rem", md: "2rem" }}
@@ -47,7 +53,7 @@ export const MyInput = ({
       <FormLabel>{label}</FormLabel>
       <Input
         type={type}
-        size={{ base: "sm", sm: "md" }}
+        // size={{ base: "sm", sm: "md" }}
         borderRadius={{ base: 8 }}
         border="1px solid skyblue"
         {...register}
@@ -83,4 +89,58 @@ export const MyButton = ({
       {children}
     </Button>
   );
+};
+
+interface BasicButtonProps {
+  label: string;
+  type?: "submit" | "button";
+  colorScheme?: string;
+  color?: string;
+}
+export const MyBasicButton = ({
+  color,
+  label,
+  type = "submit",
+  colorScheme = "blue",
+}: BasicButtonProps) => {
+  return (
+    <Button
+      type={type}
+      sx={basicButton}
+      colorScheme={colorScheme}
+      isActive
+      color={color}
+    >
+      {label}
+    </Button>
+  );
+};
+
+interface ButtonWithIconProps extends BasicButtonProps {}
+
+export const MyButtonWithIcon = ({
+  color,
+  label,
+  type = "submit",
+  colorScheme = "blue",
+}: ButtonWithIconProps) => {
+  return (
+    <Button
+      type={type}
+      sx={btnWithIconSytle}
+      colorScheme={colorScheme}
+      isActive
+      color={color}
+    >
+      {label}
+    </Button>
+  );
+};
+const btnWithIconSytle = {
+  w: { base: "86%", sm: "auto" },
+};
+
+const basicButton = {
+  mt: 2,
+  w: { base: "100%", sm: "auto" },
 };

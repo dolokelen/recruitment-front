@@ -15,8 +15,10 @@ const commonAddAndRemovePermissionButton = {
 
 const commonColors = {
   red: "red",
+  teal: "teal",
   blue: "blue",
   white: "white",
+  blue700: "blue.700",
 };
 
 const commonMargins = {
@@ -30,6 +32,10 @@ const commonHeading = {
 
 const commonIconSize = {
   size1rem: "1rem",
+};
+
+const commonResponsiveMarginY = {
+  my: { base: 4, md: 4 },
 };
 
 export default {
@@ -48,7 +54,7 @@ export default {
   },
 
   availablePermissionsHeadingBox: {
-    bg: "teal",
+    bg: commonColors.teal,
     color: commonColors.white,
   },
 
@@ -161,7 +167,7 @@ export default {
 
   groupCreateInnerWrapper: {
     mx: 4,
-    my: { base: 4, md: 4 },
+    my: commonResponsiveMarginY.my,
   },
 
   //Input field wrapper
@@ -209,5 +215,19 @@ export default {
     textAlign: "left",
     mx: { base: 4, md: 0 },
     color: commonColors.white,
+  },
+
+  // ********************* GroupEdit Form ********************* //
+  // Form wrapper
+  groupEditWrapper: {
+    mx: 4,
+    my: commonResponsiveMarginY.my,
+  },
+
+  // Heading
+  groupEditHeading: {
+    fontSize: commonHeading.fontSize,
+    my: 4,
+    color: commonColors.blue700,
   },
 };

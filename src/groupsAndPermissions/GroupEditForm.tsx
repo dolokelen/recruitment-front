@@ -1,4 +1,4 @@
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Heading, Text } from "@chakra-ui/react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
@@ -8,9 +8,9 @@ import { z } from "zod";
 import { http_400_BAD_REQUEST_CUSTOM_MESSAGE } from "../utilities/httpErrorMessages";
 import { useEditGroup, useGroup } from "../hooks/useGroups";
 import { red, teal } from "../colors";
-import { styles } from "../accounts/styles";
-import { MyButton, MyHeading, MyInput } from "../MyFormComponents";
+import { MyBasicButton, MyInput } from "../MyFormComponents";
 import MySpinner from "../components/MySpinner";
+import styles from "../styles";
 
 const schema = z.object({
   id: z.number().optional(),
@@ -47,21 +47,11 @@ const GroupEditForm = () => {
   // if (!hasPermission("Can change group")) return <AccessDenyPage />;
   if (error) return <Text color={red}>{error.message}</Text>;
   if (isLoading) return <MySpinner />;
-  
+
   return (
-    <Box mx={4} my={styles.formWrapperMY}>
+    <Box sx={styles.groupEditWrapper}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <MyHeading>Edit {data?.name}</MyHeading>
-        {/* <Box marginBottom={2}>
-            <Input
-              {...register("name")}
-              type="text"
-              size="md"
-              placeholder="Enter school year"
-            />
-            {errors.name && <Text color="red">{errors.name.message}</Text>}
-            {mutation.isError && <Text color="red">{customerErrMessage}</Text>}
-          </Box> */}
+        <Heading sx={styles.groupEditHeading}>Edit {data?.name}</Heading>
         <MyInput
           label="Name"
           type="text"
@@ -70,12 +60,7 @@ const GroupEditForm = () => {
         >
           {customerErrMessage && <Text color={red}>{customerErrMessage}</Text>}
         </MyInput>
-        {/* <Button mt={4} marginRight={6} type="submit" colorScheme={teal}>
-            Update
-          </Button> */}
-        <MyButton w="20%" type="submit" colorScheme={teal}>
-          Update
-        </MyButton>
+        <MyBasicButton colorScheme={teal} label="Update" />
       </form>
     </Box>
   );

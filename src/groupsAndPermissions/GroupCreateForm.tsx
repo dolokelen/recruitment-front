@@ -1,6 +1,5 @@
 import {
   Box,
-  Button,
   Checkbox,
   FormLabel,
   HStack,
@@ -18,7 +17,7 @@ import { MdOutlineRemoveCircleOutline } from "react-icons/md";
 import { FiPlusCircle } from "react-icons/fi";
 import { useEffect } from "react";
 import styles from "../styles";
-import { MyHeading } from "../MyFormComponents";
+import { MyButtonWithIcon, MyHeading } from "../MyFormComponents";
 import GroupList from "./GroupList";
 
 const groupSchema = z.object({
@@ -115,13 +114,7 @@ const GroupCreateForm = () => {
             </HStack>
           ))}
 
-          <Button
-            sx={styles.groupCreateButton}
-            type="submit"
-            colorScheme={styles.groupCreateButton.colorScheme}
-          >
-            Create
-          </Button>
+          <MyButtonWithIcon label="Create" />
         </form>
       </Box>
 
