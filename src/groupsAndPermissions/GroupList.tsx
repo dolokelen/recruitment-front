@@ -11,7 +11,7 @@ import OverflowYContainer from "./OverflowYContainer";
 import { useDeleteAllGroup, useGroups } from "../hooks/useGroups";
 import { red } from "../colors";
 import MySpinner from "../components/MySpinner";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { toast } from "react-toastify";
 import BulkDeleteButton from "../utilities/BulkDeleteButton";
 import { Link } from "react-router-dom";
