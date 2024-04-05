@@ -4,14 +4,8 @@ import { Outlet, useSearchParams } from "react-router-dom";
 import UnAuthLayout from "./UnAuthLayout";
 import getUserId from "../utilities/getUserId";
 import LoginPage from "../accounts/LoginPage";
-import {
-  authSideBarBgColor,
-  authmainAreaBgColor,
-  navbarColor,
-  white,
-} from "../colors";
+import { authmainAreaBgColor, navbarColor, white } from "../colors";
 import AuthNavBar from "./AuthNavBar";
-import AuthSideBar from "./AuthSideBar";
 
 const AuthLayout = () => {
   // const location = useLocation();
@@ -34,19 +28,15 @@ const AuthLayout = () => {
   if (getUserId())
     return (
       <Grid
-        templateAreas={`"header header"
-                  "sidebar main"
+        templateAreas={`"header"
+                  "main"
                   `}
-        gridTemplateRows={"auto 1fr"}
-        gridTemplateColumns={"auto 1fr"}
+        gridTemplateRows={"100px 1fr"}
+        gridTemplateColumns={"1fr"}
         h="100vh"
       >
         <GridItem p={[2, 4]} bg={navbarColor} color={white} area={"header"}>
           <AuthNavBar />
-        </GridItem>
-
-        <GridItem p="1" bg={authSideBarBgColor} area={"sidebar"}>
-          <AuthSideBar />
         </GridItem>
 
         <GridItem bg={authmainAreaBgColor} area={"main"} mr={4}>
