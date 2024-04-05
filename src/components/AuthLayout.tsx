@@ -39,7 +39,7 @@ const AuthLayout = () => {
           <AuthNavBar />
         </GridItem>
 
-        <GridItem bg={authmainAreaBgColor} area={"main"} mr={4}>
+        <GridItem bg={authmainAreaBgColor} area={"main"}>
           <Outlet />
         </GridItem>
       </Grid>

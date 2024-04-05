@@ -2,10 +2,13 @@ import {
   Box,
   Checkbox,
   FormLabel,
+  Grid,
+  GridItem,
   HStack,
   Heading,
   Input,
   Text,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useFieldArray, useForm } from "react-hook-form";
@@ -65,65 +68,86 @@ const GroupCreateForm = () => {
   const customErrorMessage = http_400_BAD_REQUEST_CUSTOM_MESSAGE(mutation);
 
   //   if (!hasPermission("Can add group")) return <AccessDenyPage />;
+  const columnLayout = useBreakpointValue({ base: "1fr", md: "1fr auto" });
 
   return (
-    <Box sx={styles.grooupCreateWrapper}>
-      <Box sx={styles.groupCreateInnerWrapper}>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <Heading sx={styles.groupCreateHeading}>Group Creation Form</Heading>
+    <>
+      <Grid
+        templateColumns={columnLayout}
+        gap="6"
+        color="blackAlpha.700"
+        boxShadow="dark-lg"
+        p="6"
+        roundedBottom="lg"
+        fontWeight="bold"
+      >
+        <GridItem>
+          <Box sx={styles.groupCreateInnerWrapper}>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <Heading sx={styles.groupCreateHeading}>
+                Group Creation Form
+              </Heading>
 
-          {/* Tradeoff: scapegoat enables bulk create!*/}
-          <Box display="none">
-            <Checkbox {...register("scapegoat")}>display is none?</Checkbox>
-            {errors.scapegoat && (
-              <Text color={red}>{errors.scapegoat.message}</Text>
-            )}
+              {/* Tradeoff: scapegoat enables bulk create!*/}
+              <Box display="none">
+                <Checkbox {...register("scapegoat")}>display is none?</Checkbox>
+                {errors.scapegoat && (
+                  <Text color={red}>{errors.scapegoat.message}</Text>
+                )}
+              </Box>
+
+              {fields.map((group, index) => (
+                <HStack key={group.id}>
+                  <Box sx={styles.groupCreateInputWrapper}>
+                    <FormLabel sx={styles.groupCreateInputLabel}>
+                      Name
+                    </FormLabel>
+                    <Input
+                      {...register(`groups.${index}.name`)}
+                      sx={styles.groupCreateInput}
+                    />
+                    {errors?.groups?.[index]?.name && (
+                      <Text color={red}>
+                        {errors.groups[index]?.name?.message}
+                      </Text>
+                    )}
+                    {customErrorMessage && (
+                      <Text color={red}>{customErrorMessage}</Text>
+                    )}
+                  </Box>
+
+                  <Box sx={styles.groupCreateIconWrapper}>
+                    <FiPlusCircle
+                      onClick={() => append({ name: "" })}
+                      size={styles.groupCreatePlusIcon.size}
+                      color={styles.groupCreatePlusIcon.color}
+                    />
+                  </Box>
+                  {fields.length > 1 && (
+                    <Box sx={styles.groupCreateIconWrapper}>
+                      <MdOutlineRemoveCircleOutline
+                        onClick={() => remove(index)}
+                        size={styles.groupCreatePlusIcon.size}
+                        color={styles.groupCreateRemoveIcon.color}
+                      />
+                    </Box>
+                  )}
+                </HStack>
+              ))}
+
+              <MyButtonWithIcon label="Create" />
+            </form>
           </Box>
+        </GridItem>
 
-          {fields.map((group, index) => (
-            <HStack key={group.id}>
-              <Box sx={styles.groupCreateInputWrapper}>
-                <FormLabel sx={styles.groupCreateInputLabel}>Name</FormLabel>
-                <Input
-                  {...register(`groups.${index}.name`)}
-                  sx={styles.groupCreateInput}
-                />
-                {errors?.groups?.[index]?.name && (
-                  <Text color={red}>{errors.groups[index]?.name?.message}</Text>
-                )}
-                {customErrorMessage && (
-                  <Text color={red}>{customErrorMessage}</Text>
-                )}
-              </Box>
-
-              <Box sx={styles.groupCreateIconWrapper}>
-                <FiPlusCircle
-                  onClick={() => append({ name: "" })}
-                  size={styles.groupCreatePlusIcon.size}
-                  color={styles.groupCreatePlusIcon.color}
-                />
-              </Box>
-              {fields.length > 1 && (
-                <Box sx={styles.groupCreateIconWrapper}>
-                  <MdOutlineRemoveCircleOutline
-                    onClick={() => remove(index)}
-                    size={styles.groupCreatePlusIcon.size}
-                    color={styles.groupCreateRemoveIcon.color}
-                  />
-                </Box>
-              )}
-            </HStack>
-          ))}
-
-          <MyButtonWithIcon label="Create" />
-        </form>
-      </Box>
-
-      {/* Group list section */}
-      <Box sx={styles.createGroupListWrapper}>
-        <GroupList />
-      </Box>
-    </Box>
+        <GridItem>
+          {/* Group list section */}
+          <Box sx={styles.createGroupListWrapper}>
+            <GroupList />
+          </Box>
+        </GridItem>
+      </Grid>
+    </>
   );
 };
 

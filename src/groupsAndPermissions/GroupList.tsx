@@ -77,8 +77,6 @@ const GroupList = () => {
           </Button>
         ) : (
           <BulkDeleteButton
-            mt={styles.groupListDeleteAllButton.mt}
-            p={styles.groupListDeleteAllButton.p}
             mdWidth={styles.groupListDeleteAllButton.width.md}
             baseWidth={styles.groupListDeleteAllButton.width.base}
             smWidth={styles.groupListDeleteAllButton.width.sm}

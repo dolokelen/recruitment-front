@@ -176,8 +176,6 @@ export default {
   },
 
   groupListDeleteAllButton: {
-    mt: 4,
-    p: 4,
     width: { base: "100%", sm: "auto", md: "100%" },
   },
 
@@ -240,7 +238,7 @@ export default {
 
   // GroupList Wrapper
   createGroupListWrapper: {
-    mt: 10,
+    my: commonMargin.my,
     bg: commonColors.blue700,
     textAlign: "left",
     mx: { base: 4, md: 0 },

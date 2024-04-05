@@ -4,6 +4,7 @@ export const teal = "teal";
 export const red500 = "red.500";
 export const blue500 = "blue.500";
 export const navbarColor = "blue.500";
+export const blackAlpha700 = "blackAlpha.700";
 
 export const white = "#FFFFFF";
 export const unAuthFooterBgColor = "#1A365D";
