@@ -9,7 +9,7 @@ const UnAuthFooter = () => {
       px={4}
       color={whiteFFF}
     >
-      <Box>This is the footer</Box>
+      <Box>This is the foot</Box>
       <Box>This is the footer</Box>
       <Box>This is the footer</Box>
       <Box>This is the footer</Box>
