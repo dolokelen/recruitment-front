@@ -72,17 +72,9 @@ const GroupCreateForm = () => {
 
   return (
     <>
-      <Grid
-        templateColumns={columnLayout}
-        gap="6"
-        color="blackAlpha.700"
-        boxShadow="dark-lg"
-        p="6"
-        roundedBottom="lg"
-        fontWeight="bold"
-      >
+      <Grid templateColumns={columnLayout} sx={styles.groupCreateGrid}>
         <GridItem>
-          <Box sx={styles.groupCreateInnerWrapper}>
+          <Box sx={styles.groupCreateFormWrapper}>
             <form onSubmit={handleSubmit(onSubmit)}>
               <Heading sx={styles.groupCreateHeading}>
                 Group Creation Form

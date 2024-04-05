@@ -13,11 +13,11 @@ import MyDrawerContent from "./MyDrawerContent";
 
 function MyDrawer() {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const btnRef = useRef<HTMLAnchorElement>(null);
+  const linkRef = useRef<HTMLAnchorElement>(null);
 
   return (
     <>
-      <Link ref={btnRef} color="teal" onClick={onOpen}>
+      <Link ref={linkRef} onClick={onOpen}>
         <IoIosMenu size="2.5rem" color="white" />
       </Link>
 
@@ -25,7 +25,7 @@ function MyDrawer() {
         isOpen={isOpen}
         placement="left"
         onClose={onClose}
-        finalFocusRef={btnRef}
+        finalFocusRef={linkRef}
       >
         {/* Children width are determine by maxWidth */}
         {/* DrawerContent and DrawerBody are the controlers of children as well */}

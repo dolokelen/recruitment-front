@@ -1,3 +1,5 @@
+import { blackAlpha700 } from "./colors";
+
 //   GroupDetailPage Common Styles //
 const commonPermissionsHeadings = {
   textAlign: { base: "center" },
@@ -180,13 +182,17 @@ export default {
   },
 
   // *************** GroupCreatePage *************** //
-  // Form wrapper1
-  grooupCreateWrapper: {
-    display: { md: "flex" },
-    justifyContent: "space-around",
+  // Grid
+  groupCreateGrid: {
+    gap: "6",
+    color: blackAlpha700,
+    boxShadow: "dark-lg",
+    p: "6",
+    roundedBottom: "lg",
+    fontWeight: "bold",
   },
 
-  groupCreateInnerWrapper: {
+  groupCreateFormWrapper: {
     mx: 4,
     my: commonResponsiveMargin.my,
   },
