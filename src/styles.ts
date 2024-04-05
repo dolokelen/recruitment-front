@@ -230,4 +230,15 @@ export default {
     my: 4,
     color: commonColors.blue700,
   },
+
+  // ****************** Login Form ******************* //
+  loginWrapper: {
+    mx: { base: 4, sm: 20, md: 48 },
+    my: commonResponsiveMarginY.my,
+  },
+
+  resetPwdLinkFontSize: {
+    fontSize: { base: ".7rem", md: "1rem" },
+    mt: 2,
+  },
 };

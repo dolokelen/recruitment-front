@@ -1,11 +1,11 @@
 import { Text, Link, Box } from "@chakra-ui/react";
-import { blue, blue500, red500 } from "../colors";
-import { MyButton, MyHeading, MyInput } from "../MyFormComponents";
+import { blue500, red500 } from "../colors";
+import { MyBasicButton, MyHeading, MyInput } from "../MyFormComponents";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useLogin } from "../hooks/useLogin";
-import { styles } from "./styles";
+import styles from "../styles";
 
 const schema = z.object({
   email: z
@@ -37,7 +37,7 @@ const LoginForm = () => {
   const marginButton = 4;
 
   return (
-    <Box mx={styles.formWrapperMX} my={styles.formWrapperMY}>
+    <Box sx={styles.loginWrapper}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <MyHeading>Login Form</MyHeading>
         {error === HTTP_401_UNAUTHORIZED ? (
@@ -64,11 +64,9 @@ const LoginForm = () => {
           errorMessage={errors.password && errors.password.message}
         />
 
-        <MyButton type="submit" colorScheme={blue}>
-          Login
-        </MyButton>
+        <MyBasicButton label="Login" />
 
-        <Text color={blue500} fontSize={styles.resetPwdLinkFontSize}>
+        <Text color={blue500} sx={styles.resetPwdLinkFontSize}>
           <Link>Forget Your Password?</Link>
         </Text>
       </form>
