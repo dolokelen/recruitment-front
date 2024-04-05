@@ -1,12 +1,14 @@
 export const red = "red";
 export const blue = "blue";
 export const teal = "teal";
+export const white = "white";
 export const red500 = "red.500";
+export const blue700 = "blue.700";
 export const blue500 = "blue.500";
 export const navbarColor = "blue.500";
 export const blackAlpha700 = "blackAlpha.700";
 
-export const white = "#FFFFFF";
+export const whiteFFF = "#FFFFFF";
 export const unAuthFooterBgColor = "#1A365D";
 export const authmainAreaBgColor = "#EBF8FF";
 export const authSideBarBgColor = "#BEE3F8";

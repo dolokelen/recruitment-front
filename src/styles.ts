@@ -1,4 +1,4 @@
-import { blackAlpha700 } from "./colors";
+import { blackAlpha700, blue, blue700, red, teal, white } from "./colors";
 
 //   GroupDetailPage Common Styles //
 const commonPermissionsHeadings = {
@@ -15,13 +15,6 @@ const commonAddAndRemovePermissionButton = {
   width: { base: "90%", sm: "40%", md: "90%" },
 };
 
-const commonColors = {
-  red: "red",
-  teal: "teal",
-  blue: "blue",
-  white: "white",
-  blue700: "blue.700",
-};
 
 const commonMargins = {
   mt: 4,
@@ -67,14 +60,14 @@ export default {
   //   GroupDetailPage Headings Boxes
   groupPermissionsHeadingBox: {
     bg: "orange.500",
-    color: commonColors.white,
+    color: white,
     borderTopLeftRadius: borderRadius.borderTopLeftRadius,
     borderTopRightRadius: borderRadius.borderTopRightRadius,
   },
 
   availablePermissionsHeadingBox: {
-    bg: commonColors.teal,
-    color: commonColors.white,
+    bg: teal,
+    color: white,
     borderTopLeftRadius: borderRadius.borderTopLeftRadius,
     borderTopRightRadius: borderRadius.borderTopRightRadius,
   },
@@ -120,7 +113,7 @@ export default {
     mt: 4,
     mx: 2,
     w: commonAddAndRemovePermissionButton.width,
-    colorScheme: commonColors.blue,
+    colorScheme: blue,
   },
 
   deleteGroupButtonBoxForDesktop: {
@@ -140,14 +133,14 @@ export default {
   addButtonDisable: {
     mt: commonMargins.mt,
     mx: commonMargins.mx,
-    colorScheme: commonColors.blue,
+    colorScheme: blue,
     w: commonAddAndRemovePermissionButton.width,
   },
 
   addButton: {
     mt: commonMargins.mt,
     mx: commonMargins.mx,
-    colorScheme: commonColors.blue,
+    colorScheme: blue,
     w: commonAddAndRemovePermissionButton.width,
   },
 
@@ -156,7 +149,7 @@ export default {
   groupListHeading: {
     p: "1rem",
     bg: "blue.900",
-    color: commonColors.white,
+    color: white,
     fontSize: commonHeading.fontSize,
   },
 
@@ -200,7 +193,7 @@ export default {
   // Heading
   groupCreateHeading: {
     my: commonMargin.my,
-    color: commonColors.blue700,
+    color: blue700,
     fontSize: commonHeading.fontSize,
   },
 
@@ -231,7 +224,7 @@ export default {
   },
 
   groupCreateRemoveIcon: {
-    color: commonColors.red,
+    color: red,
     size: commonIconSize.size1rem,
   },
 
@@ -239,16 +232,16 @@ export default {
   groupCreateButton: {
     w: { base: "38vw", sm: "50%" },
     size: { base: "sm", sm: "md" },
-    colorScheme: commonColors.blue,
+    colorScheme: blue,
   },
 
   // GroupList Wrapper
   createGroupListWrapper: {
     my: commonMargin.my,
-    bg: commonColors.blue700,
+    bg: blue700,
     textAlign: "left",
     mx: { base: 4, md: 0 },
-    color: commonColors.white,
+    color: white,
     borderLeftRadius: borderRadius.borderLeftRadius,
     borderRightRadius: borderRadius.borderLeftRadius,
   },
@@ -264,7 +257,7 @@ export default {
   groupEditHeading: {
     fontSize: commonHeading.fontSize,
     my: commonMargin.my,
-    color: commonColors.blue700,
+    color: blue700,
   },
 
   // ****************** Login Form ******************* //
@@ -276,7 +269,7 @@ export default {
   // Heading
   loginHeader: {
     my: commonMargin.my,
-    color: commonColors.blue700,
+    color: blue700,
     fontSize: commonHeading.fontSize,
   },
 
@@ -294,7 +287,7 @@ export default {
   // Heading
   registrationHeader: {
     my: commonMargin.my,
-    color: commonColors.blue700,
+    color: blue700,
     fontSize: commonHeading.fontSize,
   },
 };

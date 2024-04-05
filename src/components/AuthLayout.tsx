@@ -4,7 +4,7 @@ import { Outlet, useSearchParams } from "react-router-dom";
 import UnAuthLayout from "./UnAuthLayout";
 import getUserId from "../utilities/getUserId";
 import LoginPage from "../accounts/LoginPage";
-import { authmainAreaBgColor, navbarColor, white } from "../colors";
+import { authmainAreaBgColor, navbarColor, whiteFFF } from "../colors";
 import AuthNavBar from "./AuthNavBar";
 
 const AuthLayout = () => {
@@ -35,7 +35,7 @@ const AuthLayout = () => {
         gridTemplateColumns={"1fr"}
         h="100vh"
       >
-        <GridItem p={[2, 4]} bg={navbarColor} color={white} area={"header"}>
+        <GridItem p={[2, 4]} bg={navbarColor} color={whiteFFF} area={"header"}>
           <AuthNavBar />
         </GridItem>
 

@@ -7,7 +7,7 @@ import {
   LOGIN_ROUTE,
   REGISTER_ROUTE,
 } from "../cacheKeysAndRoutes";
-import { white } from "../colors";
+import { whiteFFF } from "../colors";
 import { useEffect, useState } from "react";
 import getUserId from "../utilities/getUserId";
 import logoutUser from "../utilities/logoutUser";
@@ -24,7 +24,7 @@ const UnAuthNavBar = () => {
 
   return (
     <>
-      <Flex justifyContent="space-evenly" color={white}>
+      <Flex justifyContent="space-evenly" color={whiteFFF}>
         <Link to={HOME_ROUTE}>Home</Link>
         {/* <Link>Dashboard</Link> */}
         <Link to="#">About Us</Link>
