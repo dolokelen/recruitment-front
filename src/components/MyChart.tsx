@@ -3,7 +3,7 @@ import { defaults } from "chart.js/auto";
 import { Bar, Doughnut, Line, Pie } from "react-chartjs-2";
 import "chart.js/auto";
 
-//for responsiveness: width and heigh will be auto
+//for responsiveness: width and heigh will be auto 
 // defaults.maintainAspectRatio = false;
 // defaults.responsive = true;
 
