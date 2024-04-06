@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import HomePage from "./components/HomePage";
 import {
   AUTH_LAYOUT_ROUTE,
+  CHART_ROUTE,
   GROUP_CREATE_ROUTE,
   GROUP_ROUTE,
   HOME_ROUTE,
@@ -15,6 +16,7 @@ import LoginForm from "./accounts/LoginPage";
 import AuthLayout from "./components/AuthLayout";
 import GroupCreateForm from "./groupsAndPermissions/GroupCreateForm";
 import GroupDetailPage from "./groupsAndPermissions/GroupDetailPage";
+import MyChart from "./components/MyChart";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +26,7 @@ const router = createBrowserRouter([
     children: [
       { path: GROUP_CREATE_ROUTE, element: <GroupCreateForm /> },
       { path: `${GROUP_ROUTE}/:id`, element: <GroupDetailPage /> },
+      { path: CHART_ROUTE, element: <MyChart /> },
     ],
   },
 

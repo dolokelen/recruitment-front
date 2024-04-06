@@ -10,3 +10,5 @@ export const GROUP_EDIT_ROUTE = "group-edit";
 export const HOME_ROUTE = "/";
 export const REGISTER_ROUTE = "register";
 export const LOGIN_ROUTE = "login";
+
+export const CHART_ROUTE = "charts";
