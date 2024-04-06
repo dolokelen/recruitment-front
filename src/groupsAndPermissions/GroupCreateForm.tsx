@@ -132,7 +132,9 @@ const GroupCreateForm = () => {
           </Box>
         </GridItem>
 
-        <GridItem>
+        <GridItem
+          sx={styles.createGroupListGridItem}
+        >
           {/* Group list section */}
           <Box sx={styles.createGroupListWrapper}>
             <GroupList />

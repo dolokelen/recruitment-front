@@ -15,7 +15,6 @@ const commonAddAndRemovePermissionButton = {
   width: { base: "90%", sm: "40%", md: "90%" },
 };
 
-
 const commonMargins = {
   mt: 4,
   mx: 2,
@@ -182,7 +181,6 @@ export default {
     boxShadow: "dark-lg",
     p: "6",
     roundedBottom: "lg",
-    fontWeight: "bold",
   },
 
   groupCreateFormWrapper: {
@@ -233,6 +231,11 @@ export default {
     w: { base: "38vw", sm: "50%" },
     size: { base: "sm", sm: "md" },
     colorScheme: blue,
+  },
+
+  // GroupList GridItem
+  createGroupListGridItem: {
+    w: { base: "100%", sm: "50%", md: "auto" },
   },
 
   // GroupList Wrapper

@@ -35,7 +35,7 @@ const AuthLayout = () => {
         gridTemplateColumns={"1fr"}
         h="100vh"
       >
-        <GridItem p={[2, 4]} bg={navbarColor} color={whiteFFF} area={"header"}>
+        <GridItem p={[0, 4]} bg={navbarColor} color={whiteFFF} area={"header"}>
           <AuthNavBar />
         </GridItem>
 
