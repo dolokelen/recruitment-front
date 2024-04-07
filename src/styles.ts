@@ -9,13 +9,11 @@ const commonPermissionsHeadings = {
 
 const commonPaddings = {
   pl: 2,
+  pr: 2,
 };
 
-const commonAddAndRemovePermissionButton = {
-  width: { base: "90%", sm: "40%", md: "90%" },
-};
 
-const commonMargins = {
+const commonMarginB = {
   mt: 4,
   mx: 2,
 };
@@ -43,17 +41,22 @@ const commonResponsiveMargin = {
   mx: { base: 4, sm: 20, md: 48 },
 };
 
-const commonMargin = {
+const commonMarginA = {
   my: 4,
+  mx: 4,
 };
+
+const commonWidth100 = {
+  width: "100%",
+}
 
 export default {
   // *************** GroupDetailPage Wrapper ***************//
-  groupDetailPageWrapper: {
-    my: 8,
-    px: 4,
-    display: { md: "flex" },
-    justifyContent: "space-between",
+
+  //GroupDetailPage Grid
+  groupDetailGrid: {
+    m: { base: "4%", sm: "2%", md: "10%" },
+    gap: { base: 4, md: 16 },
   },
 
   //   GroupDetailPage Headings Boxes
@@ -107,40 +110,45 @@ export default {
     fontSize: { base: "1rem", md: "1.3rem" },
   },
 
+  // GroupDetailPage Button Wrapper
+  groupPermissionsRemoveButtonWrapper: {
+    width: commonWidth100.width,
+    pl: commonPaddings.pl,
+    pr: commonPaddings.pr,
+  },
+
   //   GroupDetailPage Buttons
   groupPermissionsRemoveButton: {
-    mt: 4,
-    mx: 2,
-    w: commonAddAndRemovePermissionButton.width,
+    mt: commonMarginB.mt,
+  
     colorScheme: blue,
   },
 
-  deleteGroupButtonBoxForDesktop: {
-    display: { base: "none", md: "inline-block" },
+  deleteGroupButtonWidth: {
+    base: "100%",
+    sm: "45%",
+    md: "35%",
   },
 
-  deleteGroupButtonBoxForMobile: {
-    mt: { base: 6 },
-    display: { md: "none" },
-  },
 
-  deleteGroupButtonForMobile: {
-    display: { base: "100%", sm: "40%", md: "90%" },
-  },
+
+
 
   // *************** PermissionsList ***************//
+  permissionsAddButtonsWrapper: {
+    width: commonWidth100.width,
+    pl: commonPaddings.pl,
+    pr: commonPaddings.pr,
+  },
+
   addButtonDisable: {
-    mt: commonMargins.mt,
-    mx: commonMargins.mx,
+    mt: commonMarginB.mt,
     colorScheme: blue,
-    w: commonAddAndRemovePermissionButton.width,
   },
 
   addButton: {
-    mt: commonMargins.mt,
-    mx: commonMargins.mx,
+    mt: commonMarginB.mt,
     colorScheme: blue,
-    w: commonAddAndRemovePermissionButton.width,
   },
 
   // *************** GroupList *************** //
@@ -154,7 +162,7 @@ export default {
 
   // List
   groupListItems: {
-    pr: 2,
+    pr: commonPaddings.pr,
     pl: commonPaddings.pl,
   },
 
@@ -184,20 +192,20 @@ export default {
   },
 
   groupCreateFormWrapper: {
-    mx: 4,
+    mx: commonMarginA.mx,
     my: commonResponsiveMargin.my,
   },
 
   // Heading
   groupCreateHeading: {
-    my: commonMargin.my,
+    my: commonMarginA.my,
     color: blue700,
     fontSize: commonHeading.fontSize,
   },
 
   //Input field wrapper
   groupCreateInputWrapper: {
-    my: commonMargin.my,
+    my: commonMarginA.my,
     w: "100%",
   },
 
@@ -240,7 +248,7 @@ export default {
 
   // GroupList Wrapper
   createGroupListWrapper: {
-    my: commonMargin.my,
+    my: commonMarginA.my,
     bg: blue700,
     textAlign: "left",
     mx: { base: 4, md: 0 },
@@ -252,14 +260,14 @@ export default {
   // ********************* GroupEdit Form ********************* //
   // Form wrapper
   groupEditWrapper: {
-    mx: 4,
+    mx: commonMarginA.mx,
     my: commonResponsiveMargin.my,
   },
 
   // Heading
   groupEditHeading: {
     fontSize: commonHeading.fontSize,
-    my: commonMargin.my,
+    my: commonMarginA.my,
     color: blue700,
   },
 
@@ -271,7 +279,7 @@ export default {
 
   // Heading
   loginHeader: {
-    my: commonMargin.my,
+    my: commonMarginA.my,
     color: blue700,
     fontSize: commonHeading.fontSize,
   },
@@ -289,7 +297,7 @@ export default {
 
   // Heading
   registrationHeader: {
-    my: commonMargin.my,
+    my: commonMarginA.my,
     color: blue700,
     fontSize: commonHeading.fontSize,
   },

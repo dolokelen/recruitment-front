@@ -1,4 +1,4 @@
-import { Button, Checkbox, List, ListItem, Text } from "@chakra-ui/react";
+import { Box, Button, Checkbox, List, ListItem, Text } from "@chakra-ui/react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -65,23 +65,30 @@ const PermissionList = ({ assignPermissions, pl }: Props) => {
           ))}
       </List>
       {selectedPermissions.length === 0 ? (
-        <Button
-          sx={styles.addButtonDisable}
-          colorScheme={styles.addButtonDisable.colorScheme}
-          isActive
-          isDisabled
-        >
-          Add
-        </Button>
+        // This Box gives the button 100% width
+        <Box sx={styles.permissionsAddButtonsWrapper}>
+          <Button
+            sx={styles.addButtonDisable}
+            colorScheme={styles.addButtonDisable.colorScheme}
+            isActive
+            isDisabled
+            width="inherit"
+          >
+            Add
+          </Button>
+        </Box>
       ) : (
-        <Button
-          sx={styles.addButton}
-          colorScheme={styles.addButton.colorScheme}
-          isActive
-          onClick={handleAddPermissions}
-        >
-          Add
-        </Button>
+        <Box sx={styles.permissionsAddButtonsWrapper}>
+          <Button
+            sx={styles.addButton}
+            colorScheme={styles.addButton.colorScheme}
+            isActive
+            onClick={handleAddPermissions}
+            width="inherit"
+          >
+            Add
+          </Button>
+        </Box>
       )}
     </OverflowYContainer>
   );

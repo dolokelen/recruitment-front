@@ -4,12 +4,29 @@ import { ReactNode } from "react";
 interface Props {
   children: ReactNode;
   maxH?: string;
-  w?: string;
+  width?: string;
+  baseWidth?: string;
+  smWidth?: string;
+  mdWidth?: string;
+  lgWidth?: string;
 }
 
-const OverflowYContainer = ({ children, maxH, w }: Props) => {
+const OverflowYContainer = ({
+  children,
+  maxH,
+  width,
+  baseWidth,
+  smWidth,
+  mdWidth,
+  lgWidth,
+}: Props) => {
   return (
-    <Box maxH={maxH ? maxH : "300px"} overflowY="auto" w={w}>
+    <Box
+      maxH={maxH ? maxH : "300px"}
+      overflowY="auto"
+      w={width}
+      width={{ base: baseWidth, sm: smWidth, md: mdWidth, lg: lgWidth }}
+    >
       {children}
     </Box>
   );

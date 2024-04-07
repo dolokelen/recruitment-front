@@ -2,6 +2,8 @@ import {
   Box,
   Button,
   Checkbox,
+  Grid,
+  GridItem,
   Heading,
   List,
   ListItem,
@@ -60,82 +62,97 @@ const GroupDetailPage = () => {
 
   return (
     <>
-      <GroupEditForm />
+      {/* 
+      The 1st GridItem colSpan={6} determines the Grid number of columns. 
+      This makes margin be set on the Grid. If you use gridTemplateColumns 
+      the margin property won't work for the Grid unless you set it on GridItems.  
+      */}
 
-      <Box sx={styles.groupDetailPageWrapper}>
-        <Box sx={styles.groupPermissionsHeadingBox}>
-          <Heading sx={styles.groupPermissionsHeading}>
-            Group Permissions
-          </Heading>
-          <OverflowYContainer>
-            <List>
-              {group?.permissions?.length ? (
-                group.permissions?.map((p) => (
-                  <ListItem sx={styles.groupPermissionsListItems} key={p.id}>
-                    <Checkbox
-                      isChecked={selectedPermissions.includes(p.id)}
-                      onChange={() => handleCheckboxChange(p.id)}
-                    >
-                      {p.name}
-                    </Checkbox>
+      <Grid sx={styles.groupDetailGrid}>
+        <GridItem colSpan={6}>
+          <GroupEditForm />
+        </GridItem>
+
+        <GridItem colSpan={{ base: 6, sm: 3 }}>
+          <Box sx={styles.groupPermissionsHeadingBox}>
+            <Heading sx={styles.groupPermissionsHeading}>
+              Group Permissions
+            </Heading>
+            <OverflowYContainer>
+              <List>
+                {group?.permissions?.length ? (
+                  group.permissions?.map((p) => (
+                    <ListItem sx={styles.groupPermissionsListItems} key={p.id}>
+                      <Checkbox
+                        isChecked={selectedPermissions.includes(p.id)}
+                        onChange={() => handleCheckboxChange(p.id)}
+                      >
+                        {p.name}
+                      </Checkbox>
+                    </ListItem>
+                  ))
+                ) : (
+                  <ListItem sx={styles.noAssignPermissionsListItem}>
+                    No assigned permission
                   </ListItem>
-                ))
-              ) : (
-                <ListItem sx={styles.noAssignPermissionsListItem}>
-                  No assigned permission
-                </ListItem>
-              )}
-            </List>
-          </OverflowYContainer>
-          {selectedPermissions.length === 0 ? (
-            <Button
-              sx={styles.groupPermissionsRemoveButton}
-              colorScheme={styles.groupPermissionsRemoveButton.colorScheme}
-              isActive
-              isDisabled
-            >
-              Remove
-            </Button>
-          ) : (
-            <Button
-              sx={styles.groupPermissionsRemoveButton}
-              onClick={handlePermissionsRemoval}
-              colorScheme={styles.groupPermissionsRemoveButton.colorScheme}
-              isActive
-            >
-              Remove
-            </Button>
-          )}
-        </Box>
+                )}
+              </List>
+            </OverflowYContainer>
+            {selectedPermissions.length === 0 ? (
+              // This Box gives the button 100% width
+              <Box sx={styles.groupPermissionsRemoveButtonWrapper}>
+                <Button
+                  sx={styles.groupPermissionsRemoveButton}
+                  colorScheme={styles.groupPermissionsRemoveButton.colorScheme}
+                  isActive
+                  isDisabled
+                  width="inherit"
+                >
+                  Remove
+                </Button>
+              </Box>
+            ) : (
+              <Box sx={styles.groupPermissionsRemoveButtonWrapper}>
+                <Button
+                  sx={styles.groupPermissionsRemoveButton}
+                  onClick={handlePermissionsRemoval}
+                  colorScheme={styles.groupPermissionsRemoveButton.colorScheme}
+                  isActive
+                  width="inherit"
+                >
+                  Remove
+                </Button>
+              </Box>
+            )}
+          </Box>
+        </GridItem>
 
-        <Box sx={styles.deleteGroupButtonBoxForDesktop}>
+        <GridItem colSpan={{ base: 6, sm: 3 }}>
+          <Box sx={styles.availablePermissionsHeadingBox}>
+            <Heading sx={styles.availablePermissionsHeading}>
+              Available Permissions
+            </Heading>
+            <PermissionList
+              assignPermissions={group?.permissions}
+              pl={styles.groupAvailablePermissionsListItems.pl}
+            />
+          </Box>
+        </GridItem>
+
+        {/* The mt is unneccessary all GridItems should have the 
+            same gap but while it's not working in these situations? */}
+        <GridItem colSpan={6} mt={{ base: 6, md: -6 }}>
           <DeletionConfirmation
             entityId={groupId}
             entityName={group?.name}
             label="Delete Group"
+            baseWidth={styles.deleteGroupButtonWidth.base}
+            smWidth={styles.deleteGroupButtonWidth.sm}
+            mdWidth={styles.deleteGroupButtonWidth.md}
             onMutate={() => mutation.mutate(groupId)}
           />
-        </Box>
-
-        <Box sx={styles.availablePermissionsHeadingBox}>
-          <Heading sx={styles.availablePermissionsHeading}>
-            Available Permissions
-          </Heading>
-          <PermissionList assignPermissions={group?.permissions} pl={styles.groupAvailablePermissionsListItems.pl} />
-        </Box>
-
-        <Box sx={styles.deleteGroupButtonBoxForMobile}>
-          <DeletionConfirmation
-            entityId={groupId}
-            entityName={group?.name}
-            label="Delete Group"
-            onMutate={() => mutation.mutate(groupId)}
-            baseWidth={styles.deleteGroupButtonForMobile.display.base}
-            smWidth={styles.deleteGroupButtonForMobile.display.sm}
-            mdWidth={styles.deleteGroupButtonForMobile.display.md}
-          />
-        </Box>
-      </Box>
+        </GridItem>
+      </Grid>
     </>
   );
 };
