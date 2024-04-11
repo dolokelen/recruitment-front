@@ -6,6 +6,7 @@ import logoutUser from "../utilities/logoutUser";
 import { ToastContainer } from "react-toastify";
 import { RiLogoutCircleLine } from "react-icons/ri";
 import MyDrawer from "./MyDrawer";
+import MyAvatar from "./MyAvatar";
 
 const AuthNavBar = () => {
   // const { data: userProfile } = useUserProfile();
@@ -22,6 +23,9 @@ const AuthNavBar = () => {
         </Link>
         {/* <Link to={PROFILE_ROUTE}>Welcome {userProfile?.last_name}</Link> */}
         {/* <ColorModeSwitch /> */}
+        <Link to='#'>
+          <MyAvatar />
+        </Link>
       </HStack>
       <ToastContainer />
     </>
