@@ -1,14 +1,13 @@
 import {
   Accordion,
-  Link,
   AccordionButton,
   AccordionIcon,
   AccordionItem,
   AccordionPanel,
   Box,
 } from "@chakra-ui/react";
-import { Link as ReactLink } from "react-router-dom";
-import { GROUP_CREATE_ROUTE } from "../cacheKeysAndRoutes";
+import { Link } from "react-router-dom";
+import { APPLICATIONDATE_ROUTE, GROUP_CREATE_ROUTE } from "../cacheKeysAndRoutes";
 
 const MyDrawerContent = () => {
   return (
@@ -28,25 +27,13 @@ const MyDrawerContent = () => {
         >
           <AccordionButton flexWrap="wrap">
             <Box as="span" flex="1" textAlign="left">
-              Familys
+              Group
             </Box>
             <AccordionIcon />
           </AccordionButton>
         </h2>
         <AccordionPanel pb={4}>
-          <ReactLink to={GROUP_CREATE_ROUTE}>Groups</ReactLink>
-          <Box>
-            <Link display="inline-block">My Profile</Link>
-          </Box>
-          <Box>
-            <Link display="inline-block">Her Profile</Link>
-          </Box>
-          <Box>
-            <Link display="inline-block">Their Profile</Link>
-          </Box>
-          <Box>
-            <Link display="inline-block">Family Profile</Link>
-          </Box>
+          <Link to={GROUP_CREATE_ROUTE}>Create Group</Link>
         </AccordionPanel>
       </AccordionItem>
 
@@ -60,24 +47,13 @@ const MyDrawerContent = () => {
         >
           <AccordionButton>
             <Box as="span" flex="1" textAlign="left">
-              Register Students
+              Application Date
             </Box>
             <AccordionIcon />
           </AccordionButton>
         </h2>
         <AccordionPanel pb={4}>
-          <Box>
-            <Link display="inline-block">My Profile</Link>
-          </Box>
-          <Box>
-            <Link display="inline-block">Her Profile</Link>
-          </Box>
-          <Box>
-            <Link display="inline-block">Their Profile</Link>
-          </Box>
-          <Box>
-            <Link display="inline-block">Family Profile</Link>
-          </Box>
+          <Link to={APPLICATIONDATE_ROUTE}>Application Dates</Link>
         </AccordionPanel>
       </AccordionItem>
 

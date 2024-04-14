@@ -35,7 +35,6 @@ const LoginForm = () => {
   const HTTP_401_RESPONSE =
     "No active account found with the given credentials";
   const marginButton = 4;
-
   return (
     <Box sx={styles.loginWrapper}>
       <form onSubmit={handleSubmit(onSubmit)}>

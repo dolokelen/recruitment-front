@@ -1,5 +1,7 @@
 // import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 // import ms from "ms";
+// import { CACHE_KEY_USER } from "../cacheKeysAndRoutes";
+// import apiClient from "../services/httpService";
 
 
 // interface Group {
@@ -8,10 +10,9 @@
 // }
 // export interface User {
 //   id: number;
-//   username: string;
 //   email: string;
-//   first_name: string;
-//   last_name: string;
+//   first_name?: string;
+//   last_name?: string;
 //   groups: Group[];
 // }
 
