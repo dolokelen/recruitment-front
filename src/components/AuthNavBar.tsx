@@ -13,7 +13,7 @@ const AuthNavBar = () => {
 
   return (
     <>
-      <HStack bg="dark" h={9} mb={1} justifyContent="space-evenly">
+      <HStack bg="dark" h={{base: 16, sm: 9}} mb={1} justifyContent="space-evenly">
         <MyDrawer />
         <Link to={autoRouteToHome()}>Website</Link>
         <Link to={AUTH_LAYOUT_ROUTE}>Dashboard</Link>
