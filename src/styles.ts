@@ -301,4 +301,11 @@ export default {
     color: blue700,
     fontSize: commonHeading.fontSize,
   },
+
+  // Common Heading [same as registrationHeader, loginHeader]
+  heading: {
+    my: commonMarginA.my,
+    color: blue700,
+    fontSize: commonHeading.fontSize,
+  },
 };

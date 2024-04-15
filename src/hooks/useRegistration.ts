@@ -10,7 +10,7 @@ export const useRegistration = (onCreate: () => void, reset: () => void) => {
   return useMutation<RegistrationFormData, Error, RegistrationFormData>({
     mutationFn: (data: RegistrationFormData) => apiClients.post(data),
 
-    onSuccess: (existingData, newData) => {
+    onSuccess: () => {
       onCreate();
       reset();
       //Investigate the cache key, should it be user or registration?

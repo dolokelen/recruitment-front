@@ -22,7 +22,9 @@ export const MyInput = ({
 }: IProps) => {
   return (
     <Box mb={4} w={w}>
-      <FormLabel>{label}</FormLabel>
+      <FormLabel fontSize={20} color="gray.400">
+        {label}
+      </FormLabel>
       <Input
         type={type}
         borderRadius={{ base: 8 }}

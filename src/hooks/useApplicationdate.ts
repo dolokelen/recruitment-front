@@ -1,16 +1,13 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import ms from "ms";
 import { CACHE_KEY_APPLICATIONDATE } from "../cacheKeysAndRoutes";
 import apiClient from "../services/httpService";
+import { ApplicationDateFormData } from "../pages/ApplicationDateCreatePage";
 
 export interface ApplicationDate {
   id: number;
-  open_year: number;
-  open_month: number;
-  open_date: number;
-  close_year: number;
-  close_month: number;
-  close_date: number;
+  open_date: string;
+  close_date: string;
   is_current: boolean;
 }
 
@@ -30,6 +27,22 @@ export const useApplicationDate = (applicationDateId: number) => {
     queryKey: [CACHE_KEY_APPLICATIONDATE, applicationDateId],
     queryFn: () => apiClients.get(applicationDateId),
     staleTime: ms("24h"),
+  });
+};
+
+const myApiClient = apiClient<ApplicationDateFormData>(APPLICATION_DATE_URL);
+export const useCreateApplicationDate = (onCreate: () => void, reset: () => void) => {
+  const queryClient = useQueryClient();
+  return useMutation<ApplicationDateFormData, Error, ApplicationDateFormData>({
+    mutationFn: (data: ApplicationDateFormData) => myApiClient.post(data),
+
+    onSuccess: () => {
+      onCreate();
+      reset();
+      return queryClient.invalidateQueries({
+        queryKey: [CACHE_KEY_APPLICATIONDATE],
+      });
+    },
   });
 };
 
