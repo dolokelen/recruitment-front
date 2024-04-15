@@ -1,8 +1,14 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import ms from "ms";
-import { CACHE_KEY_APPLICATIONDATE } from "../cacheKeysAndRoutes";
+import {
+  APP_DATES_ROUTE,
+  AUTH_LAYOUT_ROUTE,
+  CACHE_KEY_APPLICATIONDATE,
+} from "../cacheKeysAndRoutes";
 import apiClient from "../services/httpService";
 import { ApplicationDateFormData } from "../pages/ApplicationDateCreatePage";
+import { ApplicationDateEditFormData } from "../pages/ApplicationDateEditPage";
+import { useNavigate } from "react-router-dom";
 
 export interface ApplicationDate {
   id: number;
@@ -11,8 +17,8 @@ export interface ApplicationDate {
   is_current: boolean;
 }
 
-const APPLICATION_DATE_URL = "/recruitment/application-dates/";
-const apiClients = apiClient<ApplicationDate>(APPLICATION_DATE_URL);
+const APP_DATE_URL = "/recruitment/application-dates/";
+const apiClients = apiClient<ApplicationDate>(APP_DATE_URL);
 
 export const useApplicationDates = () => {
   return useQuery<ApplicationDate[], Error>({
@@ -30,8 +36,11 @@ export const useApplicationDate = (applicationDateId: number) => {
   });
 };
 
-const myApiClient = apiClient<ApplicationDateFormData>(APPLICATION_DATE_URL);
-export const useCreateApplicationDate = (onCreate: () => void, reset: () => void) => {
+const myApiClient = apiClient<ApplicationDateFormData>(APP_DATE_URL);
+export const useCreateApplicationDate = (
+  onCreate: () => void,
+  reset: () => void
+) => {
   const queryClient = useQueryClient();
   return useMutation<ApplicationDateFormData, Error, ApplicationDateFormData>({
     mutationFn: (data: ApplicationDateFormData) => myApiClient.post(data),
@@ -46,18 +55,44 @@ export const useCreateApplicationDate = (onCreate: () => void, reset: () => void
   });
 };
 
-// export const useEditEmployee = (onUpdate: () => void, employeeId: number) => {
-//   const queryClient = useQueryClient();
+const editApiClient = apiClient<ApplicationDateEditFormData>(APP_DATE_URL);
+export const useEditApplicationDate = (onUpdate: () => void) => {
+  const queryClient = useQueryClient();
+  const navigate = useNavigate();
 
-//   return useMutation<Data, Error, Data>({
-//     mutationFn: (data: Data) => apiClients.patchFormData(data, employeeId),
+  return useMutation<
+    ApplicationDateEditFormData,
+    Error,
+    ApplicationDateEditFormData
+  >({
+    mutationFn: (data: ApplicationDateEditFormData) =>
+      editApiClient.patch(data),
 
-//     onSuccess: () => {
-//       onUpdate();
+    onSuccess: () => {
+      onUpdate();
+      navigate(`${AUTH_LAYOUT_ROUTE}/${APP_DATES_ROUTE}`);
 
-//       return queryClient.invalidateQueries({
-//         queryKey: [CACHE_KEY_EMPLOYEE],
-//       });
-//     },
-//   });
-// };
+      return queryClient.invalidateQueries({
+        queryKey: [CACHE_KEY_APPLICATIONDATE],
+      });
+    },
+  });
+};
+
+export const useDeleteApplicationDate = (onDelete: () => void) => {
+  const navigate = useNavigate();
+
+  const queryClient = useQueryClient();
+  return useMutation<number, Error, number>({
+    mutationFn: (id: number) => apiClients.delete(id),
+
+    onSuccess: () => {
+      navigate(`${AUTH_LAYOUT_ROUTE}/${APP_DATES_ROUTE}`);
+      onDelete();
+
+      return queryClient.invalidateQueries({
+        queryKey: [CACHE_KEY_APPLICATIONDATE],
+      });
+    },
+  });
+};

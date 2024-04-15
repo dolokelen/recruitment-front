@@ -7,7 +7,7 @@ import {
   Box,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import { APPLICATIONDATE_ROUTE, GROUP_CREATE_ROUTE } from "../cacheKeysAndRoutes";
+import { APP_DATES_ROUTE, GROUP_CREATE_ROUTE } from "../cacheKeysAndRoutes";
 
 const MyDrawerContent = () => {
   return (
@@ -53,7 +53,7 @@ const MyDrawerContent = () => {
           </AccordionButton>
         </h2>
         <AccordionPanel pb={4}>
-          <Link to={APPLICATIONDATE_ROUTE}>Application Dates</Link>
+          <Link to={APP_DATES_ROUTE}>Application Dates</Link>
         </AccordionPanel>
       </AccordionItem>
 

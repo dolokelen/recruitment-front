@@ -15,10 +15,17 @@ import MySpinner from "../components/MySpinner";
 import { useApplicationDates } from "../hooks/useApplicationdate";
 import ApplicationDateCreatePage from "./ApplicationDateCreatePage";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import {
+  APP_DATE_DETAIL_ROUTE,
+  AUTH_LAYOUT_ROUTE,
+} from "../cacheKeysAndRoutes";
 
 const ApplicationDatePage = () => {
   const [showDatePicker, setShowDatePicker] = useState(false);
   const { data, isLoading, error } = useApplicationDates();
+  const navigate = useNavigate();
+
   if (isLoading) return <MySpinner />;
   if (error) return <Text color={red}>{error.message}</Text>;
   return (
@@ -45,6 +52,12 @@ const ApplicationDatePage = () => {
               <Tr
                 key={data.id}
                 fontWeight={data.is_current ? "bold" : "normal"}
+                onClick={() => data.is_current &&
+                  navigate(
+                    `${AUTH_LAYOUT_ROUTE}/${APP_DATE_DETAIL_ROUTE}/${data.id}`
+                  )
+                }
+                _hover={{ cursor: "pointer", textDecoration: "underline" }}
               >
                 <Td>{data.open_date}</Td>
                 <Td>{data.close_date}</Td>

@@ -308,4 +308,9 @@ export default {
     color: blue700,
     fontSize: commonHeading.fontSize,
   },
+
+  //Deletion Button
+  deleteButton: {
+    width: {base: "100%", sm: "auto"}
+  }
 };
