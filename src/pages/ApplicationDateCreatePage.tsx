@@ -8,6 +8,8 @@ import { toast } from "react-toastify";
 import { http_400_BAD_REQUEST_CUSTOM_MESSAGE } from "../utilities/httpErrorMessages";
 import { useCreateApplicationDate } from "../hooks/useApplicationdate";
 import styles from "../styles";
+import { hasPermission } from "../utilities/hasPermissions";
+import AccessDenyPage from "./AccessDenyPage";
 
 const schema = z.object({
   open_date: z.string().min(10, { message: "Opening date is required." }),
@@ -16,7 +18,7 @@ const schema = z.object({
 
 export type ApplicationDateFormData = z.infer<typeof schema>;
 
-const ApplicationDatePage = () => {
+const ApplicationDateCreatePage = () => {
   const {
     register,
     handleSubmit,
@@ -31,6 +33,7 @@ const ApplicationDatePage = () => {
   const onSubmit = (data: ApplicationDateFormData) => mutate.mutate(data);
 
   const errMessage = http_400_BAD_REQUEST_CUSTOM_MESSAGE(mutate);
+  if (!hasPermission("Can add application date")) return <AccessDenyPage />;
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -57,4 +60,4 @@ const ApplicationDatePage = () => {
   );
 };
 
-export default ApplicationDatePage;
+export default ApplicationDateCreatePage;

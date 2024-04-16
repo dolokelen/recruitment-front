@@ -25,6 +25,8 @@ import { red } from "../colors";
 import MySpinner from "../components/MySpinner";
 import DeletionConfirmation from "../utilities/DeletionConfirmation";
 import styles from "../styles";
+import { hasPermission } from "../utilities/hasPermissions";
+import AccessDenyPage from "../pages/AccessDenyPage";
 
 const GroupDetailPage = () => {
   const { id } = useParams();
@@ -43,10 +45,11 @@ const GroupDetailPage = () => {
     }
   );
 
-  // const canChangeGroup = hasPermission("Can change group");
-  // const canChangePermission = hasPermission("Can change permission");
+  const canChangeGroup = hasPermission("Can change group");
+  const canDeleteGroup = hasPermission("Can delete group");
+  const canViewPermission = hasPermission("Can view permission");
+  const canAddPermission = hasPermission("Can add permission");
 
-  // if (!hasPermission("Can view group")) return <AccessDenyPage />;
   if (error) return <Text color={red}>{error.message}</Text>;
   if (isLoading) return <MySpinner />;
 
@@ -60,6 +63,14 @@ const GroupDetailPage = () => {
     }
   };
 
+  if (
+    !canAddPermission &&
+    !canDeleteGroup &&
+    !canViewPermission &&
+    !canChangeGroup
+  )
+    return <AccessDenyPage />;
+
   return (
     <>
       {/* 
@@ -69,89 +80,104 @@ const GroupDetailPage = () => {
       */}
 
       <Grid sx={styles.groupDetailGrid}>
-        <GridItem colSpan={6}>
-          <GroupEditForm />
-        </GridItem>
+        {canChangeGroup && (
+          <GridItem colSpan={6}>
+            <GroupEditForm />
+          </GridItem>
+        )}
 
-        <GridItem colSpan={{ base: 6, sm: 3 }}>
-          <Box sx={styles.groupPermissionsHeadingBox}>
-            <Heading sx={styles.groupPermissionsHeading}>
-              Group Permissions
-            </Heading>
-            <OverflowYContainer>
-              <List>
-                {group?.permissions?.length ? (
-                  group.permissions?.map((p) => (
-                    <ListItem sx={styles.groupPermissionsListItems} key={p.id}>
-                      <Checkbox
-                        isChecked={selectedPermissions.includes(p.id)}
-                        onChange={() => handleCheckboxChange(p.id)}
+        {canViewPermission && (
+          <GridItem colSpan={{ base: 6, sm: 3 }}>
+            <Box sx={styles.groupPermissionsHeadingBox}>
+              <Heading sx={styles.groupPermissionsHeading}>
+                Group Permissions
+              </Heading>
+              <OverflowYContainer>
+                <List>
+                  {group?.permissions?.length ? (
+                    group.permissions?.map((p) => (
+                      <ListItem
+                        sx={styles.groupPermissionsListItems}
+                        key={p.id}
                       >
-                        {p.name}
-                      </Checkbox>
+                        <Checkbox
+                          isChecked={selectedPermissions.includes(p.id)}
+                          onChange={() => handleCheckboxChange(p.id)}
+                        >
+                          {p.name}
+                        </Checkbox>
+                      </ListItem>
+                    ))
+                  ) : (
+                    <ListItem sx={styles.noAssignPermissionsListItem}>
+                      No assigned permission
                     </ListItem>
-                  ))
-                ) : (
-                  <ListItem sx={styles.noAssignPermissionsListItem}>
-                    No assigned permission
-                  </ListItem>
-                )}
-              </List>
-            </OverflowYContainer>
-            {selectedPermissions.length === 0 ? (
-              // This Box gives the button 100% width
-              <Box sx={styles.groupPermissionsRemoveButtonWrapper}>
-                <Button
-                  sx={styles.groupPermissionsRemoveButton}
-                  colorScheme={styles.groupPermissionsRemoveButton.colorScheme}
-                  isActive
-                  isDisabled
-                  width="inherit"
-                >
-                  Remove
-                </Button>
-              </Box>
-            ) : (
-              <Box sx={styles.groupPermissionsRemoveButtonWrapper}>
-                <Button
-                  sx={styles.groupPermissionsRemoveButton}
-                  onClick={handlePermissionsRemoval}
-                  colorScheme={styles.groupPermissionsRemoveButton.colorScheme}
-                  isActive
-                  width="inherit"
-                >
-                  Remove
-                </Button>
-              </Box>
-            )}
-          </Box>
-        </GridItem>
+                  )}
+                </List>
+              </OverflowYContainer>
+              {selectedPermissions.length === 0 ? (
+                // This Box gives the button 100% width
+                <Box sx={styles.groupPermissionsRemoveButtonWrapper}>
+                  <Button
+                    sx={styles.groupPermissionsRemoveButton}
+                    colorScheme={
+                      styles.groupPermissionsRemoveButton.colorScheme
+                    }
+                    isActive
+                    isDisabled
+                    width="inherit"
+                  >
+                    Remove
+                  </Button>
+                </Box>
+              ) : (
+                <Box sx={styles.groupPermissionsRemoveButtonWrapper}>
+                  <Button
+                    sx={styles.groupPermissionsRemoveButton}
+                    onClick={handlePermissionsRemoval}
+                    colorScheme={
+                      styles.groupPermissionsRemoveButton.colorScheme
+                    }
+                    isActive
+                    width="inherit"
+                  >
+                    Remove
+                  </Button>
+                </Box>
+              )}
+            </Box>
+          </GridItem>
+        )}
 
-        <GridItem colSpan={{ base: 6, sm: 3 }}>
-          <Box sx={styles.availablePermissionsHeadingBox}>
-            <Heading sx={styles.availablePermissionsHeading}>
-              Available Permissions
-            </Heading>
-            <PermissionList
-              assignPermissions={group?.permissions}
-              pl={styles.groupAvailablePermissionsListItems.pl}
-            />
-          </Box>
-        </GridItem>
+        {canAddPermission && (
+          <GridItem colSpan={{ base: 6, sm: 3 }}>
+            <Box sx={styles.availablePermissionsHeadingBox}>
+              <Heading sx={styles.availablePermissionsHeading}>
+                Available Permissions
+              </Heading>
+              <PermissionList
+                assignPermissions={group?.permissions}
+                pl={styles.groupAvailablePermissionsListItems.pl}
+              />
+            </Box>
+          </GridItem>
+        )}
 
         {/* The mt is unneccessary all GridItems should have the 
             same gap but while it's not working in these situations? */}
-        <GridItem colSpan={6} mt={{ base: 6, md: -6 }}>
-          <DeletionConfirmation
-            entityId={groupId}
-            entityName={group?.name}
-            label="Delete Group"
-            baseWidth={styles.deleteGroupButtonWidth.base}
-            smWidth={styles.deleteGroupButtonWidth.sm}
-            mdWidth={styles.deleteGroupButtonWidth.md}
-            onMutate={() => mutation.mutate(groupId)}
-          />
-        </GridItem>
+        {canDeleteGroup && (
+          <GridItem colSpan={6} mt={{ base: 6, md: -6 }}>
+            <DeletionConfirmation
+              entityId={groupId}
+              entityName={group?.name}
+              label="Delete Group"
+              baseWidth={styles.deleteGroupButtonWidth.base}
+              smWidth={styles.deleteGroupButtonWidth.sm}
+              mdWidth={styles.deleteGroupButtonWidth.md}
+              onMutate={() => mutation.mutate(groupId)}
+            />
+          </GridItem>
+        )}
       </Grid>
     </>
   );

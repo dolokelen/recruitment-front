@@ -6,7 +6,7 @@ export const CACHE_KEY_APPLICATIONDATE = "applicationdate";
 
 export const AUTH_LAYOUT_ROUTE = "/dashboard";
 export const GROUP_ROUTE = "group-lists";
-export const GROUP_CREATE_ROUTE = "create-group";
+export const GROUP_CREATE_ROUTE = "group-create";
 export const GROUP_EDIT_ROUTE = "group-edit";
 export const APP_DATES_ROUTE = "applicationdate-lists";
 export const APP_DATE_DETAIL_ROUTE = "applicationdate-detial";

@@ -8,8 +8,13 @@ import {
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { APP_DATES_ROUTE, GROUP_CREATE_ROUTE } from "../cacheKeysAndRoutes";
+import { hasPermission } from "../utilities/hasPermissions";
 
 const MyDrawerContent = () => {
+  const canViewGroup = hasPermission("Can view group");
+  const canAddGroup = hasPermission("Can add group");
+  const canViewApplicationDate = hasPermission("Can view application date");
+
   return (
     <Accordion
       defaultIndex={[0]}
@@ -18,44 +23,53 @@ const MyDrawerContent = () => {
       bg="blue.900"
     >
       {/* Starts from here*/}
-      <AccordionItem border="none">
-        <h2
-          style={{
-            backgroundColor: "black",
-            borderRadius: "20px",
-          }}
-        >
-          <AccordionButton flexWrap="wrap">
-            <Box as="span" flex="1" textAlign="left">
-              Group
-            </Box>
-            <AccordionIcon />
-          </AccordionButton>
-        </h2>
-        <AccordionPanel pb={4}>
-          <Link to={GROUP_CREATE_ROUTE}>Create Group</Link>
-        </AccordionPanel>
-      </AccordionItem>
+      {canViewGroup && (
+        <AccordionItem border="none">
+          <h2
+            style={{
+              backgroundColor: "black",
+              borderRadius: "20px",
+            }}
+          >
+            <AccordionButton flexWrap="wrap">
+              <Box as="span" flex="1" textAlign="left">
+                Group
+              </Box>
+              <AccordionIcon />
+            </AccordionButton>
+          </h2>
+          <AccordionPanel pb={4}>
+            <Link to={GROUP_CREATE_ROUTE}>Group List</Link>
+          </AccordionPanel>
+          {canAddGroup && (
+            <AccordionPanel pb={4}>
+              <Link to={GROUP_CREATE_ROUTE}>Create Group</Link>
+            </AccordionPanel>
+          )}
+        </AccordionItem>
+      )}
 
-      <AccordionItem border="none">
-        <h2
-          style={{
-            backgroundColor: "red",
-            marginTop: "1rem",
-            borderRadius: "20px",
-          }}
-        >
-          <AccordionButton>
-            <Box as="span" flex="1" textAlign="left">
-              Application Date
-            </Box>
-            <AccordionIcon />
-          </AccordionButton>
-        </h2>
-        <AccordionPanel pb={4}>
-          <Link to={APP_DATES_ROUTE}>Application Dates</Link>
-        </AccordionPanel>
-      </AccordionItem>
+      {canViewApplicationDate && (
+        <AccordionItem border="none">
+          <h2
+            style={{
+              backgroundColor: "red",
+              marginTop: "1rem",
+              borderRadius: "20px",
+            }}
+          >
+            <AccordionButton>
+              <Box as="span" flex="1" textAlign="left">
+                Application Date
+              </Box>
+              <AccordionIcon />
+            </AccordionButton>
+          </h2>
+          <AccordionPanel pb={4}>
+            <Link to={APP_DATES_ROUTE}>Application Dates</Link>
+          </AccordionPanel>
+        </AccordionItem>
+      )}
 
       <AccordionItem border="none">
         <h2

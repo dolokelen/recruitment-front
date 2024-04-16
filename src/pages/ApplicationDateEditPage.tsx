@@ -18,6 +18,8 @@ import {
   deletionErrorMessage,
   http_400_BAD_REQUEST_CUSTOM_MESSAGE,
 } from "../utilities/httpErrorMessages";
+import { hasPermission } from "../utilities/hasPermissions";
+import AccessDenyPage from "./AccessDenyPage";
 
 const schema = z.object({
   id: z.number().optional(),
@@ -55,7 +57,8 @@ const ApplicationDateEditPage = () => {
       setValue("close_date", appData?.close_date);
     }
   }, [appData, setValue]);
-
+  const canDeleteApplicationDate = hasPermission("Can delete application date");
+  if (!hasPermission("Can change application date")) return <AccessDenyPage />;
   if (isLoading) return <MySpinner />;
   if (error) return <Text color={red}>{error.message}</Text>;
   return (
@@ -84,18 +87,21 @@ const ApplicationDateEditPage = () => {
         >
           <MyButton label="Edit" />
 
-          <Button sx={styles.deleteButton}
-            isActive
-            colorScheme={red}
-            type="submit"
-            mt={{ base: 8, sm: 2 }}
-            onClick={() => {
-              mutation.mutate(iD);
-              mutation.isError && toast.error(deletionErrorMessage());
-            }}
-          >
-            Delete
-          </Button>
+          {canDeleteApplicationDate && (
+            <Button
+              sx={styles.deleteButton}
+              isActive
+              colorScheme={red}
+              type="submit"
+              mt={{ base: 8, sm: 2 }}
+              onClick={() => {
+                mutation.mutate(iD);
+                mutation.isError && toast.error(deletionErrorMessage());
+              }}
+            >
+              Delete
+            </Button>
+          )}
         </Flex>
       </form>
     </Container>

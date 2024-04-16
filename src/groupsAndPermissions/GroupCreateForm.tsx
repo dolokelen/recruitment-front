@@ -23,6 +23,7 @@ import { useEffect } from "react";
 import styles from "../styles";
 import { MyButtonWithIcon } from "../MyFormComponents";
 import GroupList from "./GroupList";
+import { hasPermission } from "../utilities/hasPermissions";
 
 const groupSchema = z.object({
   name: z.string().min(1, {
@@ -67,70 +68,73 @@ const GroupCreateForm = () => {
 
   const customErrorMessage = http_400_BAD_REQUEST_CUSTOM_MESSAGE(mutation);
 
-  //   if (!hasPermission("Can add group")) return <AccessDenyPage />;
   const columnLayout = useBreakpointValue({ base: "1fr", md: "1fr auto" });
-
+  const canAddGroup = hasPermission("Can add group");
   return (
     <>
       <Grid templateColumns={columnLayout} sx={styles.groupCreateGrid}>
-        <GridItem>
-          <Box sx={styles.groupCreateFormWrapper}>
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <Heading sx={styles.groupCreateHeading}>
-                Group Creation Form
-              </Heading>
+        {canAddGroup && (
+          <GridItem>
+            <Box sx={styles.groupCreateFormWrapper}>
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <Heading sx={styles.groupCreateHeading}>
+                  Group Creation Form
+                </Heading>
 
-              {/* Tradeoff: scapegoat enables bulk create!*/}
-              <Box display="none">
-                <Checkbox {...register("scapegoat")}>display is none?</Checkbox>
-                {errors.scapegoat && (
-                  <Text color={red}>{errors.scapegoat.message}</Text>
-                )}
-              </Box>
+                {/* Tradeoff: scapegoat enables bulk create!*/}
+                <Box display="none">
+                  <Checkbox {...register("scapegoat")}>
+                    display is none?
+                  </Checkbox>
+                  {errors.scapegoat && (
+                    <Text color={red}>{errors.scapegoat.message}</Text>
+                  )}
+                </Box>
 
-              {fields.map((group, index) => (
-                <HStack key={group.id}>
-                  <Box sx={styles.groupCreateInputWrapper}>
-                    <FormLabel sx={styles.groupCreateInputLabel}>
-                      Name
-                    </FormLabel>
-                    <Input
-                      {...register(`groups.${index}.name`)}
-                      sx={styles.groupCreateInput}
-                    />
-                    {errors?.groups?.[index]?.name && (
-                      <Text color={red}>
-                        {errors.groups[index]?.name?.message}
-                      </Text>
-                    )}
-                    {customErrorMessage && (
-                      <Text color={red}>{customErrorMessage}</Text>
-                    )}
-                  </Box>
+                {fields.map((group, index) => (
+                  <HStack key={group.id}>
+                    <Box sx={styles.groupCreateInputWrapper}>
+                      <FormLabel sx={styles.groupCreateInputLabel}>
+                        Name
+                      </FormLabel>
+                      <Input
+                        {...register(`groups.${index}.name`)}
+                        sx={styles.groupCreateInput}
+                      />
+                      {errors?.groups?.[index]?.name && (
+                        <Text color={red}>
+                          {errors.groups[index]?.name?.message}
+                        </Text>
+                      )}
+                      {customErrorMessage && (
+                        <Text color={red}>{customErrorMessage}</Text>
+                      )}
+                    </Box>
 
-                  <Box sx={styles.groupCreateIconWrapper}>
-                    <FiPlusCircle
-                      onClick={() => append({ name: "" })}
-                      size={styles.groupCreatePlusIcon.size}
-                      color={styles.groupCreatePlusIcon.color}
-                    />
-                  </Box>
-                  {fields.length > 1 && (
                     <Box sx={styles.groupCreateIconWrapper}>
-                      <MdOutlineRemoveCircleOutline
-                        onClick={() => remove(index)}
+                      <FiPlusCircle
+                        onClick={() => append({ name: "" })}
                         size={styles.groupCreatePlusIcon.size}
-                        color={styles.groupCreateRemoveIcon.color}
+                        color={styles.groupCreatePlusIcon.color}
                       />
                     </Box>
-                  )}
-                </HStack>
-              ))}
+                    {fields.length > 1 && (
+                      <Box sx={styles.groupCreateIconWrapper}>
+                        <MdOutlineRemoveCircleOutline
+                          onClick={() => remove(index)}
+                          size={styles.groupCreatePlusIcon.size}
+                          color={styles.groupCreateRemoveIcon.color}
+                        />
+                      </Box>
+                    )}
+                  </HStack>
+                ))}
 
-              <MyButtonWithIcon label="Create" />
-            </form>
-          </Box>
-        </GridItem>
+                <MyButtonWithIcon label="Create" />
+              </form>
+            </Box>
+          </GridItem>
+        )}
 
         <GridItem sx={styles.createGroupListGridItem}>
           {/* Group list section */}

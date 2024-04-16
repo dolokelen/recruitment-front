@@ -8,6 +8,8 @@ import OverflowYContainer from "./OverflowYContainer";
 import { red } from "../colors";
 import MySpinner from "../components/MySpinner";
 import styles from "../styles";
+import { hasPermission } from "../utilities/hasPermissions";
+import AccessDenyPage from "../pages/AccessDenyPage";
 
 interface StyleSheet {
   pl?: number;
@@ -34,7 +36,8 @@ const PermissionList = ({ assignPermissions, pl }: Props) => {
       toast.success("Permissions removed successfully!");
     }
   );
-
+  
+  if(!hasPermission("Can add permission")) return <AccessDenyPage />
   if (error) return <Text color={red}>{error.message}</Text>;
   if (isLoading) return <MySpinner />;
 
@@ -47,14 +50,13 @@ const PermissionList = ({ assignPermissions, pl }: Props) => {
       setSelectedPermissions([...selectedPermissions, permissionId]);
     }
   };
-
   return (
     <OverflowYContainer>
       <List>
         {allPermissions
           ?.filter((p) => !assignPermissions?.some((ap) => ap.id === p.id))
           .map((p) => (
-            <ListItem pl={pl}>
+            <ListItem pl={pl} key={p.id}>
               <Checkbox
                 isChecked={selectedPermissions.includes(p.id)}
                 onChange={() => handleCheckboxChange(p.id)}

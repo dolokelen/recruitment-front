@@ -3,6 +3,11 @@
 // import { CACHE_KEY_USER } from "../cacheKeysAndRoutes";
 // import apiClient from "../services/httpService";
 
+import { useQuery} from "@tanstack/react-query";
+import { Permission } from "./usePermissions";
+import getUserId from "../utilities/getUserId";
+import ms from "ms";
+import apiClient from "../services/httpService";
 
 // interface Group {
 //   id: number;
@@ -52,19 +57,19 @@
 //   });
 // };
 
-// interface UserGroupsPermissions {
-//   id: number;
-//   name: string;
-//   permissions: Permission[];
-// }
-// export const useUserGroupsPermissions = (userId: number) => {
-//   const apiClients = apiClient<UserGroupsPermissions>("/core/user_groups/");
-//   return useQuery<UserGroupsPermissions[], Error>({
-//     queryKey: ["userGroupsPermissions", getUserId()],
-//     queryFn: () => apiClients.getEntity(userId),
-//     staleTime: ms("24h"),
-//   });
-// };
+interface UserGroupsPermissions {
+  id: number;
+  name: string;
+  permissions: Permission[];
+}
+export const useUserGroupsPermissions = (userId: number) => {
+  const apiClients = apiClient<UserGroupsPermissions>("/core/user-groups/");
+  return useQuery<UserGroupsPermissions[], Error>({
+    queryKey: ["userGroupsPermissions", getUserId()],
+    queryFn: () => apiClients.getEntity(userId),
+    staleTime: ms("24h"),
+  });
+};
 
 // export const useEditUser = (onUpdate: () => void) => {
 //   const queryClient = useQueryClient();

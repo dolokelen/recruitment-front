@@ -20,25 +20,29 @@ import {
   APP_DATE_DETAIL_ROUTE,
   AUTH_LAYOUT_ROUTE,
 } from "../cacheKeysAndRoutes";
+import { hasPermission } from "../utilities/hasPermissions";
 
 const ApplicationDatePage = () => {
   const [showDatePicker, setShowDatePicker] = useState(false);
   const { data, isLoading, error } = useApplicationDates();
   const navigate = useNavigate();
+  const canAddApplicationDate = hasPermission("Can add application date");
 
   if (isLoading) return <MySpinner />;
   if (error) return <Text color={red}>{error.message}</Text>;
   return (
     <>
-      <Container mt={4}>
-        <Button
-          colorScheme="yellow"
-          onClick={() => setShowDatePicker(!showDatePicker)}
-        >
-          {showDatePicker ? "Hide Dates Form" : "Show Dates Form"}
-        </Button>
-        {showDatePicker && <ApplicationDateCreatePage />}
-      </Container>
+      {canAddApplicationDate && (
+        <Container mt={4}>
+          <Button
+            colorScheme="yellow"
+            onClick={() => setShowDatePicker(!showDatePicker)}
+          >
+            {showDatePicker ? "Hide Dates Form" : "Show Dates Form"}
+          </Button>
+          {showDatePicker && <ApplicationDateCreatePage />}
+        </Container>
+      )}
       <Container bg="gold" mt={8}>
         <Table>
           <Thead>
@@ -52,7 +56,8 @@ const ApplicationDatePage = () => {
               <Tr
                 key={data.id}
                 fontWeight={data.is_current ? "bold" : "normal"}
-                onClick={() => data.is_current &&
+                onClick={() =>
+                  data.is_current &&
                   navigate(
                     `${AUTH_LAYOUT_ROUTE}/${APP_DATE_DETAIL_ROUTE}/${data.id}`
                   )
