@@ -14,6 +14,8 @@ import styles from "../styles";
 
 const schema = z
   .object({
+    first_name: z.string().min(1, { message: "First name is require." }),
+    last_name: z.string().min(1, { message: "Last name is require." }),
     email: z
       .string()
       .min(3, { message: "Email is required." })
@@ -51,12 +53,27 @@ const RegistrationForm = () => {
   const registration = useRegistration(onCreate, () => reset());
   const onSubmit = (data: RegistrationFormData) => registration.mutate(data);
 
+  //errMessage is apply to fields unique fields.
   const errMessage = http_400_BAD_REQUEST_CUSTOM_MESSAGE(registration);
 
   return (
     <Box sx={styles.registrationWrapper}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Heading sx={styles.registrationHeader}>Registration Form</Heading>
+
+        <MyInput
+          label="First Name"
+          type="text"
+          register={register("first_name")}
+          errorMessage={errors.first_name && errors.first_name.message}
+        />
+
+        <MyInput
+          label="Last Name"
+          type="text"
+          register={register("last_name")}
+          errorMessage={errors.last_name && errors.last_name.message}
+        />
 
         <MyInput
           label="Email"
