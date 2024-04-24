@@ -3,7 +3,7 @@
 // import { CACHE_KEY_USER } from "../cacheKeysAndRoutes";
 // import apiClient from "../services/httpService";
 
-import { useQuery} from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { Permission } from "./usePermissions";
 import getUserId from "../utilities/getUserId";
 import ms from "ms";
@@ -39,15 +39,14 @@ import apiClient from "../services/httpService";
 //   });
 // };
 
-// export interface UserProfile {
-//   id: number;
-//   username: string;
-//   email: string;
-//   first_name: string;
-//   last_name: string;
-//   full_name: string;
-//   is_active: boolean;
-// }
+export interface User {
+  id: number;
+  email: string;
+  first_name: string;
+  last_name: string;
+  full_name: string;
+}
+
 // export const useUserProfile = () => {
 //   const apiClients = apiClient<UserProfile>("/auth/users/me");
 //   return useQuery<UserProfile, Error>({

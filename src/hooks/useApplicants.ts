@@ -1,6 +1,8 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import apiClient, { formDataConfig } from "../services/httpService";
 import { CACHE_KEY_APPLICANT } from "../cacheKeysAndRoutes";
+import { User } from "./useUsers";
+import ms from "ms";
 
 interface ApplicantDocument {
   id: number;
@@ -35,18 +37,19 @@ interface ApplicantContact {
 }
 
 interface Applicant {
-  id: number; //Not included in the applicant create form
-  id_number: string; //Not included in the applicant create form
+  user: User;
+  id_number: string;
   gender: string;
   birth_date: string;
   county: string;
   religion: string;
   image: string;
-  status: string; //Not included in the applicant create form
-  rejection_reason: string; //Not included in the applicant create form
-  app_document: ApplicantDocument;
-  app_address: ApplicantAddress;
-  app_contact: ApplicantContact;
+  status: string;
+  full_name: string;
+  rejection_reason: string;
+  // app_document: ApplicantDocument;
+  // app_address: ApplicantAddress;
+  // app_contact: ApplicantContact;
 }
 
 const APPLICANT_URL = "/recruitment/applicants/";
@@ -69,5 +72,15 @@ export const useCreateApplication = (
         queryKey: [CACHE_KEY_APPLICANT],
       });
     },
+  });
+};
+
+
+export const useApplicant = (applicantId: number) => {
+  const apiClients = apiClient<Applicant>(APPLICANT_URL);
+  return useQuery<Applicant, Error>({
+    queryKey: [CACHE_KEY_APPLICANT, applicantId],
+    queryFn: () => apiClients.get(applicantId),
+    staleTime: ms("24h"),
   });
 };

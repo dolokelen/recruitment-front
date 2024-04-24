@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig } from "axios";
 import ms from "ms";
 
-const baseURL = "http://127.0.0.1:8000";
+export const baseURL = "http://127.0.0.1:8000"; //all files use it
 const timeout = ms("5s");
 const accept = "application/json";
 
@@ -221,7 +221,6 @@ class APIClient<T> {
       });
 
       await Promise.all(postPromises);
-
     } catch (error) {
       throw error;
     }

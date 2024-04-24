@@ -4,6 +4,7 @@ import {
   APP_DATE_DETAIL_ROUTE,
   APP_DATES_ROUTE,
   APPLICATION_FORM_ROUTE,
+  APPLICATION_PROFILE_ROUTE,
   AUTH_LAYOUT_ROUTE,
   GROUP_CREATE_ROUTE,
   GROUP_ROUTE,
@@ -22,6 +23,7 @@ import MyChart from "./components/MyChart";
 import ApplicationDatePage from "./pages/ApplicationDatePage";
 import ApplicationDateEditPage from "./pages/ApplicationDateEditPage";
 import ApplicationForm from "./pages/ApplicationForm";
+import ApplicantProfilePage from "./pages/ApplicantProfilePage";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +43,7 @@ const router = createBrowserRouter([
         element: <ApplicationDateEditPage />,
       },
       { path: AUTH_LAYOUT_ROUTE, element: <MyChart /> },
+      { path: APPLICATION_PROFILE_ROUTE, element: <ApplicantProfilePage /> },
     ],
   },
 

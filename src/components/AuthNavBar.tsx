@@ -1,5 +1,5 @@
 import autoRouteToHome from "../utilities/getHomeRoute";
-import { APPLICATION_FORM_ROUTE, AUTH_LAYOUT_ROUTE, CHART_ROUTE } from "../cacheKeysAndRoutes";
+import { APPLICATION_FORM_ROUTE, AUTH_LAYOUT_ROUTE} from "../cacheKeysAndRoutes";
 import { Link } from "react-router-dom";
 import { HStack } from "@chakra-ui/react";
 import logoutUser from "../utilities/logoutUser";
