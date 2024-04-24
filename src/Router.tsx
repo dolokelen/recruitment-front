@@ -3,8 +3,8 @@ import HomePage from "./components/HomePage";
 import {
   APP_DATE_DETAIL_ROUTE,
   APP_DATES_ROUTE,
+  APPLICATION_FORM_ROUTE,
   AUTH_LAYOUT_ROUTE,
-  CHART_ROUTE,
   GROUP_CREATE_ROUTE,
   GROUP_ROUTE,
   HOME_ROUTE,
@@ -21,6 +21,7 @@ import GroupDetailPage from "./groupsAndPermissions/GroupDetailPage";
 import MyChart from "./components/MyChart";
 import ApplicationDatePage from "./pages/ApplicationDatePage";
 import ApplicationDateEditPage from "./pages/ApplicationDateEditPage";
+import ApplicationForm from "./pages/ApplicationForm";
 
 const router = createBrowserRouter([
   {
@@ -32,10 +33,14 @@ const router = createBrowserRouter([
       { path: `${GROUP_ROUTE}/:id`, element: <GroupDetailPage /> },
       { path: APP_DATES_ROUTE, element: <ApplicationDatePage /> },
       {
+        path: APPLICATION_FORM_ROUTE,
+        element: <ApplicationForm />,
+      },
+      {
         path: `${APP_DATE_DETAIL_ROUTE}/:id`,
         element: <ApplicationDateEditPage />,
       },
-      { path: CHART_ROUTE, element: <MyChart /> },
+      { path: AUTH_LAYOUT_ROUTE, element: <MyChart /> },
     ],
   },
 

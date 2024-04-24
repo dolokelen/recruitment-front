@@ -5,9 +5,14 @@ import {
   AccordionItem,
   AccordionPanel,
   Box,
+  Flex,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import { APP_DATES_ROUTE, GROUP_CREATE_ROUTE } from "../cacheKeysAndRoutes";
+import {
+  APPLICATION_FORM_ROUTE,
+  APP_DATES_ROUTE,
+  GROUP_CREATE_ROUTE,
+} from "../cacheKeysAndRoutes";
 import { hasPermission } from "../utilities/hasPermissions";
 
 const MyDrawerContent = () => {
@@ -66,7 +71,10 @@ const MyDrawerContent = () => {
             </AccordionButton>
           </h2>
           <AccordionPanel pb={4}>
-            <Link to={APP_DATES_ROUTE}>Application Dates</Link>
+            <Flex flexDirection="column" gap={2}>
+              <Link to={APP_DATES_ROUTE}>Application Dates</Link>
+              <Link to={APPLICATION_FORM_ROUTE}>Application Form</Link>
+            </Flex>
           </AccordionPanel>
         </AccordionItem>
       )}

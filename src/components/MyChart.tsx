@@ -16,7 +16,7 @@ defaults.plugins.title.color = "black";
 const MyChart = () => {
   return (
     <Container>
-      <Box boxShadow="dark-lg" p="6" rounded="md" mt={16}>
+      <Box boxShadow="dark-lg" p="6" rounded="md" mt={1}>
         <Bar
           data={{
             labels: ["January", "February", "March"],
@@ -49,7 +49,7 @@ const MyChart = () => {
         />
       </Box>
 
-      <Box boxShadow="dark-lg" p="6" rounded="md" mt={16}>
+      <Box boxShadow="dark-lg" p="6" rounded="md" mt={4}>
         <Doughnut
           data={{
             labels: ["January", "May", "June", "April", "June"],
