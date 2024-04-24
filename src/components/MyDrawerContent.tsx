@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import {
-  APPLICATION_FORM_ROUTE,
+  APPLICANT_BIODATA_FORM_ROUTE,
   APP_DATES_ROUTE,
   GROUP_CREATE_ROUTE,
 } from "../cacheKeysAndRoutes";
@@ -73,7 +73,7 @@ const MyDrawerContent = () => {
           <AccordionPanel pb={4}>
             <Flex flexDirection="column" gap={2}>
               <Link to={APP_DATES_ROUTE}>Application Dates</Link>
-              <Link to={APPLICATION_FORM_ROUTE}>Application Form</Link>
+              <Link to={APPLICANT_BIODATA_FORM_ROUTE}>Applicant Biodata Form</Link>
             </Flex>
           </AccordionPanel>
         </AccordionItem>

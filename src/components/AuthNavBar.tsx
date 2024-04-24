@@ -1,5 +1,9 @@
 import autoRouteToHome from "../utilities/getHomeRoute";
-import { APPLICATION_FORM_ROUTE, AUTH_LAYOUT_ROUTE} from "../cacheKeysAndRoutes";
+import {
+  APPLICANT_PROFILE_ROUTE,
+  APPLICANT_BIODATA_FORM_ROUTE,
+  AUTH_LAYOUT_ROUTE,
+} from "../cacheKeysAndRoutes";
 import { Link } from "react-router-dom";
 import { HStack } from "@chakra-ui/react";
 import logoutUser from "../utilities/logoutUser";
@@ -13,17 +17,23 @@ const AuthNavBar = () => {
 
   return (
     <>
-      <HStack bg="dark" h={{base: 16, sm: 9}} mb={1} justifyContent="space-evenly">
+      <HStack
+        bg="dark"
+        h={{ base: 16, sm: 9 }}
+        mb={1}
+        justifyContent="space-evenly"
+      >
         <MyDrawer />
         <Link to={autoRouteToHome()}>Website</Link>
         <Link to={AUTH_LAYOUT_ROUTE}>Dashboard</Link>
-        <Link to={APPLICATION_FORM_ROUTE}>Apply</Link>
+        <Link to={APPLICANT_BIODATA_FORM_ROUTE}>Apply</Link>
+        <Link to={APPLICANT_PROFILE_ROUTE}>Profile</Link>
         <Link to={autoRouteToHome()} onClick={logoutUser}>
-          <RiLogoutCircleLine title="Logout" size="1.6rem"/>
+          <RiLogoutCircleLine title="Logout" size="1.6rem" />
         </Link>
         {/* <Link to={PROFILE_ROUTE}>Welcome {userProfile?.last_name}</Link> */}
         {/* <ColorModeSwitch /> */}
-        <Link to='#'>
+        <Link to="#">
           <MyAvatar />
         </Link>
       </HStack>

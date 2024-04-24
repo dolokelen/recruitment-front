@@ -11,8 +11,9 @@ export const GROUP_CREATE_ROUTE = "group-create";
 export const GROUP_EDIT_ROUTE = "group-edit";
 export const APP_DATES_ROUTE = "applicationdate-lists";
 export const APP_DATE_DETAIL_ROUTE = "applicationdate-detial";
-export const APPLICATION_FORM_ROUTE = "application-form";
-export const APPLICATION_PROFILE_ROUTE = "application-profile";
+export const APPLICANT_BIODATA_FORM_ROUTE = "applicant-biodata-form";
+export const APPLICANT_PROFILE_ROUTE = "applicant-profile";
+export const APPLICANT_PROFILE_EDIT_ROUTE = "applicant-profile-edit";
 
 export const HOME_ROUTE = "/";
 export const REGISTER_ROUTE = "register";

@@ -1,9 +1,14 @@
+import { Link } from "react-router-dom";
 import { red } from "../colors";
 import MySpinner from "../components/MySpinner";
 import { useApplicant } from "../hooks/useApplicants";
 import { baseURL } from "../services/httpService";
 import getUserId from "../utilities/getUserId";
 import { Text, Container, Image, Heading, Box, Badge } from "@chakra-ui/react";
+import {
+  APPLICANT_PROFILE_EDIT_ROUTE,
+  AUTH_LAYOUT_ROUTE,
+} from "../cacheKeysAndRoutes";
 
 const ApplicantProfilePage = () => {
   const { data: applicant, isLoading, error } = useApplicant(getUserId()!);
@@ -18,12 +23,19 @@ const ApplicantProfilePage = () => {
           <Image
             borderRadius="lg"
             w="inherit"
+            maxH="500px"
             src={baseURL + applicant?.image}
             alt={applicant?.user.full_name}
           />
+          <Box mt={4} textDecoration="underline">
+            <Link to={`${AUTH_LAYOUT_ROUTE}/${APPLICANT_PROFILE_EDIT_ROUTE}`}>
+              Update Your Profile
+            </Link>
+          </Box>
         </Box>
       </Container>
-      <Container>
+
+      <Container centerContent>
         <Box>
           <Heading sx={headingStyle}>{applicant?.user.full_name}</Heading>
           <Text sx={textStyle}>Email: {applicant?.user.email}</Text>
@@ -49,11 +61,12 @@ const ApplicantProfilePage = () => {
 export default ApplicantProfilePage;
 
 const common = {
-  fontSize: "1.5rem",
+  fontSize: { base: "1rem", sm: "1.5rem" },
   mb: 2,
 };
+
 const headingStyle = {
-  fontSize: "2rem",
+  fontSize: { base: "1.5rem", sm: "2rem" },
   mb: 4,
   mt: { base: 4, md: "auto" },
 };

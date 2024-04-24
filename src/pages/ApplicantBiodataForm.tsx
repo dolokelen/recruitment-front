@@ -32,7 +32,7 @@ const schema = z.object({
 
 export type ApplicationFormData = z.infer<typeof schema>;
 
-const ApplicationForm = () => {
+const ApplicantBiodataForm = () => {
   const {
     register,
     handleSubmit,
@@ -155,7 +155,7 @@ const ApplicationForm = () => {
   );
 };
 
-export default ApplicationForm;
+export default ApplicantBiodataForm;
 
 const labelStyle = {
   fontSize: 20,
