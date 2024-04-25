@@ -9,6 +9,7 @@ import {
   APPLICANT_PROFILE_EDIT_ROUTE,
   AUTH_LAYOUT_ROUTE,
 } from "../cacheKeysAndRoutes";
+import ApplicantDocumentPage from "./ApplicantDocumentPage";
 
 const ApplicantProfilePage = () => {
   const { data: applicant, isLoading, error } = useApplicant(getUserId()!);
@@ -44,6 +45,7 @@ const ApplicantProfilePage = () => {
             Status: {applicant?.status}
           </Badge>
           <Text sx={textStyle}>Gender: {applicant?.gender}</Text>
+          <Text sx={textStyle}>Age: {applicant?.age}</Text>
           <Text sx={textStyle}>County of Origin: {applicant?.county}</Text>
           <Text sx={textStyle}>Religion: {applicant?.religion}</Text>
           <Text sx={textStyle}>Birth Date: {applicant?.birth_date}</Text>
@@ -52,6 +54,7 @@ const ApplicantProfilePage = () => {
               Reason for Rejection: {applicant?.rejection_reason}
             </Text>
           )}
+          <ApplicantDocumentPage document={applicant?.document}/>
         </Box>
       </Container>
     </Box>
@@ -67,7 +70,7 @@ const common = {
 
 const headingStyle = {
   fontSize: { base: "1.5rem", sm: "2rem" },
-  mb: 4,
+  mb: 1,
   mt: { base: 4, md: "auto" },
 };
 

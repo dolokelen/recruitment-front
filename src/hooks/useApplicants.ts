@@ -4,43 +4,28 @@ import { APPLICANT_PROFILE_ROUTE, AUTH_LAYOUT_ROUTE, CACHE_KEY_APPLICANT } from 
 import { User } from "./useUsers";
 import ms from "ms";
 import { useNavigate } from "react-router-dom";
+import { ApplicantDocument } from "./useApplicantDocuments";
 
-interface ApplicantDocument {
-  id: number;
-  cgpa: string;
-  major: string;
-  manor: string;
-  county: string;
-  resume: string; //
-  degree: string; //
-  country: string;
-  institution: string;
-  qualification: string;
-  graduation_year: number;
-  application_letter: string; //
-  community_letter: string; //
-  reference_letter: string; //
-  police_clearance: string; //
-}
 
-interface ApplicantAddress {
-  id: number;
-  country: string;
-  county: string;
-  district: number;
-  community: string;
-  house_address: string;
-}
+// interface ApplicantAddress {
+//   id: number;
+//   country: string;
+//   county: string;
+//   district: number;
+//   community: string;
+//   house_address: string;
+// }
 
-interface ApplicantContact {
-  id: number;
-  phone: string;
-}
+// interface ApplicantContact {
+//   id: number;
+//   phone: string;
+// }
 
 interface Applicant {
   user: User;
   id_number: string;
   gender: string;
+  age: number;
   birth_date: string;
   county: string;
   religion: string;
@@ -48,7 +33,7 @@ interface Applicant {
   status: string;
   full_name: string;
   rejection_reason: string;
-  // app_document: ApplicantDocument;
+  document: ApplicantDocument;
   // app_address: ApplicantAddress;
   // app_contact: ApplicantContact;
 }
