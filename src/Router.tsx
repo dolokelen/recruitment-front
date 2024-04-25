@@ -12,6 +12,7 @@ import {
   LOGIN_ROUTE,
   REGISTER_ROUTE,
   APPLICANT_PROFILE_EDIT_ROUTE,
+  APP_DOCUMENT_CREATE_ROUTE,
 } from "./cacheKeysAndRoutes";
 import UnAuthLayout from "./components/UnAuthLayout";
 import ErrorPage from "./pages/ErrorPage";
@@ -26,6 +27,7 @@ import ApplicationDateEditPage from "./pages/ApplicationDateEditPage";
 import ApplicantBiodataForm from "./pages/ApplicantBiodataForm";
 import ApplicantProfilePage from "./pages/ApplicantProfilePage";
 import ApplicantProfileEditPage from "./pages/ApplicantProfileEditPage";
+import ApplicantDocumentCreatePage from "./pages/ApplicantDocumentCreatePage";
 
 const router = createBrowserRouter([
   {
@@ -49,6 +51,10 @@ const router = createBrowserRouter([
       {
         path: APPLICANT_PROFILE_EDIT_ROUTE,
         element: <ApplicantProfileEditPage />,
+      },
+      {
+        path: APP_DOCUMENT_CREATE_ROUTE,
+        element: <ApplicantDocumentCreatePage />,
       },
     ],
   },

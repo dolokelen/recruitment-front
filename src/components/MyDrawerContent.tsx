@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import {
   APPLICANT_BIODATA_FORM_ROUTE,
   APP_DATES_ROUTE,
+  APP_DOCUMENT_CREATE_ROUTE,
   GROUP_CREATE_ROUTE,
 } from "../cacheKeysAndRoutes";
 import { hasPermission } from "../utilities/hasPermissions";
@@ -74,6 +75,7 @@ const MyDrawerContent = () => {
             <Flex flexDirection="column" gap={2}>
               <Link to={APP_DATES_ROUTE}>Application Dates</Link>
               <Link to={APPLICANT_BIODATA_FORM_ROUTE}>Applicant Biodata Form</Link>
+              <Link to={APP_DOCUMENT_CREATE_ROUTE}>Applicant Document Form</Link>
             </Flex>
           </AccordionPanel>
         </AccordionItem>

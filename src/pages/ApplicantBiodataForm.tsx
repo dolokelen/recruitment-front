@@ -44,7 +44,7 @@ const ApplicantBiodataForm = () => {
 
   const [imageFile, setImageFile] = useState<File | undefined>();
 
-  const onCreate = () => toast.success("Registration Done Successfully!");
+  const onCreate = () => toast.success("Done Successfully!");
   const create = useCreateApplication(onCreate, () => reset());
 
   function handleImageChange(e: React.FormEvent<HTMLInputElement>) {
@@ -92,6 +92,7 @@ const ApplicantBiodataForm = () => {
         </Box>
 
         <MyInput
+          placeholder="1847-01-22"
           label="Birth Date"
           type="text"
           register={register("birth_date")}

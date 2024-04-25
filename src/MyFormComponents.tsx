@@ -7,6 +7,7 @@ interface IProps {
   label: string;
   type?: string;
   w?: string;
+  placeholder?: string;
   children?: ReactNode;
   errorMessage: string | undefined;
   register: UseFormRegisterReturn;
@@ -19,6 +20,7 @@ export const MyInput = ({
   errorMessage,
   register,
   w,
+  placeholder,
 }: IProps) => {
   return (
     <Box mb={4} w={w}>
@@ -26,6 +28,7 @@ export const MyInput = ({
         {label}
       </FormLabel>
       <Input
+        placeholder={placeholder}
         type={type}
         borderRadius={{ base: 8 }}
         border="1px solid skyblue"

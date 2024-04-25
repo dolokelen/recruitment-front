@@ -54,7 +54,10 @@ const ApplicantProfilePage = () => {
               Reason for Rejection: {applicant?.rejection_reason}
             </Text>
           )}
-          <ApplicantDocumentPage document={applicant?.document}/>
+          {/* Document */}
+          {applicant?.document && (
+            <ApplicantDocumentPage document={applicant?.document} />
+          )}
         </Box>
       </Container>
     </Box>
