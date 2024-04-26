@@ -5,16 +5,7 @@ import { User } from "./useUsers";
 import ms from "ms";
 import { useNavigate } from "react-router-dom";
 import { ApplicantDocument } from "./useApplicantDocuments";
-
-
-// interface ApplicantAddress {
-//   id: number;
-//   country: string;
-//   county: string;
-//   district: number;
-//   community: string;
-//   house_address: string;
-// }
+import { ApplicantAddress } from "./useApplicantAddress";
 
 // interface ApplicantContact {
 //   id: number;
@@ -34,7 +25,7 @@ interface Applicant {
   full_name: string;
   rejection_reason: string;
   document: ApplicantDocument;
-  // app_address: ApplicantAddress;
+  address: ApplicantAddress;
   // app_contact: ApplicantContact;
 }
 

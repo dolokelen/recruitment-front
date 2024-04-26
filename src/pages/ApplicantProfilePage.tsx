@@ -10,6 +10,7 @@ import {
   AUTH_LAYOUT_ROUTE,
 } from "../cacheKeysAndRoutes";
 import ApplicantDocumentPage from "./ApplicantDocumentPage";
+import ApplicantAddressPage from "./ApplicantAddressPage";
 
 const ApplicantProfilePage = () => {
   const { data: applicant, isLoading, error } = useApplicant(getUserId()!);
@@ -20,7 +21,7 @@ const ApplicantProfilePage = () => {
   return (
     <Box display={{ md: "flex" }} bg="blue.100" mt={4} pt={4}>
       <Container centerContent>
-        <Box flexShrink={0}>
+        <Box flexShrink={0} w='inherit'>
           <Image
             borderRadius="lg"
             w="inherit"
@@ -28,16 +29,20 @@ const ApplicantProfilePage = () => {
             src={baseURL + applicant?.image}
             alt={applicant?.user.full_name}
           />
-          <Box mt={4} textDecoration="underline">
+          <Box mt={4} color='blue.600'>
             <Link to={`${AUTH_LAYOUT_ROUTE}/${APPLICANT_PROFILE_EDIT_ROUTE}`}>
               Update Your Profile
             </Link>
           </Box>
+        {/* Address */}
+        {applicant?.address && (
+          <ApplicantAddressPage address={applicant?.address} />
+        )}
         </Box>
       </Container>
 
       <Container centerContent>
-        <Box>
+        <Box w='inherit'>
           <Heading sx={headingStyle}>{applicant?.user.full_name}</Heading>
           <Text sx={textStyle}>Email: {applicant?.user.email}</Text>
           <Text sx={textStyle}>ID Number: {applicant?.id_number}</Text>
