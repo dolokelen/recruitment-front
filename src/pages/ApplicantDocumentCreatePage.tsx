@@ -292,7 +292,7 @@ const ApplicantDocumentCreatePage = () => {
             onChange={handleCommunityLetterChange}
             name="community_letter"
             type="file"
-            id="community_letter"
+            id="community_letter" 
           />
         </Box>
 
