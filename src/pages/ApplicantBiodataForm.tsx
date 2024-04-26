@@ -18,6 +18,7 @@ import { MyInput } from "../MyFormComponents";
 import styles from "../styles";
 import { useCreateApplication } from "../hooks/useApplicants";
 import { counties, genders, religions } from "../utilities/staticData";
+import getUserId from "../utilities/getUserId";
 
 const schema = z.object({
   gender: z.string().min(1, { message: "Gender is required" }),
@@ -33,6 +34,8 @@ const schema = z.object({
 export type ApplicationFormData = z.infer<typeof schema>;
 
 const ApplicantBiodataForm = () => {
+  // Before admin use this component they've to login as Applicant
+  // to avoid inconsistancy because the user_id is being user in formData.
   const {
     register,
     handleSubmit,
@@ -59,6 +62,7 @@ const ApplicantBiodataForm = () => {
   const onSubmit = (data: ApplicationFormData) => {
     const formData = new FormData();
 
+    formData.append("user", getUserId()!.toString());
     formData.append("gender", data.gender);
     formData.append("birth_date", data.birth_date);
     formData.append("religion", data.religion);
