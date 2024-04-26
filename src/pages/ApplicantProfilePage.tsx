@@ -6,7 +6,7 @@ import { baseURL } from "../services/httpService";
 import getUserId from "../utilities/getUserId";
 import { Text, Container, Image, Heading, Box, Badge } from "@chakra-ui/react";
 import {
-  APPLICANT_PROFILE_EDIT_ROUTE, 
+  APPLICANT_PROFILE_EDIT_ROUTE,
   AUTH_LAYOUT_ROUTE,
 } from "../cacheKeysAndRoutes";
 import ApplicantDocumentPage from "./ApplicantDocumentPage";
@@ -21,7 +21,7 @@ const ApplicantProfilePage = () => {
   return (
     <Box display={{ md: "flex" }} bg="blue.100" mt={4} pt={4}>
       <Container centerContent>
-        <Box flexShrink={0} w='inherit'>
+        <Box flexShrink={0} w="inherit">
           <Image
             borderRadius="lg"
             w="inherit"
@@ -29,39 +29,41 @@ const ApplicantProfilePage = () => {
             src={baseURL + applicant?.image}
             alt={applicant?.user.full_name}
           />
-          <Box mt={4} color='blue.600'>
+          <Box mt={2} mb={4} color="blue.600">
             <Link to={`${AUTH_LAYOUT_ROUTE}/${APPLICANT_PROFILE_EDIT_ROUTE}`}>
               Update Your Profile
             </Link>
           </Box>
-        {/* Address */}
-        {applicant?.address && (
-          <ApplicantAddressPage address={applicant?.address} />
-        )}
+          <Box w="inherit">
+            <Heading sx={headingStyle}>{applicant?.user.full_name}</Heading>
+            <Text sx={textStyle}>Email: {applicant?.user.email}</Text>
+            <Text sx={textStyle}>ID Number: {applicant?.id_number}</Text>
+            <Badge sx={badgeStyle} colorScheme={statusColor}>
+              Status: {applicant?.status}
+            </Badge>
+            <Text sx={textStyle}>Gender: {applicant?.gender}</Text>
+            <Text sx={textStyle}>Age: {applicant?.age}</Text>
+            <Text sx={textStyle}>County of Origin: {applicant?.county}</Text>
+            <Text sx={textStyle}>Religion: {applicant?.religion}</Text>
+            <Text sx={textStyle}>Birth Date: {applicant?.birth_date}</Text>
+            {applicant?.rejection_reason && (
+              <Text sx={textStyle}>
+                Reason for Rejection: {applicant?.rejection_reason}
+              </Text>
+            )}
+          </Box>
         </Box>
       </Container>
 
       <Container centerContent>
-        <Box w='inherit'>
-          <Heading sx={headingStyle}>{applicant?.user.full_name}</Heading>
-          <Text sx={textStyle}>Email: {applicant?.user.email}</Text>
-          <Text sx={textStyle}>ID Number: {applicant?.id_number}</Text>
-          <Badge sx={badgeStyle} colorScheme={statusColor}>
-            Status: {applicant?.status}
-          </Badge>
-          <Text sx={textStyle}>Gender: {applicant?.gender}</Text>
-          <Text sx={textStyle}>Age: {applicant?.age}</Text>
-          <Text sx={textStyle}>County of Origin: {applicant?.county}</Text>
-          <Text sx={textStyle}>Religion: {applicant?.religion}</Text>
-          <Text sx={textStyle}>Birth Date: {applicant?.birth_date}</Text>
-          {applicant?.rejection_reason && (
-            <Text sx={textStyle}>
-              Reason for Rejection: {applicant?.rejection_reason}
-            </Text>
-          )}
+        <Box w="inherit">
           {/* Document */}
           {applicant?.document && (
             <ApplicantDocumentPage document={applicant?.document} />
+          )}
+          {/* Address */}
+          {applicant?.address && (
+            <ApplicantAddressPage address={applicant?.address} />
           )}
         </Box>
       </Container>
