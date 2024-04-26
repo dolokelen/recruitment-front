@@ -130,10 +130,10 @@ const ApplicantDocumentCreatePage = () => {
     formData.append("graduation_year", data.graduation_year.toString());
     resume && formData.append("resume", resume);
     degree && formData.append("degree", degree);
-    appLetter && formData.append("appLetter", appLetter);
-    commLetter && formData.append("commLetter", commLetter);
-    refLetter && formData.append("refLetter", refLetter);
-    policeClearance && formData.append("policeClearance", policeClearance);
+    appLetter && formData.append("application_letter", appLetter);
+    commLetter && formData.append("community_letter", commLetter);
+    refLetter && formData.append("reference_letter", refLetter);
+    policeClearance && formData.append("police_clearance", policeClearance);
 
     if (
       !formData.get("resume") ||
