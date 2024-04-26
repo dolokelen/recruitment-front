@@ -6,8 +6,6 @@ interface Props {
 }
 
 const ApplicantAddressPage = ({ address }: Props) => {
-  //getUserId() should be used if the user is an applicant [Applicant only]
-  //Otherwise useParms() for geting the selected applicantId [Admin only]
   return (
     <>
       <Heading sx={headingStyle}>Current Address</Heading>

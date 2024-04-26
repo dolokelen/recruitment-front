@@ -16,6 +16,7 @@ export const APPLICANT_BIODATA_FORM_ROUTE = "applicant-biodata-form";
 export const APPLICANT_PROFILE_ROUTE = "applicant-profile";
 export const APPLICANT_PROFILE_EDIT_ROUTE = "applicant-profile-edit";
 export const APP_DOCUMENT_CREATE_ROUTE = "applicant-document-create";
+export const APP_ADDRESS_CREATE_ROUTE = "applicant-address-create";
 
 export const HOME_ROUTE = "/";
 export const REGISTER_ROUTE = "register";
