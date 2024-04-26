@@ -6,7 +6,7 @@ import { baseURL } from "../services/httpService";
 import getUserId from "../utilities/getUserId";
 import { Text, Container, Image, Heading, Box, Badge } from "@chakra-ui/react";
 import {
-  APPLICANT_PROFILE_EDIT_ROUTE,
+  APPLICANT_PROFILE_EDIT_ROUTE, 
   AUTH_LAYOUT_ROUTE,
 } from "../cacheKeysAndRoutes";
 import ApplicantDocumentPage from "./ApplicantDocumentPage";
