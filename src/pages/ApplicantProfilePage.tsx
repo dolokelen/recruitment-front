@@ -64,7 +64,7 @@ const ApplicantProfilePage = () => {
           {/* Address */}
           {applicant?.address && (
             <ApplicantAddressPage address={applicant?.address} />
-          )}
+          )} 
         </Box>
       </Container>
     </Box>
