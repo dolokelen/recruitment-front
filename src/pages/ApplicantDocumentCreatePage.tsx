@@ -118,7 +118,7 @@ const ApplicantDocumentCreatePage = () => {
   }
 
   const onSubmit = (data: AppDocumentCreatePageData) => {
-    const formData = new FormData();
+    const formData = new FormData(); 
 
     formData.append("institution", data.institution);
     formData.append("cgpa", data.cgpa);
