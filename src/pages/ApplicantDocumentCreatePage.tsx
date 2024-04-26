@@ -18,6 +18,7 @@ import { MyInput } from "../MyFormComponents";
 import styles from "../styles";
 import { highestEducations } from "../utilities/staticData";
 import { useCreateApplicantDocument } from "../hooks/useApplicantDocuments";
+import getUserId from "../utilities/getUserId";
 
 const schema = z.object({
   major: z.string().min(2, { message: "Major is required." }),
@@ -120,6 +121,7 @@ const ApplicantDocumentCreatePage = () => {
   const onSubmit = (data: AppDocumentCreatePageData) => {
     const formData = new FormData(); 
 
+    formData.append('applicant', getUserId()!.toString())
     formData.append("institution", data.institution);
     formData.append("cgpa", data.cgpa);
     formData.append("country", data.country);
@@ -138,10 +140,10 @@ const ApplicantDocumentCreatePage = () => {
     if (
       !formData.get("resume") ||
       !formData.get("degree") ||
-      !formData.get("appLetter") ||
-      !formData.get("commLetter") ||
-      !formData.get("refLetter") ||
-      !formData.get("policeClearance")
+      !formData.get("application_letter") ||
+      !formData.get("community_letter") ||
+      !formData.get("reference_letter") ||
+      !formData.get("police_clearance")
     )
       return toast.error("One or more documents migth be missing!");
     create.mutate(formData);
@@ -235,14 +237,14 @@ const ApplicantDocumentCreatePage = () => {
         </Box>
 
         <Box mb={marginButton}>
-          <FormLabel htmlFor="policeClearance" sx={labelStyle}>
+          <FormLabel htmlFor="police_clearance" sx={labelStyle}>
             Police Clearance
           </FormLabel>
           <Input
             onChange={handlePoliceClearanceChange}
-            name="policeClearance"
+            name="police_clearance"
             type="file"
-            id="policeClearance"
+            id="police_clearance"
           />
         </Box>
 
@@ -259,38 +261,38 @@ const ApplicantDocumentCreatePage = () => {
         </Box>
 
         <Box mb={marginButton}>
-          <FormLabel htmlFor="appLetter" sx={labelStyle}>
+          <FormLabel htmlFor="application_letter" sx={labelStyle}>
             Application Letter
           </FormLabel>
           <Input
             onChange={handleApplicationLetterChange}
-            name="appLetter"
+            name="application_letter"
             type="file"
-            id="appLetter"
+            id="application_letter"
           />
         </Box>
 
         <Box mb={marginButton}>
-          <FormLabel htmlFor="refLetter" sx={labelStyle}>
+          <FormLabel htmlFor="reference_letter" sx={labelStyle}>
             Reference Letter
           </FormLabel>
           <Input
             onChange={handleReferenceLetterChange}
-            name="refLetter"
+            name="reference_letter"
             type="file"
-            id="refLetter"
+            id="reference_letter"
           />
         </Box>
 
         <Box mb={marginButton}>
-          <FormLabel htmlFor="commLetter" sx={labelStyle}>
+          <FormLabel htmlFor="community_letter" sx={labelStyle}>
             Community Letter
           </FormLabel>
           <Input
             onChange={handleCommunityLetterChange}
-            name="commLetter"
+            name="community_letter"
             type="file"
-            id="commLetter"
+            id="community_letter"
           />
         </Box>
 
