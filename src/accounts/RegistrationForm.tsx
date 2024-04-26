@@ -9,7 +9,6 @@ import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import { LOGIN_ROUTE } from "../cacheKeysAndRoutes";
 import autoRouteToHome from "../utilities/getHomeRoute";
-import { http_400_BAD_REQUEST_CUSTOM_MESSAGE } from "../utilities/httpErrorMessages";
 import styles from "../styles";
 
 const schema = z
@@ -27,6 +26,17 @@ const schema = z
       .string()
       .min(8, { message: "Password cannot be less than 8 charachers." }),
   })
+  .refine(
+    (values) => {
+      const passwordPattern =
+        /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[?@!&*%$.])[A-Za-z\d?@!&*%$.].{7,20}$/;
+      return passwordPattern.test(values.password);
+    },
+    {
+      message: "Password must contain at least any of these @!?.&*%$",
+      path: ["password"],
+    }
+  )
   .refine(
     (values) => {
       return values.password === values.confirm_password;
@@ -53,9 +63,7 @@ const RegistrationForm = () => {
   const registration = useRegistration(onCreate, () => reset());
   const onSubmit = (data: RegistrationFormData) => registration.mutate(data);
 
-  //errMessage is apply to fields unique fields.
-  const errMessage = http_400_BAD_REQUEST_CUSTOM_MESSAGE(registration);
-
+  const errMessage = "This email is already registered with our system.";
   return (
     <Box sx={styles.registrationWrapper}>
       <form onSubmit={handleSubmit(onSubmit)}>
