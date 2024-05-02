@@ -6,11 +6,7 @@ import ms from "ms";
 import { useNavigate } from "react-router-dom";
 import { ApplicantDocument } from "./useApplicantDocuments";
 import { ApplicantAddress } from "./useApplicantAddress";
-
-// interface ApplicantContact {
-//   id: number;
-//   phone: string;
-// }
+import { ApplicantContacts } from "./useApplicantContact";
 
 interface Applicant {
   user: User;
@@ -26,7 +22,7 @@ interface Applicant {
   rejection_reason: string;
   document: ApplicantDocument;
   address: ApplicantAddress;
-  // app_contact: ApplicantContact;
+  contacts: ApplicantContacts[];
 }
 
 const APPLICANT_URL = "/recruitment/applicants/";

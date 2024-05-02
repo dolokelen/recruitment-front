@@ -14,6 +14,7 @@ import {
   APPLICANT_PROFILE_EDIT_ROUTE,
   APP_DOCUMENT_CREATE_ROUTE,
   APP_ADDRESS_CREATE_ROUTE,
+  APP_CONTACT_CREATE_ROUTE,
 } from "./cacheKeysAndRoutes";
 import UnAuthLayout from "./components/UnAuthLayout";
 import ErrorPage from "./pages/ErrorPage";
@@ -30,6 +31,7 @@ import ApplicantProfilePage from "./pages/ApplicantProfilePage";
 import ApplicantProfileEditPage from "./pages/ApplicantProfileEditPage";
 import ApplicantDocumentCreatePage from "./pages/ApplicantDocumentCreatePage";
 import ApplicantAddressCreatePage from "./pages/ApplicantAddressCreatePage";
+import ApplicantContactCreatePage from "./pages/ApplicantContactCreatePage";
 
 const router = createBrowserRouter([
   {
@@ -61,6 +63,10 @@ const router = createBrowserRouter([
       {
         path: APP_ADDRESS_CREATE_ROUTE,
         element: <ApplicantAddressCreatePage />,
+      },
+      {
+        path: APP_CONTACT_CREATE_ROUTE,
+        element: <ApplicantContactCreatePage />,
       },
     ],
   },

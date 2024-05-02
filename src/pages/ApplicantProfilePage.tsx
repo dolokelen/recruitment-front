@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { red } from "../colors";
 import MySpinner from "../components/MySpinner";
 import { useApplicant } from "../hooks/useApplicants";
-import { baseURL } from "../services/httpService";
 import getUserId from "../utilities/getUserId";
 import { Text, Container, Image, Heading, Box, Badge } from "@chakra-ui/react";
 import {
@@ -11,6 +10,7 @@ import {
 } from "../cacheKeysAndRoutes";
 import ApplicantDocumentPage from "./ApplicantDocumentPage";
 import ApplicantAddressPage from "./ApplicantAddressPage";
+import ApplicantContactPage from "./ApplicantContactPage";
 
 const ApplicantProfilePage = () => {
   const { data: applicant, isLoading, error } = useApplicant(getUserId()!);
@@ -26,7 +26,7 @@ const ApplicantProfilePage = () => {
             borderRadius="lg"
             w="inherit"
             maxH="500px"
-            src={baseURL + applicant?.image}
+            src={applicant?.image}
             alt={applicant?.user.full_name}
           />
           <Box mt={2} mb={4} color="blue.600">
@@ -64,7 +64,8 @@ const ApplicantProfilePage = () => {
           {/* Address */}
           {applicant?.address && (
             <ApplicantAddressPage address={applicant?.address} />
-          )} 
+          )}
+          <ApplicantContactPage contacts={applicant?.contacts} />
         </Box>
       </Container>
     </Box>
