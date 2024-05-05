@@ -1,5 +1,5 @@
 import { Heading, Text } from "@chakra-ui/react";
-import { ApplicantAddress } from "../hooks/useApplicantAddress";
+import { ApplicantAddress } from "../../hooks/useApplicantAddress";
 
 interface Props {
   address?: ApplicantAddress;

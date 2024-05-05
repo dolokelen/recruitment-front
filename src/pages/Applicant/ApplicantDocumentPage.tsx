@@ -1,6 +1,6 @@
 import { Text, Heading, Link } from "@chakra-ui/react";
-import { ApplicantDocument } from "../hooks/useApplicantDocuments";
-import { baseURL } from "../services/httpService";
+import { ApplicantDocument } from "../../hooks/useApplicantDocuments";
+import { baseURL } from "../../services/httpService";
 
 interface Props {
   document?: ApplicantDocument;

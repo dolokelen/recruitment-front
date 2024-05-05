@@ -12,15 +12,15 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useFieldArray, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { z } from "zod";
-import { http_400_BAD_REQUEST_CUSTOM_MESSAGE } from "../utilities/httpErrorMessages";
-import { red } from "../colors";
+import { http_400_BAD_REQUEST_CUSTOM_MESSAGE } from "../../utilities/httpErrorMessages";
+import { red } from "../../colors";
 import { MdOutlineRemoveCircleOutline } from "react-icons/md";
 import { FiPlusCircle } from "react-icons/fi";
 import { useEffect } from "react";
-import styles from "../styles";
-import { MyButtonWithIcon } from "../MyFormComponents";
-import { useCreateAppContacts } from "../hooks/useApplicantContact";
-import getUserId from "../utilities/getUserId";
+import styles from "../../styles";
+import { MyButtonWithIcon } from "../../MyFormComponents";
+import { useCreateAppContacts } from "../../hooks/useApplicantContact";
+import getUserId from "../../utilities/getUserId";
 
 const contactSchema = z.object({
   phone: z.string().min(10, {

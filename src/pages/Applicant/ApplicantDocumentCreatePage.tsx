@@ -13,12 +13,12 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { z } from "zod";
-import { red } from "../colors";
-import { MyInput } from "../MyFormComponents";
-import styles from "../styles";
-import { highestEducations } from "../utilities/staticData";
-import { useCreateApplicantDocument } from "../hooks/useApplicantDocuments";
-import getUserId from "../utilities/getUserId";
+import { red } from "../../colors";
+import { MyInput } from "../../MyFormComponents";
+import styles from "../../styles";
+import { highestEducations } from "../../utilities/staticData";
+import { useCreateApplicantDocument } from "../../hooks/useApplicantDocuments";
+import getUserId from "../../utilities/getUserId";
 
 const schema = z.object({
   major: z.string().min(2, { message: "Major is required." }),
@@ -119,9 +119,9 @@ const ApplicantDocumentCreatePage = () => {
   }
 
   const onSubmit = (data: AppDocumentCreatePageData) => {
-    const formData = new FormData(); 
+    const formData = new FormData();
 
-    formData.append('applicant', getUserId()!.toString())
+    formData.append("applicant", getUserId()!.toString());
     formData.append("institution", data.institution);
     formData.append("cgpa", data.cgpa);
     formData.append("country", data.country);
@@ -292,7 +292,7 @@ const ApplicantDocumentCreatePage = () => {
             onChange={handleCommunityLetterChange}
             name="community_letter"
             type="file"
-            id="community_letter" 
+            id="community_letter"
           />
         </Box>
 

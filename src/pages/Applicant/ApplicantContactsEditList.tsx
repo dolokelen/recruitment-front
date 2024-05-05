@@ -1,11 +1,11 @@
 import { Container, Heading, List, ListItem } from "@chakra-ui/react";
-import { useApplicant } from "../hooks/useApplicants";
-import getUserId from "../utilities/getUserId";
+import { useApplicant } from "../../hooks/useApplicants";
+import getUserId from "../../utilities/getUserId";
 import { useNavigate } from "react-router-dom";
 import {
   APP_CONTACT_EDIT_ROUTE,
   AUTH_LAYOUT_ROUTE,
-} from "../cacheKeysAndRoutes";
+} from "../../cacheKeysAndRoutes";
 
 const ApplicantContactsEditList = () => {
   const navigate = useNavigate();

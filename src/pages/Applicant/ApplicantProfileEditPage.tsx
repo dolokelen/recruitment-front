@@ -10,13 +10,13 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { toast } from "react-toastify";
-import styles from "../styles";
-import { useEditApplicantImage } from "../hooks/useApplicants";
-import getUserId from "../utilities/getUserId";
+import styles from "../../styles";
+import { useEditApplicantImage } from "../../hooks/useApplicants";
+import getUserId from "../../utilities/getUserId";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { red } from "../colors";
+import { red } from "../../colors";
 
 const schema = z.object({
   scapegoat: z.boolean(), //To all me use handleSubmit

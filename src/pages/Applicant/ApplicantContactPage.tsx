@@ -1,5 +1,5 @@
 import { Heading, Text } from "@chakra-ui/react";
-import { ApplicantContacts } from "../hooks/useApplicantContact";
+import { ApplicantContacts } from "../../hooks/useApplicantContact";
 
 interface Props {
   contacts?: ApplicantContacts[];

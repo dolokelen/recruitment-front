@@ -29,15 +29,15 @@ import GroupDetailPage from "./groupsAndPermissions/GroupDetailPage";
 import MyChart from "./components/MyChart";
 import ApplicationDatePage from "./pages/ApplicationDatePage";
 import ApplicationDateEditPage from "./pages/ApplicationDateEditPage";
-import ApplicantBiodataForm from "./pages/ApplicantBiodataForm";
-import ApplicantProfilePage from "./pages/ApplicantProfilePage";
-import ApplicantProfileEditPage from "./pages/ApplicantProfileEditPage";
-import ApplicantDocumentCreatePage from "./pages/ApplicantDocumentCreatePage";
-import ApplicantAddressCreatePage from "./pages/ApplicantAddressCreatePage";
-import ApplicantContactCreatePage from "./pages/ApplicantContactCreatePage";
-import ApplicantProfileEditMenu from "./pages/AppProfileEditMenu";
-import ApplicantContactEditPage from "./pages/ApplicantContactEditPage";
-import ApplicantContactsEditList from "./pages/ApplicantContactsEditList";
+import ApplicantBiodataForm from "./pages/Applicant/ApplicantBiodataForm";
+import ApplicantProfilePage from "./pages/Applicant/ApplicantProfilePage";
+import ApplicantProfileEditPage from "./pages/Applicant/ApplicantProfileEditPage";
+import ApplicantDocumentCreatePage from "./pages/Applicant/ApplicantDocumentCreatePage";
+import ApplicantAddressCreatePage from "./pages/Applicant/ApplicantAddressCreatePage";
+import ApplicantContactCreatePage from "./pages/Applicant/ApplicantContactCreatePage";
+import ApplicantProfileEditMenu from "./pages/Applicant/AppProfileEditMenu";
+import ApplicantContactEditPage from "./pages/Applicant/ApplicantContactEditPage";
+import ApplicantContactsEditList from "./pages/Applicant/ApplicantContactsEditList";
 
 const router = createBrowserRouter([
   {
@@ -78,7 +78,10 @@ const router = createBrowserRouter([
         path: APP_PROFILE_EDIT_MENU_ROUTE,
         element: <ApplicantProfileEditMenu />,
       },
-      { path: APP_CONTACTS_EDIT_LIST_ROUTE, element: <ApplicantContactsEditList /> },
+      {
+        path: APP_CONTACTS_EDIT_LIST_ROUTE,
+        element: <ApplicantContactsEditList />,
+      },
       { path: APP_CONTACT_EDIT_ROUTE, element: <ApplicantContactEditPage /> },
     ],
   },

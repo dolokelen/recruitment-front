@@ -2,7 +2,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import apiClient from "../services/httpService";
 import { CACHE_KEY_APPLICANT } from "../cacheKeysAndRoutes";
 import ms from "ms";
-import { AppContactEditFormData } from "../pages/ApplicantContactEditPage";
+import { AppContactEditFormData } from "../pages/Applicant/ApplicantContactEditPage";
 
 export interface ApplicantContacts {
   id: number;
@@ -40,12 +40,12 @@ export const useCreateAppContacts = (
   //   const navigate = useNavigate();
   return useMutation<void, Error, AppCreateContact[]>({
     mutationFn: (data: AppCreateContact[]) => apiClients.postAll(data),
-    
+
     onSuccess: () => {
       onCreate();
       reset();
       //   navigate(`${AUTH_LAYOUT_ROUTE}/${APP_DOCUMENT_CREATE_ROUTE}`)
-      
+
       return queryClient.invalidateQueries({
         queryKey: [CACHE_KEY_APPLICANT],
       });
@@ -62,13 +62,13 @@ export const useApplicantContact = (contactId: number) => {
   });
 };
 
-
 export const useEditAppContact = (onUpdate: () => void) => {
   const apiClients = apiClient<ApplicantContacts>(APPLICANT_URL);
   const queryClient = useQueryClient();
 
   return useMutation<AppContactEditFormData, Error, AppContactEditFormData>({
-    mutationFn: (data: AppContactEditFormData) => apiClients.patch<AppContactEditFormData>(data),
+    mutationFn: (data: AppContactEditFormData) =>
+      apiClients.patch<AppContactEditFormData>(data),
 
     onSuccess: () => {
       onUpdate();

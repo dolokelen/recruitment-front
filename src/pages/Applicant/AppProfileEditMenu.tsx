@@ -6,7 +6,7 @@ import {
   APPLICANT_PROFILE_EDIT_ROUTE,
   APP_CONTACTS_EDIT_LIST_ROUTE,
   AUTH_LAYOUT_ROUTE,
-} from "../cacheKeysAndRoutes";
+} from "../../cacheKeysAndRoutes";
 
 const ApplicantProfileEditMenu = () => {
   const navigate = useNavigate();

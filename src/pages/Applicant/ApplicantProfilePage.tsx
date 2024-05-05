@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
-import { red } from "../colors";
-import MySpinner from "../components/MySpinner";
-import { useApplicant } from "../hooks/useApplicants";
-import getUserId from "../utilities/getUserId";
+import { red } from "../../colors";
+import MySpinner from "../../components/MySpinner";
+import { useApplicant } from "../../hooks/useApplicants";
+import getUserId from "../../utilities/getUserId";
 import { Text, Container, Image, Heading, Box, Badge } from "@chakra-ui/react";
 import {
   APP_PROFILE_EDIT_MENU_ROUTE,
   AUTH_LAYOUT_ROUTE,
-} from "../cacheKeysAndRoutes";
+} from "../../cacheKeysAndRoutes";
 import ApplicantDocumentPage from "./ApplicantDocumentPage";
 import ApplicantAddressPage from "./ApplicantAddressPage";
 import ApplicantContactPage from "./ApplicantContactPage";

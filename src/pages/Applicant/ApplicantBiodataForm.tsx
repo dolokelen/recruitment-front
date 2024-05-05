@@ -13,12 +13,12 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { z } from "zod";
-import { red } from "../colors";
-import { MyInput } from "../MyFormComponents";
-import styles from "../styles";
-import { useCreateApplication } from "../hooks/useApplicants";
-import { counties, genders, religions } from "../utilities/staticData";
-import getUserId from "../utilities/getUserId";
+import { red } from "../../colors";
+import { MyInput } from "../../MyFormComponents";
+import styles from "../../styles";
+import { useCreateApplication } from "../../hooks/useApplicants";
+import { counties, genders, religions } from "../../utilities/staticData";
+import getUserId from "../../utilities/getUserId";
 
 const schema = z.object({
   gender: z.string().min(1, { message: "Gender is required" }),

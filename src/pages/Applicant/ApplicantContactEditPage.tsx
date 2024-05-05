@@ -1,21 +1,17 @@
-import {
-  Container,
-  Heading,
-  Text,
-} from "@chakra-ui/react";
+import { Container, Heading, Text } from "@chakra-ui/react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { z } from "zod";
-import { http_400_BAD_REQUEST_CUSTOM_MESSAGE } from "../utilities/httpErrorMessages";
-import { red } from "../colors";
+import { http_400_BAD_REQUEST_CUSTOM_MESSAGE } from "../../utilities/httpErrorMessages";
+import { red } from "../../colors";
 import { useEffect } from "react";
-import styles from "../styles";
-import { MyButtonWithIcon, MyInput } from "../MyFormComponents";
+import styles from "../../styles";
+import { MyButtonWithIcon, MyInput } from "../../MyFormComponents";
 import {
   useApplicantContact,
   useEditAppContact,
-} from "../hooks/useApplicantContact";
+} from "../../hooks/useApplicantContact";
 import { useSearchParams } from "react-router-dom";
 
 const schema = z.object({
@@ -31,7 +27,7 @@ const ApplicantContactEditPage = () => {
   //I'm using the login userId, if admin will use this component
   //you should get the applicant id using the useParms
   //   const formRef = useRef(null);
- 
+
   const onUpdate = () => toast.success("Updated Successfully!");
 
   const {
