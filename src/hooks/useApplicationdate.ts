@@ -6,8 +6,8 @@ import {
   CACHE_KEY_APPLICATIONDATE,
 } from "../cacheKeysAndRoutes";
 import apiClient from "../services/httpService";
-import { ApplicationDateFormData } from "../pages/ApplicationDateCreatePage";
-import { ApplicationDateEditFormData } from "../pages/ApplicationDateEditPage";
+import { ApplicationDateFormData } from "../pages/ApplicationDate/ApplicationDateCreatePage";
+import { ApplicationDateEditFormData } from "../pages/ApplicationDate/ApplicationDateEditPage";
 import { useNavigate } from "react-router-dom";
 
 export interface ApplicationDate {

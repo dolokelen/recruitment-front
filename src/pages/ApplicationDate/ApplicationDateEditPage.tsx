@@ -4,22 +4,22 @@ import {
   useApplicationDate,
   useDeleteApplicationDate,
   useEditApplicationDate,
-} from "../hooks/useApplicationdate";
-import MySpinner from "../components/MySpinner";
-import { red } from "../colors";
+} from "../../hooks/useApplicationdate";
+import MySpinner from "../../components/MySpinner";
+import { red } from "../../colors";
 import { useEffect } from "react";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import styles from "../styles";
-import { MyButton, MyInput } from "../MyFormComponents";
+import styles from "../../styles";
+import { MyButton, MyInput } from "../../MyFormComponents";
 import { toast } from "react-toastify";
 import {
   deletionErrorMessage,
   http_400_BAD_REQUEST_CUSTOM_MESSAGE,
-} from "../utilities/httpErrorMessages";
-import { hasPermission } from "../utilities/hasPermissions";
-import AccessDenyPage from "./AccessDenyPage";
+} from "../../utilities/httpErrorMessages";
+import { hasPermission } from "../../utilities/hasPermissions";
+import AccessDenyPage from "../AccessDenyPage";
 
 const schema = z.object({
   id: z.number().optional(),

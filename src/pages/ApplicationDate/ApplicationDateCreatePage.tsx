@@ -1,15 +1,15 @@
 import { Text, Heading } from "@chakra-ui/react";
-import { red } from "./../colors";
-import { MyButton, MyInput } from "../MyFormComponents";
+import { red } from "../../colors";
+import { MyButton, MyInput } from "../../MyFormComponents";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "react-toastify";
-import { http_400_BAD_REQUEST_CUSTOM_MESSAGE } from "../utilities/httpErrorMessages";
-import { useCreateApplicationDate } from "../hooks/useApplicationdate";
-import styles from "../styles";
-import { hasPermission } from "../utilities/hasPermissions";
-import AccessDenyPage from "./AccessDenyPage";
+import { http_400_BAD_REQUEST_CUSTOM_MESSAGE } from "../../utilities/httpErrorMessages";
+import { useCreateApplicationDate } from "../../hooks/useApplicationdate";
+import styles from "../../styles";
+import { hasPermission } from "../../utilities/hasPermissions";
+import AccessDenyPage from "../AccessDenyPage";
 
 const schema = z.object({
   open_date: z.string().min(10, { message: "Opening date is required." }),

@@ -10,17 +10,17 @@ import {
   Thead,
   Tr,
 } from "@chakra-ui/react";
-import { red } from "../colors";
-import MySpinner from "../components/MySpinner";
-import { useApplicationDates } from "../hooks/useApplicationdate";
+import { red } from "../../colors";
+import MySpinner from "../../components/MySpinner";
+import { useApplicationDates } from "../../hooks/useApplicationdate";
 import ApplicationDateCreatePage from "./ApplicationDateCreatePage";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   APP_DATE_DETAIL_ROUTE,
   AUTH_LAYOUT_ROUTE,
-} from "../cacheKeysAndRoutes";
-import { hasPermission } from "../utilities/hasPermissions";
+} from "../../cacheKeysAndRoutes";
+import { hasPermission } from "../../utilities/hasPermissions";
 
 const ApplicationDatePage = () => {
   const [showDatePicker, setShowDatePicker] = useState(false);
