@@ -5,7 +5,7 @@ import { useApplicant } from "../hooks/useApplicants";
 import getUserId from "../utilities/getUserId";
 import { Text, Container, Image, Heading, Box, Badge } from "@chakra-ui/react";
 import {
-  APPLICANT_PROFILE_EDIT_ROUTE,
+  APP_PROFILE_EDIT_MENU_ROUTE,
   AUTH_LAYOUT_ROUTE,
 } from "../cacheKeysAndRoutes";
 import ApplicantDocumentPage from "./ApplicantDocumentPage";
@@ -30,7 +30,7 @@ const ApplicantProfilePage = () => {
             alt={applicant?.user.full_name}
           />
           <Box mt={2} mb={4} color="blue.600">
-            <Link to={`${AUTH_LAYOUT_ROUTE}/${APPLICANT_PROFILE_EDIT_ROUTE}`}>
+            <Link to={`${AUTH_LAYOUT_ROUTE}/${APP_PROFILE_EDIT_MENU_ROUTE}`}>
               Update Your Profile
             </Link>
           </Box>

@@ -62,6 +62,7 @@ const ApplicantProfileEditPage = () => {
         Applicant Biodata Edit Form
       </Heading>
       {update.isError && <Text color={red}>{errorMessage}</Text>}
+
       <form onSubmit={handleSubmit(onSubmit)}>
         <Box mb={4}>
           <FormLabel htmlFor="image" sx={labelStyle}>

@@ -19,6 +19,9 @@ export const APPLICANT_PROFILE_EDIT_ROUTE = "applicant-profile-edit";
 export const APP_DOCUMENT_CREATE_ROUTE = "applicant-document-create";
 export const APP_ADDRESS_CREATE_ROUTE = "applicant-address-create";
 export const APP_CONTACT_CREATE_ROUTE = "applicant-contact-create";
+export const APP_PROFILE_EDIT_MENU_ROUTE = "applicant-edit-profile-menue";
+export const APP_CONTACT_EDIT_ROUTE = "applicant-contact-edit";
+export const APP_CONTACTS_EDIT_LIST_ROUTE = "applicant-contacts-edit-list";
 
 export const HOME_ROUTE = "/";
 export const REGISTER_ROUTE = "register";
