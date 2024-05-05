@@ -1,6 +1,5 @@
 import { Text, Heading, Link } from "@chakra-ui/react";
 import { ApplicantDocument } from "../../hooks/useApplicantDocuments";
-import { baseURL } from "../../services/httpService";
 
 interface Props {
   document?: ApplicantDocument;
@@ -20,12 +19,7 @@ const ApplicantDocumentPage = ({ document }: Props) => {
       <Text sx={textStyle}>Graduation Year: {document?.graduation_year}</Text>
 
       <Text sx={textStyle}>
-        <Link
-          target="_blank"
-          sx={linkStyle}
-          href={baseURL + document?.degree}
-          download
-        >
+        <Link target="_blank" sx={linkStyle} href={document?.degree} download>
           Degree
         </Link>
       </Text>
@@ -33,7 +27,7 @@ const ApplicantDocumentPage = ({ document }: Props) => {
         <Link
           target="_blank"
           sx={linkStyle}
-          href={baseURL + document?.police_clearance}
+          href={document?.police_clearance}
           download
         >
           Police Clearance
@@ -43,19 +37,14 @@ const ApplicantDocumentPage = ({ document }: Props) => {
         <Link
           target="_blank"
           sx={linkStyle}
-          href={baseURL + document?.application_letter}
+          href={document?.application_letter}
           download
         >
           Application Letter
         </Link>
       </Text>
       <Text sx={textStyle}>
-        <Link
-          target="_blank"
-          sx={linkStyle}
-          href={baseURL + document?.resume}
-          download
-        >
+        <Link target="_blank" sx={linkStyle} href={document?.resume} download>
           Resume
         </Link>
       </Text>
@@ -63,7 +52,7 @@ const ApplicantDocumentPage = ({ document }: Props) => {
         <Link
           target="_blank"
           sx={linkStyle}
-          href={baseURL + document?.reference_letter}
+          href={document?.reference_letter}
           download
         >
           Reference Letter
@@ -73,7 +62,7 @@ const ApplicantDocumentPage = ({ document }: Props) => {
         <Link
           target="_blank"
           sx={linkStyle}
-          href={baseURL + document?.community_letter}
+          href={document?.community_letter}
           download
         >
           Community Letter

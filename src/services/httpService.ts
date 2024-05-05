@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig } from "axios";
 import ms from "ms";
 
-export const baseURL = "http://127.0.0.1:8000"; //all files use it
+const baseURL = "http://127.0.0.1:8000";
 const timeout = ms("5s");
 const accept = "application/json";
 
