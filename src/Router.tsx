@@ -18,6 +18,7 @@ import {
   APP_PROFILE_EDIT_MENU_ROUTE,
   APP_CONTACT_EDIT_ROUTE,
   APP_CONTACTS_EDIT_LIST_ROUTE,
+  APP_ADDRESS_EDIT_ROUTE,
 } from "./cacheKeysAndRoutes";
 import UnAuthLayout from "./components/UnAuthLayout";
 import ErrorPage from "./pages/ErrorPage";
@@ -38,6 +39,7 @@ import ApplicantContactCreatePage from "./pages/Applicant/ApplicantContactCreate
 import ApplicantProfileEditMenu from "./pages/Applicant/AppProfileEditMenu";
 import ApplicantContactEditPage from "./pages/Applicant/ApplicantContactEditPage";
 import ApplicantContactsEditList from "./pages/Applicant/ApplicantContactsEditList";
+import ApplicantAddressEditPage from "./pages/Applicant/ApplicantAddressEditPage";
 
 const router = createBrowserRouter([
   {
@@ -83,6 +85,7 @@ const router = createBrowserRouter([
         element: <ApplicantContactsEditList />,
       },
       { path: APP_CONTACT_EDIT_ROUTE, element: <ApplicantContactEditPage /> },
+      { path: APP_ADDRESS_EDIT_ROUTE, element: <ApplicantAddressEditPage /> },
     ],
   },
 

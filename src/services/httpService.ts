@@ -85,6 +85,7 @@ axiosInstance.interceptors.response.use(
 
 interface Data {
   id?: number;
+  applicant?: number; //PK for ApplicantAddress
 }
 
 class APIClient<T> {
@@ -150,7 +151,7 @@ class APIClient<T> {
 
   patch = <T extends Data>(data: T) => {
     return axiosInstance
-      .patch<T>(`${this.endpoint}${data.id}/`, data)
+      .patch<T>(`${this.endpoint}${data.id || data.applicant}/`, data)
       .then((res) => res.data)
       .catch((error) => {
         throw error;
@@ -166,16 +167,9 @@ class APIClient<T> {
       });
   };
 
-  patchNested = <T extends Data>(
-    data: T,
-    childEndpoint: string,
-    childObjId?: number
-  ) => {
+  patchNested = <T>(data: T) => {
     return axiosInstance
-      .patch<T>(
-        `${this.endpoint}${data.id}/${childEndpoint}/${childObjId}/`,
-        data
-      )
+      .patch<T>(`${this.endpoint}${data}/`, data)
       .then((res) => res.data)
       .catch((error) => {
         throw error;

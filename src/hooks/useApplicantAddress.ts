@@ -1,12 +1,15 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   APPLICANT_PROFILE_ROUTE,
   AUTH_LAYOUT_ROUTE,
   CACHE_KEY_APPLICANT,
+  CACHE_KEY_APPLICANT_ADDRESS,
 } from "../cacheKeysAndRoutes";
 import apiClient from "../services/httpService";
 import { useNavigate } from "react-router-dom";
 import { AppAddressCreatePageData } from "../pages/Applicant/ApplicantAddressCreatePage";
+import ms from "ms";
+import { EditAppAddressFormData } from "../pages/Applicant/ApplicantAddressEditPage";
 
 export interface ApplicantAddress {
   applicant: number;
@@ -42,4 +45,34 @@ export const useCreateApplicantAddress = (
       },
     }
   );
+};
+
+export const useApplicantAddress = (applicantId: number) => {
+  const endpoint = "/recruitment/applicant-address/";
+  const apiClients = apiClient<ApplicantAddress>(endpoint);
+  return useQuery<ApplicantAddress, Error>({
+    queryKey: [CACHE_KEY_APPLICANT, CACHE_KEY_APPLICANT_ADDRESS, applicantId],
+    queryFn: () => apiClients.get(applicantId),
+    staleTime: ms("24h"),
+  });
+};
+
+export const useEditAppAddress = (onUpdate: () => void) => {
+  const apiClients = apiClient<ApplicantAddress>(
+    "/recruitment/applicant-address/"
+  );
+  const queryClient = useQueryClient();
+
+  return useMutation<EditAppAddressFormData, Error, EditAppAddressFormData>({
+    mutationFn: (data: EditAppAddressFormData) =>
+      apiClients.patch<EditAppAddressFormData>(data),
+
+    onSuccess: () => {
+      onUpdate();
+
+      return queryClient.invalidateQueries({
+        queryKey: [CACHE_KEY_APPLICANT],
+      });
+    },
+  });
 };

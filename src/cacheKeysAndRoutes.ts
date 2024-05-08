@@ -6,6 +6,7 @@ export const CACHE_KEY_PERMISSION = "permission";
 export const CACHE_KEY_APPLICATIONDATE = "applicationdate";
 export const CACHE_KEY_APPLICANT_DOCUMENT = "applicant-document";
 export const CACHE_KEY_APPLICANT_CONTACT = "applicant-contact";
+export const CACHE_KEY_APPLICANT_ADDRESS = "applicant-address";
 
 export const AUTH_LAYOUT_ROUTE = "/dashboard";
 export const GROUP_ROUTE = "group-lists";
@@ -22,6 +23,7 @@ export const APP_CONTACT_CREATE_ROUTE = "applicant-contact-create";
 export const APP_PROFILE_EDIT_MENU_ROUTE = "applicant-edit-profile-menue";
 export const APP_CONTACT_EDIT_ROUTE = "applicant-contact-edit";
 export const APP_CONTACTS_EDIT_LIST_ROUTE = "applicant-contacts-edit-list";
+export const APP_ADDRESS_EDIT_ROUTE = "applicant-address-edit";
 
 export const HOME_ROUTE = "/";
 export const REGISTER_ROUTE = "register";

@@ -14,9 +14,9 @@ import ApplicantContactPage from "./ApplicantContactPage";
 
 const ApplicantProfilePage = () => {
   const { data: applicant, isLoading, error } = useApplicant(getUserId()!);
+
   if (isLoading) return <MySpinner />;
   if (error) return <Text color={red}>{error.message}</Text>;
-
   const statusColor = applicant?.status === "Unsuccessful" ? "red" : "green";
   return (
     <Box display={{ md: "flex" }} bg="blue.100" mt={4} pt={4}>
@@ -51,6 +51,7 @@ const ApplicantProfilePage = () => {
                 Reason for Rejection: {applicant?.rejection_reason}
               </Text>
             )}
+            <ApplicantContactPage contacts={applicant?.contacts} />
           </Box>
         </Box>
       </Container>
@@ -65,7 +66,6 @@ const ApplicantProfilePage = () => {
           {applicant?.address && (
             <ApplicantAddressPage address={applicant?.address} />
           )}
-          <ApplicantContactPage contacts={applicant?.contacts} />
         </Box>
       </Container>
     </Box>
