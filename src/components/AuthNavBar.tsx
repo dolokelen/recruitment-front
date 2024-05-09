@@ -1,6 +1,6 @@
 import autoRouteToHome from "../utilities/getHomeRoute";
 import {
-  APPLICANT_BIODATA_FORM_ROUTE,
+  APP_BIODATA_FORM_ROUTE,
   AUTH_LAYOUT_ROUTE,
 } from "../cacheKeysAndRoutes";
 import { Link } from "react-router-dom";
@@ -25,7 +25,7 @@ const AuthNavBar = () => {
         <MyDrawer />
         <Link to={autoRouteToHome()}>Website</Link>
         <Link to={AUTH_LAYOUT_ROUTE}>Dashboard</Link>
-        <Link to={APPLICANT_BIODATA_FORM_ROUTE}>Apply</Link>
+        <Link to={APP_BIODATA_FORM_ROUTE}>Apply</Link>
         <Link to={autoRouteToHome()} onClick={logoutUser}>
           <RiLogoutCircleLine title="Logout" size="1.6rem" />
         </Link>

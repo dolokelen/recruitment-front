@@ -1,6 +1,11 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import apiClient, { formDataConfig } from "../services/httpService";
-import { APPLICANT_PROFILE_ROUTE, APP_DOCUMENT_CREATE_ROUTE, AUTH_LAYOUT_ROUTE, CACHE_KEY_APPLICANT } from "../cacheKeysAndRoutes";
+import {
+  APP_PROFILE_ROUTE,
+  APP_DOCUMENT_CREATE_ROUTE,
+  AUTH_LAYOUT_ROUTE,
+  CACHE_KEY_APPLICANT,
+} from "../cacheKeysAndRoutes";
 import { User } from "./useUsers";
 import ms from "ms";
 import { useNavigate } from "react-router-dom";
@@ -41,8 +46,7 @@ export const useCreateApplication = (
     onSuccess: () => {
       onCreate();
       reset();
-      navigate(`${AUTH_LAYOUT_ROUTE}/${APP_DOCUMENT_CREATE_ROUTE}`)
-
+      navigate(`${AUTH_LAYOUT_ROUTE}/${APP_DOCUMENT_CREATE_ROUTE}`);
 
       return queryClient.invalidateQueries({
         queryKey: [CACHE_KEY_APPLICANT],
@@ -71,9 +75,9 @@ export const useEditApplicantImage = (
     mutationFn: (data: Data) => apiClients.patchFormData(data, applicantId),
 
     onSuccess: () => {
-      navigate(`${AUTH_LAYOUT_ROUTE}/${APPLICANT_PROFILE_ROUTE}`)
+      navigate(`${AUTH_LAYOUT_ROUTE}/${APP_PROFILE_ROUTE}`);
       onUpdate();
-      
+
       return queryClient.invalidateQueries({
         queryKey: [CACHE_KEY_APPLICANT],
       });

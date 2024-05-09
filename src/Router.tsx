@@ -3,15 +3,15 @@ import HomePage from "./components/HomePage";
 import {
   APP_DATE_DETAIL_ROUTE,
   APP_DATES_ROUTE,
-  APPLICANT_BIODATA_FORM_ROUTE,
-  APPLICANT_PROFILE_ROUTE,
+  APP_BIODATA_FORM_ROUTE,
+  APP_PROFILE_ROUTE,
   AUTH_LAYOUT_ROUTE,
   GROUP_CREATE_ROUTE,
   GROUP_ROUTE,
   HOME_ROUTE,
   LOGIN_ROUTE,
   REGISTER_ROUTE,
-  APPLICANT_PROFILE_EDIT_ROUTE,
+  APP_PROFILE_EDIT_ROUTE,
   APP_DOCUMENT_CREATE_ROUTE,
   APP_ADDRESS_CREATE_ROUTE,
   APP_CONTACT_CREATE_ROUTE,
@@ -51,7 +51,7 @@ const router = createBrowserRouter([
       { path: `${GROUP_ROUTE}/:id`, element: <GroupDetailPage /> },
       { path: APP_DATES_ROUTE, element: <ApplicationDatePage /> },
       {
-        path: APPLICANT_BIODATA_FORM_ROUTE,
+        path: APP_BIODATA_FORM_ROUTE,
         element: <ApplicantBiodataForm />,
       },
       {
@@ -59,9 +59,9 @@ const router = createBrowserRouter([
         element: <ApplicationDateEditPage />,
       },
       { path: AUTH_LAYOUT_ROUTE, element: <MyChart /> },
-      { path: APPLICANT_PROFILE_ROUTE, element: <ApplicantProfilePage /> },
+      { path: APP_PROFILE_ROUTE, element: <ApplicantProfilePage /> },
       {
-        path: APPLICANT_PROFILE_EDIT_ROUTE,
+        path: APP_PROFILE_EDIT_ROUTE,
         element: <ApplicantProfileEditPage />,
       },
       {

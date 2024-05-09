@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
-  APPLICANT_PROFILE_ROUTE,
+  APP_PROFILE_ROUTE,
   AUTH_LAYOUT_ROUTE,
   CACHE_KEY_APPLICANT,
   CACHE_KEY_APPLICANT_ADDRESS,
@@ -37,7 +37,7 @@ export const useCreateApplicantAddress = (
       onSuccess: () => {
         onCreate();
         reset();
-        navigate(`${AUTH_LAYOUT_ROUTE}/${APPLICANT_PROFILE_ROUTE}`);
+        navigate(`${AUTH_LAYOUT_ROUTE}/${APP_PROFILE_ROUTE}`);
         //Applicant is fetching ApplicantAddress
         return queryClient.invalidateQueries({
           queryKey: [CACHE_KEY_APPLICANT],

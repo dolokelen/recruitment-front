@@ -4,7 +4,7 @@ import { PiMapPinLine } from "react-icons/pi";
 import { RxAvatar } from "react-icons/rx";
 import { useNavigate } from "react-router-dom";
 import {
-  APPLICANT_PROFILE_EDIT_ROUTE,
+  APP_PROFILE_EDIT_ROUTE,
   APP_ADDRESS_EDIT_ROUTE,
   APP_CONTACTS_EDIT_LIST_ROUTE,
   AUTH_LAYOUT_ROUTE,
@@ -28,7 +28,7 @@ const ApplicantProfileEditMenu = () => {
           <RxAvatar
             size={iconSize}
             onClick={() =>
-              navigate(`${AUTH_LAYOUT_ROUTE}/${APPLICANT_PROFILE_EDIT_ROUTE}`)
+              navigate(`${AUTH_LAYOUT_ROUTE}/${APP_PROFILE_EDIT_ROUTE}`)
             }
           />
           <Text ml={leftMargin}>Image</Text>
