@@ -1,11 +1,7 @@
 import autoRouteToHome from "../utilities/getHomeRoute";
 import {
-  APPLICANT_PROFILE_ROUTE,
   APPLICANT_BIODATA_FORM_ROUTE,
   AUTH_LAYOUT_ROUTE,
-  APP_DOCUMENT_CREATE_ROUTE,
-  APP_ADDRESS_CREATE_ROUTE,
-  APP_CONTACT_CREATE_ROUTE,
 } from "../cacheKeysAndRoutes";
 import { Link } from "react-router-dom";
 import { HStack } from "@chakra-ui/react";
@@ -30,10 +26,6 @@ const AuthNavBar = () => {
         <Link to={autoRouteToHome()}>Website</Link>
         <Link to={AUTH_LAYOUT_ROUTE}>Dashboard</Link>
         <Link to={APPLICANT_BIODATA_FORM_ROUTE}>Apply</Link>
-        <Link to={APPLICANT_PROFILE_ROUTE}>Profile</Link>
-        <Link to={APP_DOCUMENT_CREATE_ROUTE}>Applicant Document Form</Link>
-        <Link to={APP_ADDRESS_CREATE_ROUTE}>Applicant Address Form</Link>
-        <Link to={APP_CONTACT_CREATE_ROUTE}>Applicant Contact Form</Link>
         <Link to={autoRouteToHome()} onClick={logoutUser}>
           <RiLogoutCircleLine title="Logout" size="1.6rem" />
         </Link>
