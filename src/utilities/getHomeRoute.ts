@@ -6,6 +6,6 @@ const autoRouteToHome = () => {
   let fullPath = location.pathname;
   fullPath = HOME_ROUTE;
   return fullPath;
-};
+}; 
 
 export default autoRouteToHome;
