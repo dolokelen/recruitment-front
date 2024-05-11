@@ -7,8 +7,9 @@ export const religions = [
 export const genders = [{ name: "Male" }, { name: "Female" }];
 
 export const employmentStatuses = [
-  { name: "Full Time" },
-  { name: "Part Time" },
+  { name: "Full Timer" },
+  { name: "Internship" },
+  { name: "Part Timer" },
 ];
 
 export const highestEducations = [

@@ -6,6 +6,7 @@ import {
   AccordionPanel,
   Box,
   Flex,
+  Stack,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import {
@@ -13,6 +14,7 @@ import {
   APP_DATES_ROUTE,
   APP_DOCUMENT_CREATE_ROUTE,
   EMPLOYEES_ROUTE,
+  EMPLOYEE_CREATE_ROUTE,
   GROUP_CREATE_ROUTE,
 } from "../cacheKeysAndRoutes";
 import { hasPermission } from "../utilities/hasPermissions";
@@ -46,8 +48,11 @@ const MyDrawerContent = () => {
             </AccordionButton>
           </h2>
           <AccordionPanel pb={4}>
-            <Link to={GROUP_CREATE_ROUTE}>Group List</Link>
-            <Link to={EMPLOYEES_ROUTE}>Employees</Link>
+            <Stack>
+              <Link to={GROUP_CREATE_ROUTE}>Group List</Link>
+              <Link to={EMPLOYEES_ROUTE}>Employees</Link>
+              <Link to={EMPLOYEE_CREATE_ROUTE}>Create Employee</Link>
+            </Stack>
           </AccordionPanel>
           {canAddGroup && (
             <AccordionPanel pb={4}>

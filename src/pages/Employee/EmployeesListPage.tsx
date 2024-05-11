@@ -10,14 +10,14 @@ const EmployeesListPage = () => {
   if (error) return <Text color={red}>{error.message}</Text>;
 
   return (
-    <SimpleGrid columns={{ base: 1, sm: 2, md: 3, lg: 4 }}>
+    <SimpleGrid spacingY={4} columns={{ base: 1, sm: 2, md: 3, lg: 4 }}>
       {employees?.map((emp) => (
         <MyCard
           image={emp.image}
           fullName={emp.user.full_name}
           email={emp.user.email}
           salary={emp.salary}
-          phone={emp.contacts[0].phone}
+          phone={emp.contacts[0]?.phone}
           position={emp.position}
           key={emp.user.id}
         />

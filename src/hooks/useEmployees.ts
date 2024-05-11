@@ -1,11 +1,12 @@
-import { useQuery } from "@tanstack/react-query";
-import apiClient from "../services/httpService";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import apiClient, { formDataConfig } from "../services/httpService";
 import { User } from "./useUsers";
-import { CACHE_KEY_EMPLOYEE } from "../cacheKeysAndRoutes";
+import { AUTH_LAYOUT_ROUTE, CACHE_KEY_EMPLOYEE, EMPLOYEES_ROUTE } from "../cacheKeysAndRoutes";
 import ms from "ms";
 import { EmployeeDocument } from "./useEmpDocuments";
 import { EmployeeAddress } from "./useEmpAddress";
 import { EmployeeContacts } from "./useEmpContacts";
+import { useNavigate } from "react-router-dom";
 
 interface Employee {
   user: User;
@@ -15,6 +16,7 @@ interface Employee {
   birth_date: string;
   salary: number;
   position: string;
+  qualification: string;
   religion: string;
   image: string;
   employment: string;
@@ -28,9 +30,32 @@ const ENDPOINT = "/recruitment/employees/";
 const apiClients = apiClient<Employee>(ENDPOINT);
 
 export const useEmployees = () => {
-  return useQuery<Employee[], Error>({
-    queryKey: [CACHE_KEY_EMPLOYEE],
-    queryFn: apiClients.getAll,
-    staleTime: ms("24h"),
+    return useQuery<Employee[], Error>({
+        queryKey: [CACHE_KEY_EMPLOYEE],
+        queryFn: apiClients.getAll,
+        staleTime: ms("24h"),
+    });
+};
+
+type Data = FormData;
+export const useCreateEmployee = (
+    onCreate: () => void,
+    reset: () => void
+) => {
+    const apiClients = apiClient<Data>(ENDPOINT);
+  const queryClient = useQueryClient();
+  const navigate = useNavigate();
+  return useMutation<Data, Error, Data>({
+    mutationFn: (data: Data) => apiClients.post(data, formDataConfig),
+
+    onSuccess: () => {
+      onCreate();
+      reset();
+      navigate(`${AUTH_LAYOUT_ROUTE}/${EMPLOYEES_ROUTE}`);
+
+      return queryClient.invalidateQueries({
+        queryKey: [CACHE_KEY_EMPLOYEE],
+      });
+    },
   });
 };
