@@ -24,6 +24,7 @@ export const APP_PROFILE_EDIT_MENU_ROUTE = "applicant-edit-profile-menue";
 export const APP_CONTACT_EDIT_ROUTE = "applicant-contact-edit";
 export const APP_CONTACTS_EDIT_LIST_ROUTE = "applicant-contacts-edit-list";
 export const APP_ADDRESS_EDIT_ROUTE = "applicant-address-edit";
+export const EMPLOYEES_ROUTE = "employees";
 
 export const HOME_ROUTE = "/";
 export const REGISTER_ROUTE = "register";

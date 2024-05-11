@@ -12,6 +12,7 @@ import {
   APP_BIODATA_FORM_ROUTE,
   APP_DATES_ROUTE,
   APP_DOCUMENT_CREATE_ROUTE,
+  EMPLOYEES_ROUTE,
   GROUP_CREATE_ROUTE,
 } from "../cacheKeysAndRoutes";
 import { hasPermission } from "../utilities/hasPermissions";
@@ -46,6 +47,7 @@ const MyDrawerContent = () => {
           </h2>
           <AccordionPanel pb={4}>
             <Link to={GROUP_CREATE_ROUTE}>Group List</Link>
+            <Link to={EMPLOYEES_ROUTE}>Employees</Link>
           </AccordionPanel>
           {canAddGroup && (
             <AccordionPanel pb={4}>
