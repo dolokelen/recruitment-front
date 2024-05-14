@@ -69,7 +69,7 @@ const ApplicantAddressEditPage = () => {
       setValue("house_address", address.house_address);
     }
   }, [address, getUserId()]);
-  
+
   //If Admin will use this get the ApplicantId from the useParms()
   const onSubmit = (data: EditAppAddressFormData) => {
     update.mutate({ ...data, applicant: getUserId() });
@@ -79,7 +79,9 @@ const ApplicantAddressEditPage = () => {
 
   return (
     <Container>
-      <Heading sx={styles.groupCreateHeading}>Application Address Form</Heading>
+      <Heading sx={styles.groupCreateHeading}>
+        Application Address Update Form
+      </Heading>
       {update.isError && <Text color={red}>{update.error.message}</Text>}
       <form onSubmit={handleSubmit(onSubmit)}>
         <Box mb={marginButton}>
