@@ -7,6 +7,8 @@ export const CACHE_KEY_APPLICATIONDATE = "applicationdate";
 export const CACHE_KEY_APPLICANT_DOCUMENT = "applicant-document";
 export const CACHE_KEY_APPLICANT_CONTACT = "applicant-contact";
 export const CACHE_KEY_APPLICANT_ADDRESS = "applicant-address";
+export const CACHE_KEY_EMPLOYEE_CONTACT = "employee-contact";
+export const CACHE_KEY_EMPLOYEE_ADDRESS = "employee-address";
 
 export const AUTH_LAYOUT_ROUTE = "/dashboard";
 export const GROUP_ROUTE = "group-lists";
@@ -24,8 +26,18 @@ export const APP_PROFILE_EDIT_MENU_ROUTE = "applicant-edit-profile-menue";
 export const APP_CONTACT_EDIT_ROUTE = "applicant-contact-edit";
 export const APP_CONTACTS_EDIT_LIST_ROUTE = "applicant-contacts-edit-list";
 export const APP_ADDRESS_EDIT_ROUTE = "applicant-address-edit";
+
 export const EMPLOYEES_ROUTE = "employees";
 export const EMPLOYEE_CREATE_ROUTE = "employee-create";
+export const EMPLOYEE_DETAIL_ROUTE = "employee-detail";
+export const EMPLOYEE_EDIT_MENU_ROUTE = "employee-edit-menu";
+export const EMPLOYEE_PROFILE_EDIT_ROUTE = "employee-profile-edit";
+export const EMPLOYEE_ADDR_EDIT_ROUTE = "employee-address-edit";
+export const EMP_ADDRESS_CREATE_ROUTE = "employee-address-create";
+export const EMPLOYEE_CONTACT_EDIT_ROUTE = "employee-contact-edit";
+export const EMPLOYEE_CONTACT_CREATE_ROUTE = "employee-contact-create";
+export const EMP_CONTACTS_EDIT_LIST_ROUTE = "employee-contacts-edit-list";
+export const EMP_DOCUMENT_CREATE_ROUTE = "employee-document-create";
 
 export const HOME_ROUTE = "/";
 export const REGISTER_ROUTE = "register";

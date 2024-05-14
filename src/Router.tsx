@@ -21,6 +21,15 @@ import {
   APP_ADDRESS_EDIT_ROUTE,
   EMPLOYEES_ROUTE,
   EMPLOYEE_CREATE_ROUTE,
+  EMPLOYEE_DETAIL_ROUTE,
+  EMPLOYEE_EDIT_MENU_ROUTE,
+  EMPLOYEE_PROFILE_EDIT_ROUTE,
+  EMPLOYEE_CONTACT_CREATE_ROUTE,
+  EMPLOYEE_CONTACT_EDIT_ROUTE,
+  EMP_CONTACTS_EDIT_LIST_ROUTE,
+  EMP_ADDRESS_CREATE_ROUTE,
+  EMPLOYEE_ADDR_EDIT_ROUTE,
+  EMP_DOCUMENT_CREATE_ROUTE,
 } from "./cacheKeysAndRoutes";
 import UnAuthLayout from "./components/UnAuthLayout";
 import ErrorPage from "./pages/ErrorPage";
@@ -44,6 +53,15 @@ import ApplicantContactsEditList from "./pages/Applicant/ApplicantContactsEditLi
 import ApplicantAddressEditPage from "./pages/Applicant/ApplicantAddressEditPage";
 import EmployeesListPage from "./pages/Employee/EmployeesListPage";
 import EmployeeCreatePage from "./pages/Employee/EmployeeCreatePage";
+import EmployeeDetailPage from "./pages/Employee/EmployeeDetailPage";
+import EmployeeEditMenuPage from "./pages/Employee/EmployeeEditMenuPage";
+import EmployeeProfileEditPage from "./pages/Employee/EmployeeProfileEditPage";
+import EmployeeContactCreatePage from "./pages/Employee/EmployeeContactCreatePage";
+import EmployeeContactEditPage from "./pages/Employee/EmployeeContactEditPage";
+import EmployeeContactsEditList from "./pages/Employee/EmployeeContactsEditList";
+import EmployeeAddressCreatePage from "./pages/Employee/EmployeeAddressCreatePage";
+import EmployeeAddressEditPage from "./pages/Employee/EmployeeAddressEditPage";
+import EmployeeDocumentCreatePage from "./pages/Employee/EmployeeDocumentCreatePage";
 
 const router = createBrowserRouter([
   {
@@ -92,6 +110,33 @@ const router = createBrowserRouter([
       { path: APP_ADDRESS_EDIT_ROUTE, element: <ApplicantAddressEditPage /> },
       { path: EMPLOYEES_ROUTE, element: <EmployeesListPage /> },
       { path: EMPLOYEE_CREATE_ROUTE, element: <EmployeeCreatePage /> },
+      { path: `${EMPLOYEE_DETAIL_ROUTE}/:id`, element: <EmployeeDetailPage /> },
+      { path: EMPLOYEE_EDIT_MENU_ROUTE, element: <EmployeeEditMenuPage /> },
+      {
+        path: EMPLOYEE_PROFILE_EDIT_ROUTE,
+        element: <EmployeeProfileEditPage />,
+      },
+      {
+        path: EMPLOYEE_CONTACT_CREATE_ROUTE,
+        element: <EmployeeContactCreatePage />,
+      },
+      {
+        path: EMPLOYEE_CONTACT_EDIT_ROUTE,
+        element: <EmployeeContactEditPage />,
+      },
+      {
+        path: EMP_CONTACTS_EDIT_LIST_ROUTE,
+        element: <EmployeeContactsEditList />,
+      },
+      {
+        path: EMP_ADDRESS_CREATE_ROUTE,
+        element: <EmployeeAddressCreatePage />,
+      },
+      { path: EMPLOYEE_ADDR_EDIT_ROUTE, element: <EmployeeAddressEditPage /> },
+      {
+        path: EMP_DOCUMENT_CREATE_ROUTE,
+        element: <EmployeeDocumentCreatePage />,
+      },
     ],
   },
 

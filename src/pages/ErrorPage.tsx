@@ -16,8 +16,7 @@ const ErrorPage = () => {
           //Does not render in a component as the component won't be
           //able to display. Synth err or missing import will show this err
           <Text fontSize={40} color={red500}>
-            Something is not right, the system has notified the developer and it
-            will be resolved soon.
+            Something is not right, the system has notified the developer.
           </Text>
         )}
       </Flex>

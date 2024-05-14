@@ -86,6 +86,7 @@ axiosInstance.interceptors.response.use(
 interface Data {
   id?: number;
   applicant?: number; //PK for ApplicantAddress
+  employee?: number; //PK for EmployeeAddress
 }
 
 class APIClient<T> {
@@ -151,7 +152,10 @@ class APIClient<T> {
 
   patch = <T extends Data>(data: T) => {
     return axiosInstance
-      .patch<T>(`${this.endpoint}${data.id || data.applicant}/`, data)
+      .patch<T>(
+        `${this.endpoint}${data.id || data.applicant || data.employee}/`,
+        data
+      )
       .then((res) => res.data)
       .catch((error) => {
         throw error;

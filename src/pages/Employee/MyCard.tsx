@@ -15,6 +15,7 @@ interface Props {
   salary: number;
   phone: string;
   position: string;
+  onClick: () => void;
 }
 
 const MyCard = (props: Props) => {
@@ -26,6 +27,7 @@ const MyCard = (props: Props) => {
         bg="skyblue"
         mt={2}
         _hover={{ cursor: "pointer" }}
+        onClick={props.onClick}
       >
         <CardBody>
           <Image

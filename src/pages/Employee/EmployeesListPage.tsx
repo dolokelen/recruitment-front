@@ -3,8 +3,11 @@ import { useEmployees } from "../../hooks/useEmployees";
 import MyCard from "./MyCard";
 import MySpinner from "../../components/MySpinner";
 import { red } from "../../colors";
+import { useNavigate } from "react-router-dom";
+import { AUTH_LAYOUT_ROUTE, EMPLOYEE_DETAIL_ROUTE } from "../../cacheKeysAndRoutes";
 
 const EmployeesListPage = () => {
+  const navigate = useNavigate();
   const { data: employees, isLoading, error } = useEmployees();
   if (isLoading) return <MySpinner />;
   if (error) return <Text color={red}>{error.message}</Text>;
@@ -20,6 +23,7 @@ const EmployeesListPage = () => {
           phone={emp.contacts[0]?.phone}
           position={emp.position}
           key={emp.user.id}
+          onClick={() => navigate(`${AUTH_LAYOUT_ROUTE}/${EMPLOYEE_DETAIL_ROUTE}/${emp.user.id}`)}
         />
       ))}
     </SimpleGrid>
