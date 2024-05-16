@@ -15,6 +15,7 @@ import {
   APP_DOCUMENT_CREATE_ROUTE,
   EMPLOYEES_ROUTE,
   EMPLOYEE_CREATE_ROUTE,
+  EMP_PROFILE_ROUTE,
   GROUP_CREATE_ROUTE,
 } from "../cacheKeysAndRoutes";
 import { hasPermission } from "../utilities/hasPermissions";
@@ -52,6 +53,7 @@ const MyDrawerContent = () => {
               <Link to={GROUP_CREATE_ROUTE}>Group List</Link>
               <Link to={EMPLOYEES_ROUTE}>Employees</Link>
               <Link to={EMPLOYEE_CREATE_ROUTE}>Create Employee</Link>
+              <Link to={EMP_PROFILE_ROUTE}>Profile</Link>
             </Stack>
           </AccordionPanel>
           {canAddGroup && (

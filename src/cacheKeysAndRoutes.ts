@@ -38,6 +38,7 @@ export const EMPLOYEE_CONTACT_EDIT_ROUTE = "employee-contact-edit";
 export const EMPLOYEE_CONTACT_CREATE_ROUTE = "employee-contact-create";
 export const EMP_CONTACTS_EDIT_LIST_ROUTE = "employee-contacts-edit-list";
 export const EMP_DOCUMENT_CREATE_ROUTE = "employee-document-create";
+export const EMP_PROFILE_ROUTE = "employee-profile";
 
 export const HOME_ROUTE = "/";
 export const REGISTER_ROUTE = "register";
