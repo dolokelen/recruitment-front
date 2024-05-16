@@ -1,8 +1,17 @@
 import { Avatar } from "@chakra-ui/react";
-import me from "../assets/myAvatar.png"
+import getUserId from "../utilities/getUserId";
+import { useEmployeeProfile } from "../hooks/useEmployees";
+import { useApplicantProfile } from "../hooks/useApplicants";
 
 const MyAvatar = () => {
-  return <Avatar name="Dolokelen" src={me} />;
+  const userId = getUserId()!;
+  const { data: employee } = useEmployeeProfile(userId);
+  const { data: applicant } = useApplicantProfile(userId);
+
+  if (employee)
+    return <Avatar name={employee.user.full_name} src={employee?.image} />;
+  if (applicant)
+    return <Avatar name={applicant.user.full_name} src={applicant?.image} />;
 };
 
 export default MyAvatar;
