@@ -84,3 +84,13 @@ export const useEditApplicantImage = (
     },
   });
 };
+
+export const useApplicantProfile = (applicantId: number) => {
+  const apiClients = apiClient<Applicant>("/recruitment/applicant-profile/");
+
+  return useQuery<Applicant, Error>({
+    queryKey: [CACHE_KEY_APPLICANT, applicantId],
+    queryFn: () => apiClients.get(applicantId),
+    staleTime: ms("24h"),
+  });
+};

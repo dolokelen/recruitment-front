@@ -89,3 +89,13 @@ export const useEditEmployeeImage = (
     },
   });
 };
+
+export const useEmployeeProfile = (employeeId: number) => {
+  const apiClients = apiClient<Employee>("/recruitment/employee-profile/");
+
+  return useQuery<Employee, Error>({
+    queryKey: [CACHE_KEY_EMPLOYEE, employeeId],
+    queryFn: () => apiClients.get(employeeId),
+    staleTime: ms("24h"),
+  });
+};
