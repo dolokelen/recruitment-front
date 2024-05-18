@@ -47,6 +47,11 @@ export interface User {
   full_name: string;
 }
 
+export interface UserSupervisor {
+  id: number;
+  full_name: string;
+}
+
 // export const useUserProfile = () => {
 //   const apiClients = apiClient<UserProfile>("/auth/users/me");
 //   return useQuery<UserProfile, Error>({

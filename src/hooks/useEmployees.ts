@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import apiClient, { formDataConfig } from "../services/httpService";
-import { User } from "./useUsers";
+import { User, UserSupervisor } from "./useUsers";
 import {
   AUTH_LAYOUT_ROUTE,
   CACHE_KEY_EMPLOYEE,
@@ -11,6 +11,7 @@ import { EmployeeDocument } from "./useEmpDocuments";
 import { EmployeeAddress } from "./useEmpAddress";
 import { EmployeeContacts } from "./useEmpContacts";
 import { useNavigate } from "react-router-dom";
+import { useEmployeeStore } from "../pages/Employee/employeeStore";
 
 interface Employee {
   user: User;
@@ -33,7 +34,23 @@ const EMPLOYEE_URL = "/recruitment/employees/";
 const apiClients = apiClient<Employee>(EMPLOYEE_URL);
 
 export const useEmployees = () => {
+  const empQuery = useEmployeeStore();
   return useQuery<Employee[], Error>({
+    queryKey: [CACHE_KEY_EMPLOYEE, empQuery],
+    queryFn: () =>
+      apiClients.getAll({
+        params: {
+          supervisor: empQuery.employeeQuery.selectedSupervisorId,
+          search: empQuery.employeeQuery?.searchText,
+        },
+      }),
+    staleTime: ms("24h"),
+  });
+};
+
+export const useEmployeeSupervisors = () => {
+  const apiClients = apiClient<UserSupervisor>("/recruitment/employee-supervisors/");
+  return useQuery<UserSupervisor[], Error>({
     queryKey: [CACHE_KEY_EMPLOYEE],
     queryFn: apiClients.getAll,
     staleTime: ms("24h"),
