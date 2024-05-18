@@ -21,6 +21,8 @@ import styles from "../../styles";
 import { MyButtonWithIcon } from "../../MyFormComponents";
 
 import { useCreateEmpContacts } from "../../hooks/useEmpContacts";
+import { hasPermission } from "../../utilities/hasPermissions";
+import AccessDenyPage from "../AccessDenyPage";
 
 const contactSchema = z.object({
   phone: z.string().min(10, {
@@ -70,6 +72,8 @@ const EmployeeContactCreatePage = () => {
       append({ phone: "" });
     }
   }, []);
+
+  if (!hasPermission("Can add employee")) return <AccessDenyPage />;
 
   const customErrorMessage = http_400_BAD_REQUEST_CUSTOM_MESSAGE(mutation);
   return (

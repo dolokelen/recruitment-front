@@ -20,6 +20,8 @@ import {
   useEditEmployeeAddress,
   useEmployeeAddress,
 } from "../../hooks/useEmpAddress";
+import { hasPermission } from "../../utilities/hasPermissions";
+import AccessDenyPage from "../AccessDenyPage";
 
 const schema = z.object({
   employee: z.number().optional(),
@@ -70,6 +72,8 @@ const EmployeeAddressEditPage = () => {
   const onSubmit = (data: EmpAddressEditFormData) => {
     update.mutate({ ...data, employee: selectedEmpId });
   };
+
+  if (!hasPermission("Can change employee")) return <AccessDenyPage />;
 
   const marginButton = 4;
 

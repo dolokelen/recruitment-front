@@ -18,6 +18,8 @@ import { MyInput } from "../../MyFormComponents";
 import styles from "../../styles";
 import { highestEducations } from "../../utilities/staticData";
 import { useCreateEmployeeDocument } from "../../hooks/useEmpDocuments";
+import { hasPermission } from "../../utilities/hasPermissions";
+import AccessDenyPage from "../AccessDenyPage";
 
 const schema = z.object({
   major: z.string().min(2, { message: "Major is required." }),
@@ -60,6 +62,8 @@ const EmployeeDocumentCreatePage = () => {
   const onCreate = () => toast.success("Submitted Successfully!");
   const create = useCreateEmployeeDocument(onCreate, () => reset());
   const selectedEmpId = localStorage.getItem("bugId")!;
+
+  if (!hasPermission("Can add employee")) return <AccessDenyPage />;
 
   function handleResumeChange(e: React.FormEvent<HTMLInputElement>) {
     const target = e.target as HTMLInputElement & {

@@ -17,12 +17,14 @@ import {
   USER_GROUP_ROUTE,
 } from "../../cacheKeysAndRoutes";
 import { useEmployee } from "../../hooks/useEmployees";
+import { hasPermission } from "../../utilities/hasPermissions";
+import AccessDenyPage from "../AccessDenyPage";
 
 const EmployeeEditMenuPage = () => {
   const navigate = useNavigate();
   const selectedEmpId = localStorage.getItem("bugId");
   const { data: employee } = useEmployee(parseInt(selectedEmpId!));
-
+  if (!hasPermission("Can change employee")) return <AccessDenyPage />;
   const iconSize = "6rem";
   const leftMargin = 6;
 

@@ -16,6 +16,8 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { red } from "../../colors";
 import { useEditEmployeeImage } from "../../hooks/useEmployees";
+import { hasPermission } from "../../utilities/hasPermissions";
+import AccessDenyPage from "../AccessDenyPage";
 
 const schema = z.object({
   scapegoat: z.boolean(), //To allow me use handleSubmit
@@ -31,6 +33,8 @@ const EmployeeProfileEditPage = () => {
   const onUpdate = () => toast.success("Updated Successfully!");
   const update = useEditEmployeeImage(onUpdate, parseInt(selectedEmpId!));
   const [imageFile, setImageFile] = useState<File | undefined>();
+  
+  if (!hasPermission("Can change employee")) return <AccessDenyPage />;
 
   function handleImageChange(e: React.FormEvent<HTMLInputElement>) {
     const target = e.target as HTMLInputElement & {

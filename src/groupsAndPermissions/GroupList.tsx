@@ -17,6 +17,8 @@ import BulkDeleteButton from "../utilities/BulkDeleteButton";
 import { Link } from "react-router-dom";
 import { AUTH_LAYOUT_ROUTE, GROUP_ROUTE } from "../cacheKeysAndRoutes";
 import styles from "../styles";
+import { hasPermission } from "../utilities/hasPermissions";
+import AccessDenyPage from "../pages/AccessDenyPage";
 
 const GroupList = () => {
   const { data: groups, error, isLoading } = useGroups();
@@ -28,10 +30,9 @@ const GroupList = () => {
       setSelectedGroups([]);
     }
   );
-  // const canAddGroup = hasPermission("Can add group");
-  // const canDeleteGroup = hasPermission("Can delete group");
+  const canDeleteGroup = hasPermission("Can delete group");
 
-  // if (!hasPermission("Can view group")) return <AccessDenyPage />;
+  if (!hasPermission("Can view group")) return <AccessDenyPage />;
 
   const handleCheckboxChange = (groupId: number) => {
     if (selectedGroups.includes(groupId)) {
@@ -65,28 +66,30 @@ const GroupList = () => {
       </OverflowYContainer>
 
       {/* The delete all button */}
-      <Box sx={styles.groupListButtonBox}>
-        {selectedGroups.length === 0 ? (
-          <Button
-            sx={styles.groupListButtonDisable}
-            colorScheme={styles.groupListButtonDisable.colorScheme}
-            isActive
-            isDisabled
-          >
-            Delete All
-          </Button>
-        ) : (
-          <BulkDeleteButton
-            mdWidth={styles.groupListDeleteAllButton.width.md}
-            baseWidth={styles.groupListDeleteAllButton.width.base}
-            smWidth={styles.groupListDeleteAllButton.width.sm}
-            label={selectedGroups.length > 1 ? "Delete All" : "Delete"}
-            onDelete={handleDeleteAll}
-            selectedItem={selectedGroups.length}
-            entityName="Group"
-          />
-        )}
-      </Box>
+      {canDeleteGroup && (
+        <Box sx={styles.groupListButtonBox}>
+          {selectedGroups.length === 0 ? (
+            <Button
+              sx={styles.groupListButtonDisable}
+              colorScheme={styles.groupListButtonDisable.colorScheme}
+              isActive
+              isDisabled
+            >
+              Delete All
+            </Button>
+          ) : (
+            <BulkDeleteButton
+              mdWidth={styles.groupListDeleteAllButton.width.md}
+              baseWidth={styles.groupListDeleteAllButton.width.base}
+              smWidth={styles.groupListDeleteAllButton.width.sm}
+              label={selectedGroups.length > 1 ? "Delete All" : "Delete"}
+              onDelete={handleDeleteAll}
+              selectedItem={selectedGroups.length}
+              entityName="Group"
+            />
+          )}
+        </Box>
+      )}
     </>
   );
 };

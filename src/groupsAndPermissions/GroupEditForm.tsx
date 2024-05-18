@@ -11,6 +11,8 @@ import { red, teal } from "../colors";
 import { MyButton, MyInput } from "../MyFormComponents";
 import MySpinner from "../components/MySpinner";
 import styles from "../styles";
+import { hasPermission } from "../utilities/hasPermissions";
+import AccessDenyPage from "../pages/AccessDenyPage";
 
 const schema = z.object({
   id: z.number().optional(),
@@ -44,7 +46,7 @@ const GroupEditForm = () => {
   }, [data, setValue]);
 
   const customerErrMessage = http_400_BAD_REQUEST_CUSTOM_MESSAGE(mutation);
-  // if (!hasPermission("Can change group")) return <AccessDenyPage />;
+  if (!hasPermission("Can change group")) return <AccessDenyPage />;
   if (error) return <Text color={red}>{error.message}</Text>;
   if (isLoading) return <MySpinner />;
 

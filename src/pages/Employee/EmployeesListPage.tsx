@@ -11,14 +11,17 @@ import {
 import SearchBar from "../SearchBar";
 import EmployeeSupervisorFilter from "./EmployeeSupervisorFilter";
 import { useEmployeeStore } from "./employeeStore";
+import { hasPermission } from "../../utilities/hasPermissions";
+import AccessDenyPage from "../AccessDenyPage";
 
 const EmployeesListPage = () => {
   const navigate = useNavigate();
   const setSearchText = useEmployeeStore((s) => s.setSearchText);
   const { data: employees, isLoading, error } = useEmployees();
+
+  if (!hasPermission("Can view employee")) return <AccessDenyPage />;
   if (isLoading) return <MySpinner />;
   if (error) return <Text color={red}>{error.message}</Text>;
-
   return (
     <>
       {/* Employees Filter and Search */}

@@ -31,7 +31,7 @@ const UserGroupsPage = () => {
   const handleRemoveGroupsFromUser = useRemoveGroupsFromUser(
     { userId, group_to_remove_ids: groupIdsToRemove },
     () => {
-      toast.success("User successfully from group!");
+      toast.success("User successfully removed from group!");
       setGroupIdsToRemove([]);
     }
   );

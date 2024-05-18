@@ -26,6 +26,8 @@ import {
 import { http_400_BAD_REQUEST_CUSTOM_MESSAGE } from "../../utilities/httpErrorMessages";
 import { useCreateEmployee } from "../../hooks/useEmployees";
 import { useEmployees } from "./../../hooks/useEmployees";
+import { hasPermission } from "../../utilities/hasPermissions";
+import AccessDenyPage from "../AccessDenyPage";
 
 const userSchema = z.object({
   email: z
@@ -43,7 +45,9 @@ const schema = z.object({
   religion: z.string().min(1, { message: "Religion is required" }),
   position: z.string().min(3, { message: "Position is required" }),
   employment: z.string().min(6, { message: "Type of employment is required" }),
-  qualification: z.string().min(6, { message: "Highest leve of education is required" }),
+  qualification: z
+    .string()
+    .min(6, { message: "Highest leve of education is required" }),
   salary: z
     .number({ invalid_type_error: "Monthly salary amount is required." })
     .min(3, { message: "Monthly salary amount is required" })
@@ -111,6 +115,7 @@ const EmployeeCreatePage = () => {
   //Only for unique fields
   const customErrMessage = http_400_BAD_REQUEST_CUSTOM_MESSAGE(create);
 
+  if (!hasPermission("Can add employee")) return <AccessDenyPage />;
   return (
     <Container>
       <Heading sx={styles.groupCreateHeading}>Employee Biodata Form</Heading>

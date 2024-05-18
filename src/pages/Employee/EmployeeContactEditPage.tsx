@@ -13,6 +13,8 @@ import {
   useEditEmployeeContact,
   useEmployeeContact,
 } from "../../hooks/useEmpContacts";
+import { hasPermission } from "../../utilities/hasPermissions";
+import AccessDenyPage from "../AccessDenyPage";
 
 const schema = z.object({
   phone: z.string().min(10, {
@@ -47,6 +49,8 @@ const EmployeeContactEditPage = () => {
   useEffect(() => {
     if (contact) setValue("phone", contact.phone);
   }, [contact, setValue]);
+
+  if (!hasPermission("Can change employee")) return <AccessDenyPage />;
 
   const customErrMessage = http_400_BAD_REQUEST_CUSTOM_MESSAGE(update);
   return (

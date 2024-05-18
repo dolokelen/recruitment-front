@@ -16,6 +16,8 @@ import { MyInput } from "../../MyFormComponents";
 import styles from "../../styles";
 import { counties } from "../../utilities/staticData";
 import { useCreateEmployeeAddress } from "../../hooks/useEmpAddress";
+import { hasPermission } from "../../utilities/hasPermissions";
+import AccessDenyPage from "../AccessDenyPage";
 
 const schema = z.object({
   employee: z.number().optional(),
@@ -57,6 +59,7 @@ const EmployeeAddressCreatePage = () => {
     create.mutate({ ...data, employee: selectedEmpId });
   };
 
+  if (!hasPermission("Can add employee")) return <AccessDenyPage />;
   const marginButton = 4;
 
   return (
