@@ -33,6 +33,7 @@ import {
   EMP_PROFILE_ROUTE,
   PROFILE_ROUTE,
   USER_GROUP_ROUTE,
+  APPLICANTS_ROUTE,
 } from "./cacheKeysAndRoutes";
 import UnAuthLayout from "./components/UnAuthLayout";
 import ErrorPage from "./pages/ErrorPage";
@@ -68,6 +69,7 @@ import EmployeeDocumentCreatePage from "./pages/Employee/EmployeeDocumentCreateP
 import EmployeeProfilePage from "./pages/Employee/EmployeeProfilePage";
 import ProfilesWrapper from "./pages/ProfileWrapper";
 import UserGroupsPage from "./pages/UserGroupPage";
+import ApplicantsListForAdmin from "./pages/Applicant/ApplicantsListForAdmin";
 
 const router = createBrowserRouter([
   {
@@ -87,6 +89,7 @@ const router = createBrowserRouter([
         element: <ApplicationDateEditPage />,
       },
       { path: AUTH_LAYOUT_ROUTE, element: <MyChart /> },
+      { path: APPLICANTS_ROUTE, element: <ApplicantsListForAdmin /> },
       { path: APP_PROFILE_ROUTE, element: <ApplicantProfilePage /> },
       {
         path: APP_PROFILE_EDIT_ROUTE,

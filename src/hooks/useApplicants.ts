@@ -32,6 +32,15 @@ interface Applicant {
 
 const APPLICANT_URL = "/recruitment/applicants/";
 
+export const useApplicants = () => {
+  const apiClients = apiClient<Applicant>(APPLICANT_URL);
+  return useQuery<Applicant[], Error>({
+    queryKey: [CACHE_KEY_APPLICANT],
+    queryFn: apiClients.getAll,
+    staleTime: ms("24h"),
+  });
+};
+
 const apiClients = apiClient<Data>(APPLICANT_URL);
 type Data = FormData;
 export const useCreateApplication = (

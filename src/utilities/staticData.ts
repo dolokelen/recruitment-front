@@ -35,3 +35,17 @@ export const counties = [
   { name: "River Gee" },
   { name: "Sinoe" },
 ];
+
+export const rejectionReasons = [
+  { name: "Police clearance" },
+  { name: "National ID" },
+  { name: "Diploma" },
+  { name: "Transcript" },
+  { name: "Written exams" },
+  { name: "Interview" },
+  { name: "Job readiness" },
+  { name: "Absent" },
+  { name: "Document" },
+  { name: "Disorderly conduct" },
+  { name: "Other" },
+];
