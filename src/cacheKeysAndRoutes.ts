@@ -41,6 +41,7 @@ export const EMP_DOCUMENT_CREATE_ROUTE = "employee-document-create";
 export const EMP_PROFILE_ROUTE = "employee-profile";
 
 export const PROFILE_ROUTE = "profile";
+export const USER_GROUP_ROUTE = "user-groups";
 
 export const HOME_ROUTE = "/";
 export const REGISTER_ROUTE = "register";

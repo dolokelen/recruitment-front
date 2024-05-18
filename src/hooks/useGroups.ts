@@ -9,7 +9,7 @@ import ms from "ms";
 import { useNavigate } from "react-router-dom";
 
 const GROUP_ENDPOINT = "/core/groups/";
-interface Group {
+export interface Group {
   id: number;
   name: string;
   permissions: { id: number; name: string }[];

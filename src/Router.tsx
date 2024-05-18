@@ -32,6 +32,7 @@ import {
   EMP_DOCUMENT_CREATE_ROUTE,
   EMP_PROFILE_ROUTE,
   PROFILE_ROUTE,
+  USER_GROUP_ROUTE,
 } from "./cacheKeysAndRoutes";
 import UnAuthLayout from "./components/UnAuthLayout";
 import ErrorPage from "./pages/ErrorPage";
@@ -66,6 +67,7 @@ import EmployeeAddressEditPage from "./pages/Employee/EmployeeAddressEditPage";
 import EmployeeDocumentCreatePage from "./pages/Employee/EmployeeDocumentCreatePage";
 import EmployeeProfilePage from "./pages/Employee/EmployeeProfilePage";
 import ProfilesWrapper from "./pages/ProfileWrapper";
+import UserGroupsPage from "./pages/UserGroupPage";
 
 const router = createBrowserRouter([
   {
@@ -146,6 +148,7 @@ const router = createBrowserRouter([
         element: <EmployeeProfilePage />,
       },
       { path: PROFILE_ROUTE, element: <ProfilesWrapper /> },
+      { path: USER_GROUP_ROUTE, element: <UserGroupsPage /> },
     ],
   },
 
