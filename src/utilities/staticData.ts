@@ -49,3 +49,18 @@ export const rejectionReasons = [
   { name: "Disorderly conduct" },
   { name: "Other" },
 ];
+
+export const applicantStatus = [
+  { name: "Under review" },
+  { name: "Pending" },
+  { name: "Unsuccessful" },
+  { name: "Successful" },
+];
+
+export const applicationStages = [
+  { name: "Credential varification" },
+  { name: "Writen exams" },
+  { name: "Interview" },
+  { name: "Job readiness orientation" },
+  { name: "Placement" },
+];
