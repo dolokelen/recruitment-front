@@ -51,13 +51,12 @@ export const rejectionReasons = [
 ];
 
 export const applicantStatus = [
-  { name: "Under review" },
   { name: "Pending" },
   { name: "Unsuccessful" },
-  { name: "Successful" },
 ];
 
-export const applicationStages = [
+export const appStageNames = [
+  { name: "Publicity" },
   { name: "Credential varification" },
   { name: "Writen exams" },
   { name: "Interview" },

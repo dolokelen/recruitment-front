@@ -10,8 +10,9 @@ import {
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import {
-  APPLICANTS_ROUTE,
   APP_DATES_ROUTE,
+  APP_SCREENING_ROUTE,
+  APP_STAGE_NAME_ROUTE,
   EMPLOYEES_ROUTE,
   EMPLOYEE_CREATE_ROUTE,
   EMP_PROFILE_ROUTE,
@@ -132,11 +133,37 @@ const MyDrawerContent = () => {
           </h2>
           <AccordionPanel pb={4}>
             <Flex flexDirection="column" gap={2}>
-              <Link to={APPLICANTS_ROUTE}>Applicants</Link>
+              {/* <Link to={APPLICANTS_ROUTE}>Applicants</Link> */}
+              <Link to={APP_STAGE_NAME_ROUTE}>Applicants</Link>
             </Flex>
           </AccordionPanel>
         </AccordionItem>
       )}
+      {/* APPLICANT SCREENING */}
+      {/* {canViewApplicant && ( */}
+        <AccordionItem border="none">
+          <h2
+            style={{
+              backgroundColor: "green",
+              marginTop: "1rem",
+              borderRadius: "20px",
+            }}
+          >
+            <AccordionButton>
+              <Box as="span" flex="1" textAlign="left">
+                Screening
+              </Box>
+              <AccordionIcon />
+            </AccordionButton>
+          </h2>
+          <AccordionPanel pb={4}>
+            <Flex flexDirection="column" gap={2}>
+              {/* <Link to={APPLICANTS_ROUTE}>Applicants</Link> */}
+              <Link to={APP_SCREENING_ROUTE}>Screen Applicants</Link>
+            </Flex>
+          </AccordionPanel>
+        </AccordionItem>
+      {/* )} */}
     </Accordion>
   );
 };

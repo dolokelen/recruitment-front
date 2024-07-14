@@ -34,6 +34,8 @@ import {
   PROFILE_ROUTE,
   USER_GROUP_ROUTE,
   APPLICANTS_ROUTE,
+  APP_STAGE_NAME_ROUTE,
+  APP_SCREENING_ROUTE,
 } from "./cacheKeysAndRoutes";
 import UnAuthLayout from "./components/UnAuthLayout";
 import ErrorPage from "./pages/ErrorPage";
@@ -70,6 +72,8 @@ import EmployeeProfilePage from "./pages/Employee/EmployeeProfilePage";
 import ProfilesWrapper from "./pages/ProfileWrapper";
 import UserGroupsPage from "./pages/UserGroupPage";
 import ApplicantsListForAdmin from "./pages/Applicant/ApplicantsListForAdmin";
+import ApplicationStageName from "./pages/Applicant/AppStageName";
+import ApplicantScreening from "./pages/ApplicantScreening/ApplicantScreening";
 
 const router = createBrowserRouter([
   {
@@ -117,6 +121,11 @@ const router = createBrowserRouter([
       },
       { path: APP_CONTACT_EDIT_ROUTE, element: <ApplicantContactEditPage /> },
       { path: APP_ADDRESS_EDIT_ROUTE, element: <ApplicantAddressEditPage /> },
+
+      { path: APP_STAGE_NAME_ROUTE, element: <ApplicationStageName /> },
+
+      { path: APP_SCREENING_ROUTE, element: <ApplicantScreening /> },
+
       { path: EMPLOYEES_ROUTE, element: <EmployeesListPage /> },
       { path: EMPLOYEE_CREATE_ROUTE, element: <EmployeeCreatePage /> },
       { path: `${EMPLOYEE_DETAIL_ROUTE}/:id`, element: <EmployeeDetailPage /> },
